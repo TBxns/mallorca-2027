@@ -10,6 +10,8 @@
     <meta name="apple-mobile-web-app-title" content="Mallorca 2027">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="design/assets/photos/cala-aerial.png">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase/public-config.js"></script>
     <title>Mallorca 2027</title>
     <style>
       :root { color-scheme: light; background: #eef8fa; }
@@ -24,6 +26,93 @@
       <iframe src="design/Mallorca-2027-app-standalone.html" title="Mallorca 2027 familie-app"></iframe>
     </main>
     <script>
+      const appFrame = document.querySelector('iframe');
+      const sharedStateKeys = [
+        'packed', 'votes', 'mee', 'wens', 'added', 'eigenPack',
+        'doen', 'uitgenodigd', 'ideeFilter', 'gelezen'
+      ];
+      let tripId = null;
+      let applyingRemoteState = false;
+      let lastUploadedState = '';
+
+      function readFrameState() {
+        try {
+          return JSON.parse(appFrame.contentWindow.localStorage.getItem('mallorca2027') || '{}');
+        } catch (error) {
+          return {};
+        }
+      }
+
+      function sharedState(state) {
+        return sharedStateKeys.reduce((result, key) => {
+          if (state[key] !== undefined) result[key] = state[key];
+          return result;
+        }, {});
+      }
+
+      function stateSignature(state) {
+        return JSON.stringify(sharedState(state));
+      }
+
+      function applyRemoteState(state) {
+        const current = readFrameState();
+        const merged = Object.assign({}, current, state, { ik: current.ik || 'jij' });
+        applyingRemoteState = true;
+        appFrame.contentWindow.localStorage.setItem('mallorca2027', JSON.stringify(merged));
+        appFrame.contentWindow.location.reload();
+        window.setTimeout(() => { applyingRemoteState = false; }, 1500);
+      }
+
+      async function connectSharedState() {
+        if (!window.supabase || !window.MALLORCA_SUPABASE) return;
+        const client = window.supabase.createClient(
+          window.MALLORCA_SUPABASE.url,
+          window.MALLORCA_SUPABASE.key
+        );
+        const tripResult = await client
+          .from('trips')
+          .select('id')
+          .eq('slug', 'mallorca-2027')
+          .single();
+        if (tripResult.error || !tripResult.data) return;
+        tripId = tripResult.data.id;
+
+        const stored = await client
+          .from('trip_state')
+          .select('state')
+          .eq('trip_id', tripId)
+          .maybeSingle();
+        if (!stored.error && stored.data && stored.data.state) {
+          applyRemoteState(stored.data.state);
+        }
+
+        client.channel('mallorca-trip-state')
+          .on('postgres_changes', {
+            event: '*', schema: 'public', table: 'trip_state',
+            filter: `trip_id=eq.${tripId}`
+          }, (payload) => {
+            if (!applyingRemoteState && payload.new && payload.new.state) {
+              const incoming = stateSignature(payload.new.state);
+              if (incoming !== lastUploadedState) applyRemoteState(payload.new.state);
+            }
+          })
+          .subscribe();
+
+        window.setInterval(async () => {
+          if (applyingRemoteState || !tripId) return;
+          const state = readFrameState();
+          const signature = stateSignature(state);
+          if (signature === lastUploadedState) return;
+          const result = await client.from('trip_state').upsert({
+            trip_id: tripId,
+            state: sharedState(state),
+            updated_at: new Date().toISOString()
+          });
+          if (!result.error) lastUploadedState = signature;
+        }, 1000);
+      }
+
+      appFrame.addEventListener('load', connectSharedState, { once: true });
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
       }
