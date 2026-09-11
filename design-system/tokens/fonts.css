@@ -1,0 +1,50 @@
+/* ============================================================
+   Spreekuur — Webfonts
+   The real product loads these via @fontsource (Inter 400/500/600/700
+   and Merriweather 300/400/700/900). These are the EXACT brand fonts,
+   served here from the stable @fontsource CDN (jsDelivr) so the design
+   system is self-contained. No substitution.
+   ============================================================ */
+
+/* ---------- Inter (sans / body / UI) ---------- */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.18/files/inter-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.18/files/inter-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.18/files/inter-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.18/files/inter-latin-700-normal.woff2") format("woff2");
+}
+
+/* ---------- Merriweather (serif / headings) ----------
+   Variable font (weight axis 300–900) from the Fontsource CDN.
+   The static per-weight files were unreliable (900 404'd, falling
+   back to Times New Roman); the variable file covers every weight
+   we use — crucially the 900 "Black" for h1–h3. */
+@font-face {
+  font-family: "Merriweather";
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/merriweather:vf@latest/latin-wght-normal.woff2") format("woff2-variations");
+}

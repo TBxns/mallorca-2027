@@ -1,0 +1,54 @@
+/* ============================================================
+   Spreekuur — Spacing, radius & layout tokens
+   Derived from the ds-native (Ionic) theme + Figma frames.
+   Mobile-first: the canonical screen width is 360px; the desktop
+   content column is capped at 1140px.
+   ============================================================ */
+
+:root {
+  /* --- Spacing scale (4px base, matches Ionic rhythm) --- */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;   /* default gutter / ion-padding */
+  --space-5: 24px;   /* section gap inside screens */
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 48px;
+  --space-9: 64px;
+
+  /* --- Corner radii --- */
+  --radius-xs: 5px;    /* checkbox */
+  --radius-sm: 8px;    /* inputs, list items, list groups */
+  --radius-md: 12px;   /* cards */
+  --radius-control: 14px; /* buttons (≈49.6px tall in Figma) */
+  --radius-lg: 16px;   /* large cards / sheets (borderradius-large) */
+  --radius-pill: 999px;/* badges, counters, segmented progress */
+
+  /* --- Border widths --- */
+  --border-width: 1px;
+  --border-width-thick: 2px;
+
+  /* Spreekuur is a flat, shadowless product. Surfaces are separated by
+     hairline borders/dividers and background contrast — never shadows. */
+
+  /* --- Layout --- */
+  --screen-width-mobile: 360px;
+  --content-max-width: 1140px;
+  --tab-bar-height: 56px;
+  --header-height: 64px;
+  --control-height: 48px;   /* buttons, inputs */
+  --touch-target-min: 44px;
+
+  /* iOS safe-area approximations (from Figma variables) */
+  --safe-area-top: 40px;
+  --safe-area-bottom: 24px;
+
+  /* --- Motion --- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --ease-out: cubic-bezier(0.0, 0, 0.2, 1); /* @kind other */
+  --duration-fast: 120ms; /* @kind other */
+  --duration-base: 200ms; /* @kind other */
+  --duration-slow: 320ms; /* @kind other */
+}

@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/design-system-spreekuur-nl-5ed928a3-596c-4994-97f1-1f1bc36fd9ba/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/design-system-spreekuur-nl-5ed928a3-596c-4994-97f1-1f1bc36fd9ba/tokens/colors.css">
+<link rel="stylesheet" href="_ds/design-system-spreekuur-nl-5ed928a3-596c-4994-97f1-1f1bc36fd9ba/tokens/typography.css">
+<link rel="stylesheet" href="_ds/design-system-spreekuur-nl-5ed928a3-596c-4994-97f1-1f1bc36fd9ba/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/design-system-spreekuur-nl-5ed928a3-596c-4994-97f1-1f1bc36fd9ba/tokens/base.css">
+<link rel="stylesheet" href="_ds/design-system-spreekuur-nl-5ed928a3-596c-4994-97f1-1f1bc36fd9ba/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script src="_ds/design-system-spreekuur-nl-5ed928a3-596c-4994-97f1-1f1bc36fd9ba/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin: 0; background: #EEF8FA; }
+  a { color: var(--ion-color-primary); text-decoration: none; }
+  a:hover { color: var(--ion-color-primary-shade); text-decoration: underline; }
+</style>
+</helmet>
+<div style="min-height:100vh;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:18px;padding:36px 16px 56px;background:#EEF8FA;font-family:var(--font-body);color:var(--text-default)">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center">
+    <div style="font-family:var(--font-display);font-weight:900;font-size:22px;line-height:30px">Mallorca, 7 t/m 14 mei 2027</div>
+    <div style="font-size:14px;line-height:20px;color:var(--text-secondary)">Familie-reisapp &middot; Villa Ca na Saurina &middot; Crestatx &middot; 6 reizigers</div>
+  </div>
+
+  <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+    <div style="height:100%;display:flex;flex-direction:column;background:var(--surface-app);font-family:var(--font-body);color:var(--text-default);overflow:hidden">
+      <div style="flex:none;height:54px;background:var(--surface-card)"></div>
+
+      <div ref="{{ scrollRef }}" style="flex:1;min-height:0;overflow:auto">
+
+        <sc-if value="{{ isWelcome }}" hint-placeholder-val="{{ true }}">
+          <div data-screen-label="Welkom" style="min-height:100%;box-sizing:border-box;display:flex;flex-direction:column;background:var(--surface-card)">
+            <div style="position:relative;flex:none;height:400px;overflow:hidden;background:var(--ion-color-secondary)">
+              <img src="assets/photos/cala-aerial.png" alt="Turquoise baai op Mallorca" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+              <div style="position:absolute;left:0;right:0;bottom:0;height:230px;background:linear-gradient(to top, rgba(12,42,47,.86), rgba(12,42,47,.55) 42%, rgba(12,42,47,0))"></div>
+              <div style="position:absolute;left:20px;right:20px;top:20px;display:flex;flex-wrap:wrap;gap:8px">
+                <span style="padding:0 14px;height:32px;border-radius:999px;background:#fff;color:var(--ion-color-primary);font-size:13px;line-height:32px;font-weight:700">7 t/m 14 mei 2027</span>
+                <span style="display:inline-flex;align-items:center;gap:7px;padding:0 14px;height:32px;border-radius:999px;background:var(--ion-color-warning);color:#3a2000;font-size:13px;line-height:32px;font-weight:700">
+                  <i class="fa-solid fa-sun" aria-hidden="true" style="font-size:12px"></i>in mei rond 24 graden
+                </span>
+              </div>
+              <div style="position:absolute;left:20px;right:20px;bottom:22px">
+                <div style="font-family:var(--font-display);font-weight:900;font-size:15px;line-height:22px;color:#8FE6F5;letter-spacing:.06em;text-transform:uppercase">Hola familia</div>
+                <h1 style="margin:6px 0 0;font-size:36px;line-height:42px;color:#fff;text-wrap:balance">Zeven dagen zon, strand en zwembad</h1>
+              </div>
+            </div>
+
+            <div style="flex:1;display:flex;flex-direction:column;gap:22px;padding:24px 20px 34px">
+              <div>
+                <div style="font-size:14px;line-height:20px;font-weight:700;color:var(--text-secondary);letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px">Nog even volhouden</div>
+                <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px">
+                  <div style="background:var(--ion-color-tertiary);border-radius:12px;padding:14px 6px;text-align:center">
+                    <div style="font-family:var(--font-display);font-weight:900;font-size:30px;line-height:34px;color:var(--ion-color-primary)">{{ aftelDagen }}</div>
+                    <div style="font-size:12px;line-height:18px;font-weight:600;color:var(--ion-color-primary)">dagen</div>
+                  </div>
+                  <div style="background:var(--ion-color-tertiary);border-radius:12px;padding:14px 6px;text-align:center">
+                    <div style="font-family:var(--font-display);font-weight:900;font-size:30px;line-height:34px;color:var(--ion-color-primary)">{{ aftelUren }}</div>
+                    <div style="font-size:12px;line-height:18px;font-weight:600;color:var(--ion-color-primary)">uren</div>
+                  </div>
+                  <div style="background:var(--ion-color-tertiary);border-radius:12px;padding:14px 6px;text-align:center">
+                    <div style="font-family:var(--font-display);font-weight:900;font-size:30px;line-height:34px;color:var(--ion-color-primary)">{{ aftelMin }}</div>
+                    <div style="font-size:12px;line-height:18px;font-weight:600;color:var(--ion-color-primary)">min</div>
+                  </div>
+                  <div style="background:var(--ion-color-primary);border-radius:12px;padding:14px 6px;text-align:center">
+                    <div style="font-family:var(--font-display);font-weight:900;font-size:30px;line-height:34px;color:#fff">{{ aftelSec }}</div>
+                    <div style="font-size:12px;line-height:18px;font-weight:600;color:#fff">sec</div>
+                  </div>
+                </div>
+                <div style="margin-top:10px;font-size:14px;line-height:20px;color:var(--text-secondary)">tot het vliegtuig opstijgt in Düsseldorf</div>
+              </div>
+
+              <div>
+                <div style="font-size:14px;line-height:20px;font-weight:700;color:var(--text-secondary);letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px">Waar we naartoe gaan</div>
+                <div style="display:flex;flex-wrap:wrap;gap:8px">
+                  <sc-for list="{{ welkomChips }}" as="c" hint-placeholder-count="7">
+                    <span style="display:inline-flex;align-items:center;gap:7px;padding:0 13px;height:36px;border-radius:999px;background:var(--ion-color-secondary);color:var(--ion-color-primary);font-size:14px;line-height:36px;font-weight:600">
+                      <i class="{{ c.icon }}" aria-hidden="true" style="font-size:12px"></i>{{ c.label }}
+                    </span>
+                  </sc-for>
+                </div>
+              </div>
+
+              <div onClick="{{ goWie }}" role="button" style="background:var(--surface-app);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px;cursor:pointer">
+                <div style="display:flex;gap:8px">
+                  <sc-for list="{{ reizigersMee }}" as="r" hint-placeholder-count="6">
+                    <div style="width:40px;height:40px;border-radius:50%;background:var(--ion-color-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">{{ r.init }}</div>
+                  </sc-for>
+                </div>
+                <div style="font-size:15px;line-height:22px;color:var(--text-default);text-wrap:pretty">Met zijn zessen: {{ reizigersLabel }}. Alles is geboekt, het huis, de vluchten en de auto.</div>
+                <div style="display:flex;align-items:center;gap:8px;color:var(--ion-color-primary);font-size:15px;line-height:22px;font-weight:600">
+                  <i class="fa-solid fa-user-check" aria-hidden="true" style="font-size:13px"></i>Je gebruikt de app als {{ ikNaam }}
+                  <i class="fa-solid fa-chevron-right" aria-hidden="true" style="font-size:12px"></i>
+                </div>
+              </div>
+
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Button" expand="{{ true }}" icon-right="fa-solid fa-arrow-right" on-click="{{ naarOverzicht }}" hint-size="100%,48px">Naar de reis</x-import>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ sOverzicht }}" hint-placeholder-val="{{ true }}">
+          <div data-screen-label="Overzicht" style="padding:16px 16px 28px;display:flex;flex-direction:column;gap:26px">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+              <div>
+                <h1 style="font-size:30px;line-height:38px">Mallorca<br>2027</h1>
+                <p style="margin:8px 0 0;font-size:16px;line-height:24px;color:var(--text-secondary)">7 t/m 14 mei &middot; met zijn zessen</p>
+              </div>
+              <div style="display:flex;align-items:center;gap:4px;flex:none">
+                <div onClick="{{ goWie }}" title="Wie ben jij?" role="button" style="width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--ion-color-primary);color:#fff;font-size:14px;font-weight:700">{{ ikInit }}</div>
+                <div onClick="{{ goWelkom }}" title="Naar de welkomstpagina" style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--ion-color-secondary);color:var(--ion-color-primary);font-size:18px">
+                  <i class="fa-solid fa-house" aria-hidden="true"></i>
+                </div>
+                <div onClick="{{ goMeldingen }}" title="Meldingen" role="button" style="position:relative;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--ion-color-secondary);color:var(--ion-color-primary);font-size:18px">
+                  <i class="fa-solid fa-bell" aria-hidden="true"></i>
+                  <sc-if value="{{ heeftMeldingen }}" hint-placeholder-val="{{ true }}">
+                    <span style="position:absolute;top:5px;right:5px;min-width:18px;height:18px;padding:0 5px;box-sizing:border-box;border-radius:999px;background:var(--ion-color-danger);color:#fff;font-size:11px;line-height:18px;font-weight:700;text-align:center;border:2px solid var(--surface-app)">{{ meldingenAantal }}</span>
+                  </sc-if>
+                </div>
+              </div>
+            </div>
+
+            <div onClick="{{ goZoek }}" role="button" style="display:flex;align-items:center;gap:12px;height:52px;padding:0 16px;border-radius:12px;background:var(--surface-card);border:1px solid var(--color-divider);cursor:pointer;color:var(--text-secondary)">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true" style="font-size:16px;color:var(--ion-color-primary)"></i>
+              <span style="font-size:16px;line-height:24px">Zoek een plek, restaurant of spullen</span>
+            </div>
+
+            <div style="position:relative;overflow:hidden;border-radius:12px;background:var(--ion-color-secondary);padding:18px 20px 20px">
+              <i class="fa-solid fa-martini-glass-citrus" aria-hidden="true" style="position:absolute;right:-10px;bottom:-18px;font-size:96px;color:rgba(22,110,123,.14)"></i>
+              <div style="position:relative;display:flex;flex-direction:column;gap:8px">
+                <i class="fa-solid fa-sun" aria-hidden="true" style="font-size:20px;color:var(--ion-color-warning-shade)"></i>
+                <div style="font-family:var(--font-display);font-weight:900;font-size:22px;line-height:30px;color:var(--ion-color-primary);text-wrap:pretty">&laquo;El verano huele a sal, a lim&oacute;n y a siesta&raquo;</div>
+                <div style="font-size:14px;line-height:20px;color:var(--ion-color-primary)">De zomer ruikt naar zout, citroen en siësta</div>
+              </div>
+            </div>
+
+            <sc-if value="{{ countdownGroot }}" hint-placeholder-val="{{ true }}">
+              <div style="overflow:hidden;border-radius:12px;background:var(--ion-color-tertiary)">
+                <div style="position:relative;height:148px;background:var(--ion-color-secondary)">
+                  <img src="assets/photos/cala-pines-web.png" alt="Baai op Mallorca" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+                  <span style="position:absolute;left:14px;bottom:12px;padding:0 12px;height:28px;border-radius:999px;background:#fff;color:var(--ion-color-primary);font-size:13px;line-height:28px;font-weight:600">Villa Ca na Saurina</span>
+                </div>
+                <div style="padding:18px 20px 20px">
+                  <div style="font-family:var(--font-display);font-weight:900;font-size:56px;line-height:60px;color:var(--ion-color-primary)">{{ dagenTot }}</div>
+                  <div style="font-size:16px;line-height:24px;font-weight:600;color:var(--ion-color-primary)">dagen tot vertrek</div>
+                  <div style="height:1px;background:rgba(22,110,123,.20);margin:16px 0 14px"></div>
+                  <div style="display:flex;gap:10px;align-items:center;font-size:14px;line-height:20px">
+                    <i class="fa-solid fa-plane-departure" style="width:16px;color:var(--ion-color-primary)" aria-hidden="true"></i>
+                    <span>vr 7 mei 13:05 &middot; D&uuml;sseldorf naar Palma</span>
+                  </div>
+                  <div style="display:flex;gap:10px;align-items:center;font-size:14px;line-height:20px;margin-top:8px">
+                    <i class="fa-solid fa-house" style="width:16px;color:var(--ion-color-primary)" aria-hidden="true"></i>
+                    <span>Villa Ca na Saurina &middot; 7 nachten</span>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ countdownCompact }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;align-items:center;gap:14px;border-radius:12px;background:var(--ion-color-tertiary);padding:16px 18px">
+                <i class="fa-solid fa-plane-departure" style="font-size:20px;color:var(--ion-color-primary)" aria-hidden="true"></i>
+                <div>
+                  <div style="font-size:16px;line-height:24px;font-weight:600;color:var(--ion-color-primary)">Nog {{ dagenTot }} dagen</div>
+                  <div style="font-size:14px;line-height:20px">vr 7 t/m vr 14 mei &middot; Villa Ca na Saurina</div>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ tijdensReis }}" hint-placeholder-val="{{ true }}">
+              <div style="border-radius:12px;background:var(--ion-color-tertiary);padding:18px 20px">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:12px">
+                  <h2 style="font-size:20px;line-height:28px;color:var(--ion-color-primary)">Vandaag</h2>
+                  <span style="font-size:14px;line-height:20px;color:var(--ion-color-primary);font-weight:600">{{ vandaagLabel }}</span>
+                </div>
+                <sc-for list="{{ vandaagItems }}" as="v" hint-placeholder-count="3">
+                  <div style="display:flex;gap:12px;align-items:flex-start;padding:7px 0">
+                    <span style="width:48px;flex:none;font-size:14px;line-height:20px;font-weight:600;color:var(--ion-color-primary)">{{ v.tijd }}</span>
+                    <span style="font-size:15px;line-height:20px">{{ v.titel }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ toonWeer }}" hint-placeholder-val="{{ true }}">
+              <div>
+                <h2 style="font-size:20px;line-height:28px;margin-bottom:12px">Weer en zee</h2>
+                <div style="background:var(--ion-color-secondary);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:14px;margin-bottom:8px">
+                  <i class="{{ nuIcon }}" aria-hidden="true" style="font-size:22px;color:var(--ion-color-primary);flex:none"></i>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-size:15px;line-height:22px;font-weight:600;color:var(--ion-color-primary)">Nu bij het huis</div>
+                    <div style="font-size:14px;line-height:20px;color:var(--ion-color-primary)">{{ nuOmschrijving }}</div>
+                  </div>
+                  <div style="font-family:var(--font-display);font-weight:900;font-size:26px;line-height:32px;color:var(--ion-color-primary);flex:none">{{ nuTemp }}</div>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+                  <div style="background:var(--surface-card);border-radius:12px;padding:14px 10px;text-align:center">
+                    <i class="fa-solid fa-sun" style="font-size:18px;color:var(--ion-color-primary)" aria-hidden="true"></i>
+                    <div style="font-family:var(--font-display);font-weight:900;font-size:22px;line-height:30px;margin-top:6px">24&deg;</div>
+                    <div style="font-size:13px;line-height:18px;color:var(--text-secondary)">overdag</div>
+                  </div>
+                  <div style="background:var(--surface-card);border-radius:12px;padding:14px 10px;text-align:center">
+                    <i class="fa-solid fa-moon" style="font-size:18px;color:var(--ion-color-primary)" aria-hidden="true"></i>
+                    <div style="font-family:var(--font-display);font-weight:900;font-size:22px;line-height:30px;margin-top:6px">13&deg;</div>
+                    <div style="font-size:13px;line-height:18px;color:var(--text-secondary)">'s nachts</div>
+                  </div>
+                  <div style="background:var(--surface-card);border-radius:12px;padding:14px 10px;text-align:center">
+                    <i class="fa-solid fa-water" style="font-size:18px;color:var(--ion-color-primary)" aria-hidden="true"></i>
+                    <div style="font-family:var(--font-display);font-weight:900;font-size:22px;line-height:30px;margin-top:6px">18&deg;</div>
+                    <div style="font-size:13px;line-height:18px;color:var(--text-secondary)">zeewater</div>
+                  </div>
+                </div>
+                <p style="margin:10px 2px 0;font-size:13px;line-height:18px;color:var(--text-secondary)">Gemiddelden voor mei. Reken op zo'n zes regendagen in de hele maand.</p>
+              </div>
+            </sc-if>
+
+            <div>
+              <h2 style="font-size:20px;line-height:28px;margin-bottom:12px">Nog te doen</h2>
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.List" hint-size="100%,210px">
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-suitcase-rolling" title="Paklijst afmaken" note="{{ packLabel }}" on-click="{{ goPaklijst }}" hint-size="100%,70px"></x-import>
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-lightbulb" title="Stem op de ideeën" note="{{ stemTodoNote }}" notification-count="{{ stemTodoAantal }}" on-click="{{ goIdeeen }}" hint-size="100%,70px"></x-import>
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-ticket" title="Tickets grotten boeken" note="Coves del Drac &middot; zondag 9 mei" badge="Nog boeken" badge-type="warning" on-click="{{ goBoekingen }}" hint-size="100%,90px"></x-import>
+              </x-import>
+            </div>
+
+            <div>
+              <h2 style="font-size:20px;line-height:28px;margin-bottom:12px">Direct regelen</h2>
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.List" hint-size="100%,240px">
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-calendar-days" title="Dagprogramma" on-click="{{ goDagen }}" hint-size="100%,48px"></x-import>
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-map-location-dot" title="Kaart met plekken" on-click="{{ goKaart }}" hint-size="100%,48px"></x-import>
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-lightbulb" title="Ideeën en stemmen" on-click="{{ goIdeeen }}" hint-size="100%,48px"></x-import>
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-folder" title="Boekingen en tickets" on-click="{{ goBoekingen }}" hint-size="100%,48px"></x-import>
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-house-chimney" title="Het huis" subtitle="Foto's en voorzieningen" on-click="{{ goHuis }}" hint-size="100%,64px"></x-import>
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-paper-plane" title="Reisgenoten uitnodigen" subtitle="Zodat iedereen kan meestemmen" on-click="{{ goUitnodigen }}" hint-size="100%,48px"></x-import>
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-utensils" title="Eten en drinken" subtitle="Adresjes dicht bij het huis" on-click="{{ goEten }}" hint-size="100%,64px"></x-import>
+              </x-import>
+            </div>
+
+            <div>
+              <h2 style="font-size:20px;line-height:28px;margin-bottom:12px">Reisgenoten</h2>
+              <div style="background:var(--surface-card);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px">
+                <div style="display:flex;gap:8px">
+                  <sc-for list="{{ reizigersMee }}" as="r" hint-placeholder-count="6">
+                    <div style="width:40px;height:40px;border-radius:50%;background:var(--ion-color-secondary);color:var(--ion-color-primary);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;flex:none">{{ r.init }}</div>
+                  </sc-for>
+                </div>
+                <div style="font-size:14px;line-height:20px;color:var(--text-secondary)">{{ reizigersLabel }}</div>
+              </div>
+            </div>
+
+            <div>
+              <h2 style="font-size:20px;line-height:28px;margin-bottom:12px">Fotodagboek</h2>
+              <div style="background:var(--surface-card);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px">
+                <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+                  <image-slot id="mal-dagboek-1" radius="10" placeholder="Eerste dag" style="width:100%;height:88px"></image-slot>
+                  <image-slot id="mal-dagboek-2" radius="10" placeholder="Baaitje" style="width:100%;height:88px"></image-slot>
+                  <image-slot id="mal-dagboek-3" radius="10" placeholder="Uit eten" style="width:100%;height:88px"></image-slot>
+                </div>
+                <div style="font-size:14px;line-height:20px;color:var(--text-secondary)">Sleep hier jullie eigen foto's naartoe. Onderweg zet de app elke foto bij de goede dag.</div>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ sDagen }}" hint-placeholder-val="{{ true }}">
+          <div data-screen-label="Dagprogramma">
+            <div style="position:sticky;top:0;z-index:5;background:var(--surface-card);border-bottom:1px solid var(--color-divider)">
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Header" title="Dagprogramma" action-icon="fa-solid fa-plus" hint-size="100%,56px"></x-import>
+              <div style="display:flex;gap:8px;overflow-x:auto;padding:6px 16px 12px">
+                <sc-for list="{{ dagen }}" as="d" hint-placeholder-count="8">
+                  <div onClick="{{ d.select }}" style="{{ d.pillStyle }}">
+                    <span style="font-size:12px;line-height:16px;text-transform:lowercase">{{ d.dag }}</span>
+                    <span style="font-family:var(--font-display);font-weight:900;font-size:18px;line-height:24px">{{ d.num }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="padding:18px 16px 28px;display:flex;flex-direction:column;gap:14px">
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.InlineNotification" type="info" title="Voorstel van Tijmen" subtitle="Zo zou de week eruit kunnen zien. Stem bij Ideeën op wat jij graag wil, dan zetten we samen vast wat er echt in komt." hint-size="100%,116px"></x-import>
+              <div>
+                <h2 style="font-size:24px;line-height:32px">{{ dagTitel }}</h2>
+                <p style="margin:4px 0 0;font-size:15px;line-height:22px;color:var(--text-secondary)">{{ dagThema }}</p>
+                <div style="display:flex;gap:8px;align-items:center;margin-top:10px;padding:8px 10px;border-radius:10px;background:var(--ion-color-secondary)">
+                  <i class="fa-solid fa-moon" style="font-size:13px;color:var(--ion-color-primary)"></i>
+                  <span style="font-size:13px;line-height:18px;color:var(--ion-color-primary)">Mila slaapt 12.30&ndash;14.30 &middot; kinderen om 19.00 naar bed</span>
+                </div>
+                <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+                  <i class="{{ dagWeerIcon }}" aria-hidden="true" style="font-size:13px;color:var(--text-secondary)"></i>
+                  <span style="font-size:13px;line-height:18px;color:var(--text-secondary)">{{ dagWeer }}</span>
+                </div>
+              </div>
+              <sc-for list="{{ dagItems }}" as="it" hint-placeholder-count="4">
+                <div onClick="{{ it.open }}" style="{{ it.cardStyle }}">
+                  <div style="width:46px;flex:none;font-size:14px;line-height:20px;font-weight:600;color:var(--ion-color-primary);padding-top:8px">{{ it.tijd }}</div>
+                  <div style="{{ it.iconStyle }}">
+                    <i class="{{ it.icon }}" aria-hidden="true"></i>
+                  </div>
+                  <sc-if value="{{ it.heeftFoto }}" hint-placeholder-val="{{ false }}">
+                    <img ref="{{ it.fotoRef }}" alt="" style="width:44px;height:44px;border-radius:10px;flex:none;object-fit:cover;display:block" />
+                  </sc-if>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-size:16px;line-height:24px;font-weight:600">{{ it.titel }}</div>
+                    <div style="font-size:14px;line-height:20px;color:var(--text-secondary)">{{ it.plek }}</div>
+                    <span style="{{ it.badgeStyle }}">{{ it.badge }}</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right" style="{{ it.chevStyle }}" aria-hidden="true"></i>
+                </div>
+              </sc-for>
+              <div style="margin-top:4px">
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Button" variant="tertiary" icon-left="fa-solid fa-plus" on-click="{{ goIdeeen }}" hint-size="auto,44px">Idee toevoegen</x-import>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ sKaart }}" hint-placeholder-val="{{ true }}">
+          <div data-screen-label="Kaart">
+            <div style="position:sticky;top:0;z-index:5;background:var(--surface-card);border-bottom:1px solid var(--color-divider)">
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Header" title="Kaart" hint-size="100%,56px"></x-import>
+              <div style="display:flex;gap:8px;overflow-x:auto;padding:6px 16px 12px">
+                <sc-for list="{{ chips }}" as="c" hint-placeholder-count="6">
+                  <div onClick="{{ c.select }}" style="{{ c.chipStyle }}">{{ c.label }}</div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="padding:16px 16px 28px;display:flex;flex-direction:column;gap:16px">
+              <div style="border-radius:12px;overflow:hidden;background:var(--ion-color-secondary)">
+                <iframe title="Kaart van Mallorca" src="kaart.html" ref="{{ mapRef }}" style="width:100%;height:300px;border:0;display:block"></iframe>
+              </div>
+              <p style="margin:0;font-size:13px;line-height:18px;color:var(--text-secondary)">Tik een speld aan voor de details. Rijtijden zijn een ruwe schatting vanaf de villa.</p>
+              <div>
+                <h2 style="font-size:20px;line-height:28px;margin-bottom:12px">{{ plekkenTitel }}</h2>
+                <div style="border-radius:12px;overflow:hidden;background:var(--surface-card)">
+                  <sc-for list="{{ plekkenLijst }}" as="p" hint-placeholder-count="8">
+                    <div style="{{ p.rowStyle }}">
+                      <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="{{ p.icon }}" title="{{ p.naam }}" subtitle="{{ p.note }}" note="{{ p.rijtijd }}" thumbnail="{{ p.foto }}" on-click="{{ p.open }}" hint-size="100%,80px"></x-import>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ sIdeeen }}" hint-placeholder-val="{{ true }}">
+          <div data-screen-label="Ideeën">
+            <div style="position:sticky;top:0;z-index:5;background:var(--surface-card)">
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Header" title="Ideeën" action-icon="fa-solid fa-plus" hint-size="100%,56px"></x-import>
+            </div>
+            <div style="padding:18px 16px 28px;display:flex;flex-direction:column;gap:22px">
+              <p style="margin:0;font-size:15px;line-height:22px;color:var(--text-secondary)">Iedereen die meegaat mag stemmen en vinkt aan wat we echt doen. De top drie zetten we in het dagprogramma.</p>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:2px">
+                  <sc-for list="{{ ideeChips }}" as="c" hint-placeholder-count="8">
+                    <div onClick="{{ c.select }}" style="{{ c.chipStyle }}">{{ c.label }}</div>
+                  </sc-for>
+                </div>
+                <div style="font-size:13px;line-height:19px;color:var(--text-secondary)">{{ ideeAantal }}</div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <sc-for list="{{ ideeen }}" as="i" hint-placeholder-count="6">
+                  <div style="background:var(--surface-card);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px">
+                    <div style="display:flex;gap:12px;align-items:flex-start">
+                      <sc-if value="{{ i.heeftFoto }}" hint-placeholder-val="{{ false }}">
+                        <img ref="{{ i.fotoRef }}" alt="" style="width:64px;height:64px;border-radius:10px;flex:none;object-fit:cover;display:block" />
+                      </sc-if>
+                      <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+                        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+                          <div style="font-size:16px;line-height:24px;font-weight:600">{{ i.titel }}</div>
+                          <span style="flex:none;padding:0 10px;height:22px;border-radius:999px;background:var(--ion-color-secondary);color:var(--ion-color-primary);font-size:13px;line-height:22px;font-weight:500">{{ i.cat }}</span>
+                        </div>
+                        <div style="font-size:14px;line-height:20px;color:var(--text-secondary)">{{ i.note }}</div>
+                        <div style="font-size:13px;line-height:19px;color:var(--ion-color-primary);font-weight:600">{{ i.doorLabel }}</div>
+                      </div>
+                    </div>
+                    <div onClick="{{ i.openWeb }}" style="display:flex;align-items:center;gap:8px;cursor:pointer;color:var(--ion-color-primary);font-size:14px;line-height:20px;font-weight:600">
+                      <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true" style="font-size:12px"></i>
+                      <span>{{ i.webLabel }}</span>
+                    </div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:2px">
+                      <div style="min-width:0">
+                        <div style="font-size:14px;line-height:20px;font-weight:600">{{ i.stemLabel }}</div>
+                        <div style="font-size:13px;line-height:18px;color:var(--text-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ i.stemmers }}</div>
+                      </div>
+                      <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Button" variant="{{ i.btnVariant }}" size="sm" icon-left="{{ i.btnIcon }}" on-click="{{ i.vote }}" hint-size="auto,40px">{{ i.btnLabel }}</x-import>
+                    </div>
+                    <div style="border-top:1px solid rgba(71,80,85,0.08);margin:0 -16px;padding:4px 6px 0">
+                      <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Checkbox" title="{{ i.doenLabel }}" checked="{{ i.doen }}" on-change="{{ i.toggleDoen }}" hint-size="100%,48px"></x-import>
+                    </div>
+                    <sc-if value="{{ i.doen }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:flex;flex-direction:column;gap:8px;padding-top:2px">
+                        <div style="font-size:14px;line-height:20px;color:var(--text-secondary)">{{ i.dagLabel }}</div>
+                        <div style="display:flex;gap:6px;overflow-x:auto;padding-bottom:2px">
+                          <sc-for list="{{ i.dagKeuze }}" as="d" hint-placeholder-count="8">
+                            <div onClick="{{ d.select }}" style="{{ d.style }}">{{ d.label }}</div>
+                          </sc-for>
+                        </div>
+                      </div>
+                    </sc-if>
+                  </div>
+                </sc-for>
+              </div>
+              <div>
+                <h2 style="font-size:20px;line-height:28px;margin-bottom:12px">Shortlist</h2>
+                <div style="border-radius:12px;overflow:hidden;background:var(--surface-card)">
+                  <sc-for list="{{ shortlist }}" as="s" hint-placeholder-count="3">
+                    <div style="{{ s.rowStyle }}">
+                      <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-star" title="{{ s.titel }}" subtitle="{{ s.stemLabel }}" on-click="{{ s.open }}" hint-size="100%,68px"></x-import>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <p style="margin:0;font-size:12px;line-height:18px;color:var(--text-secondary)">Foto's van de plekken en uitjes komen van Wikimedia Commons, onder CC BY, CC BY-SA of de Free Art License. De maker en licentie staan bij elke plek zelf vermeld., Ralf Roletschek, Rikki Mitterer, Alain Gavillet, Isiwal en Oltau</p>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ sPaklijst }}" hint-placeholder-val="{{ true }}">
+          <div data-screen-label="Paklijst">
+            <div style="position:sticky;top:0;z-index:5;background:var(--surface-card);border-bottom:1px solid var(--color-divider)">
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Header" title="Paklijst" action-icon="fa-solid fa-plus" hint-size="100%,56px"></x-import>
+              <div style="padding:2px 16px 14px">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:8px">
+                  <span style="font-size:14px;line-height:20px;font-weight:600">{{ packLabel }}</span>
+                  <span style="font-size:14px;line-height:20px;color:var(--text-secondary)">{{ packPct }}</span>
+                </div>
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ProgressBar" value="{{ packValue }}" hint-size="100%,8px"></x-import>
+              </div>
+            </div>
+            <div style="padding:16px 16px 28px;display:flex;flex-direction:column;gap:20px">
+              <div style="background:var(--surface-card);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px">
+                <div style="font-size:15px;line-height:22px;font-weight:600">Iets toevoegen aan de lijst</div>
+                <div style="display:flex;gap:8px">
+                  <input value="{{ packInput }}" onChange="{{ setPackInput }}" placeholder="Bijvoorbeeld: luchtbed" style="flex:1;min-width:0;height:44px;border-radius:10px;border:1px solid var(--color-divider);padding:0 12px;font-family:var(--font-body);font-size:15px;color:var(--text-default);background:#fff;box-sizing:border-box">
+                  <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Button" size="sm" on-click="{{ addPack }}" hint-size="auto,44px">Toevoegen</x-import>
+                </div>
+                <div style="font-size:13px;line-height:19px;color:var(--text-secondary)">Iedereen uit de groep mag aanvullen. Nieuwe spullen komen onderaan bij Zelf toegevoegd.</div>
+              </div>
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListSection" label="Documenten" hint-size="100%,240px">
+                <div style="border-radius:12px;overflow:hidden;background:var(--surface-card)">
+                  <sc-for list="{{ packDocumenten }}" as="p" hint-placeholder-count="5">
+                    <div style="{{ p.rowStyle }}">
+                      <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Checkbox" title="{{ p.titel }}" subtitle="{{ p.note }}" checked="{{ p.checked }}" on-change="{{ p.toggle }}" hint-size="100%,56px"></x-import>
+                    </div>
+                  </sc-for>
+                </div>
+              </x-import>
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListSection" label="Strand en zwembad" hint-size="100%,290px">
+                <div style="border-radius:12px;overflow:hidden;background:var(--surface-card)">
+                  <sc-for list="{{ packStrand }}" as="p" hint-placeholder-count="6">
+                    <div style="{{ p.rowStyle }}">
+                      <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Checkbox" title="{{ p.titel }}" subtitle="{{ p.note }}" checked="{{ p.checked }}" on-change="{{ p.toggle }}" hint-size="100%,56px"></x-import>
+                    </div>
+                  </sc-for>
+                </div>
+              </x-import>
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListSection" label="Voor de kinderen" hint-size="100%,240px">
+                <div style="border-radius:12px;overflow:hidden;background:var(--surface-card)">
+                  <sc-for list="{{ packKinderen }}" as="p" hint-placeholder-count="5">
+                    <div style="{{ p.rowStyle }}">
+                      <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Checkbox" title="{{ p.titel }}" subtitle="{{ p.note }}" checked="{{ p.checked }}" on-change="{{ p.toggle }}" hint-size="100%,56px"></x-import>
+                    </div>
+                  </sc-for>
+                </div>
+              </x-import>
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListSection" label="Zon en gezondheid" hint-size="100%,290px">
+                <div style="border-radius:12px;overflow:hidden;background:var(--surface-card)">
+                  <sc-for list="{{ packZon }}" as="p" hint-placeholder-count="6">
+                    <div style="{{ p.rowStyle }}">
+                      <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Checkbox" title="{{ p.titel }}" subtitle="{{ p.note }}" checked="{{ p.checked }}" on-change="{{ p.toggle }}" hint-size="100%,56px"></x-import>
+                    </div>
+                  </sc-for>
+                </div>
+              </x-import>
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListSection" label="Handig" hint-size="100%,240px">
+                <div style="border-radius:12px;overflow:hidden;background:var(--surface-card)">
+                  <sc-for list="{{ packHandig }}" as="p" hint-placeholder-count="5">
+                    <div style="{{ p.rowStyle }}">
+                      <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Checkbox" title="{{ p.titel }}" subtitle="{{ p.note }}" checked="{{ p.checked }}" on-change="{{ p.toggle }}" hint-size="100%,56px"></x-import>
+                    </div>
+                  </sc-for>
+                </div>
+              </x-import>
+              <sc-if value="{{ heeftEigenPack }}" hint-placeholder-val="{{ false }}">
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListSection" label="Zelf toegevoegd" hint-size="100%,120px">
+                  <div style="border-radius:12px;overflow:hidden;background:var(--surface-card)">
+                    <sc-for list="{{ packEigen }}" as="p" hint-placeholder-count="2">
+                      <div style="{{ p.rowStyle }}">
+                        <div style="display:flex;align-items:center;gap:6px">
+                          <div style="flex:1;min-width:0">
+                            <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Checkbox" title="{{ p.titel }}" subtitle="{{ p.note }}" checked="{{ p.checked }}" on-change="{{ p.toggle }}" hint-size="100%,56px"></x-import>
+                          </div>
+                          <div onClick="{{ p.remove }}" title="Verwijderen" style="flex:none;width:40px;height:40px;margin-right:8px;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-secondary)">
+                            <i class="fa-solid fa-trash-can" aria-hidden="true" style="font-size:14px"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </sc-for>
+                  </div>
+                </x-import>
+              </sc-if>
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Button" variant="tertiary" icon-left="fa-solid fa-share-nodes" hint-size="auto,44px">Lijst delen met de groep</x-import>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ sWie }}" hint-placeholder-val="{{ true }}">
+          <div data-screen-label="Wie ben jij">
+            <div style="position:sticky;top:0;z-index:5;background:var(--surface-card)">
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Header" title="Wie ben jij?" on-back="{{ back }}" hint-size="100%,56px"></x-import>
+            </div>
+            <div style="padding:18px 16px 28px;display:flex;flex-direction:column;gap:18px">
+              <p style="margin:0;font-size:16px;line-height:24px;color:var(--text-secondary);text-wrap:pretty">Kies wie de app gebruikt. Je stemmen op ideeën en de vinkjes op de paklijst komen op jouw naam te staan, zodat de rest ziet wat jij al hebt gedaan.</p>
+              <div style="background:var(--surface-card);border-radius:12px;overflow:hidden">
+                <sc-for list="{{ personen }}" as="p" hint-placeholder-count="6">
+                  <div onClick="{{ p.kies }}" style="{{ p.rowStyle }}">
+                    <div style="{{ p.avatarStyle }}">{{ p.init }}</div>
+                    <div style="flex:1;min-width:0">
+                      <div style="font-size:16px;line-height:24px;font-weight:600">{{ p.naam }}</div>
+                      <div style="font-size:14px;line-height:20px;color:var(--text-secondary)">{{ p.rol }}</div>
+                    </div>
+                    <sc-if value="{{ p.actief }}" hint-placeholder-val="{{ false }}">
+                      <i class="fa-solid fa-circle-check" aria-hidden="true" style="flex:none;color:var(--ion-color-primary);font-size:18px"></i>
+                    </sc-if>
+                  </div>
+                </sc-for>
+              </div>
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Button" variant="tertiary" icon-left="fa-solid fa-paper-plane" on-click="{{ goUitnodigen }}" hint-size="auto,44px">De anderen uitnodigen</x-import>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ sUitnodigen }}" hint-placeholder-val="{{ true }}">
+          <div data-screen-label="Uitnodigen">
+            <div style="position:sticky;top:0;z-index:5;background:var(--surface-card)">
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Header" title="Uitnodigen" on-back="{{ back }}" hint-size="100%,56px"></x-import>
+            </div>
+            <div style="padding:18px 16px 28px;display:flex;flex-direction:column;gap:20px">
+              <p style="margin:0;font-size:16px;line-height:24px;color:var(--text-secondary);text-wrap:pretty">Iedereen krijgt dezelfde app met een eigen naam erin. Ze openen de link, kiezen wie ze zijn en kunnen daarna meestemmen en de paklijst aanvullen.</p>
+              <div style="background:var(--surface-card);border-radius:12px;overflow:hidden">
+                <sc-for list="{{ uitnodigingen }}" as="u" hint-placeholder-count="6">
+                  <div style="{{ u.rowStyle }}">
+                    <div style="width:44px;height:44px;flex:none;border-radius:50%;background:var(--ion-color-secondary);color:var(--ion-color-primary);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700">{{ u.init }}</div>
+                    <div style="flex:1;min-width:0">
+                      <div style="font-size:16px;line-height:24px;font-weight:600">{{ u.naam }}</div>
+                      <div style="font-size:14px;line-height:20px;color:var(--text-secondary)">{{ u.statusLabel }}</div>
+                    </div>
+                    <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Button" variant="{{ u.btnVariant }}" size="sm" on-click="{{ u.stuur }}" hint-size="auto,40px">{{ u.btnLabel }}</x-import>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="font-size:14px;line-height:20px;color:var(--text-secondary);text-wrap:pretty">{{ kinderenLabel }}</div>
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.InlineNotification" type="info" title="Voor Opa Louis en Oma Marjo" subtitle="Zet de link op hun beginscherm, dan hoeven ze niets te installeren of in te loggen." hint-size="100%,96px"></x-import>
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Button" expand="{{ true }}" icon-left="fa-solid fa-share-nodes" hint-size="100%,48px">Link naar de groep sturen</x-import>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ sZoek }}" hint-placeholder-val="{{ true }}">
+          <div data-screen-label="Zoeken">
+            <div style="position:sticky;top:0;z-index:5;background:var(--surface-card)">
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Header" title="Zoeken" on-back="{{ back }}" hint-size="100%,56px"></x-import>
+              <div style="padding:2px 16px 14px;display:flex;gap:8px">
+                <input value="{{ zoek }}" onChange="{{ setZoek }}" placeholder="Plek, restaurant, dag of spullen" style="flex:1;min-width:0;height:48px;border-radius:10px;border:1px solid var(--color-divider);padding:0 14px;font-family:var(--font-body);font-size:16px;color:var(--text-default);background:var(--surface-card)" />
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Button" variant="secondary" size="sm" on-click="{{ wisZoek }}" hint-size="auto,48px">Wissen</x-import>
+              </div>
+            </div>
+            <div style="padding:18px 16px 28px;display:flex;flex-direction:column;gap:18px">
+              <sc-if value="{{ zoekWacht }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:14px">
+                  <p style="margin:0;font-size:16px;line-height:24px;color:var(--text-secondary);text-wrap:pretty">Typ twee letters of meer. Je zoekt in één keer door de plekken, de restaurants, het dagprogramma, de ideeën en de paklijst.</p>
+                  <div style="background:var(--ion-color-secondary);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px">
+                    <div style="font-size:15px;line-height:22px;font-weight:600;color:var(--ion-color-primary)">Bijvoorbeeld</div>
+                    <div style="font-size:14px;line-height:20px;color:var(--ion-color-primary)">paella &middot; markt &middot; ondiep &middot; zonnebrand &middot; grotten &middot; Alcúdia</div>
+                  </div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ zoekHeeftResultaten }}" hint-placeholder-val="{{ false }}">
+                <div>
+                  <div style="font-size:14px;line-height:20px;color:var(--text-secondary);margin-bottom:10px">{{ zoekAantal }}</div>
+                  <div style="background:var(--surface-card);border-radius:12px;overflow:hidden">
+                    <sc-for list="{{ zoekRijen }}" as="z" hint-placeholder-count="4">
+                      <div onClick="{{ z.open }}" style="{{ z.rowStyle }}">
+                        <div style="width:40px;height:40px;flex:none;border-radius:10px;background:var(--ion-color-secondary);color:var(--ion-color-primary);display:flex;align-items:center;justify-content:center;font-size:16px">
+                          <i class="{{ z.icon }}" aria-hidden="true"></i>
+                        </div>
+                        <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+                          <div style="font-size:16px;line-height:24px;font-weight:600">{{ z.titel }}</div>
+                          <div style="font-size:14px;line-height:20px;color:var(--text-secondary);text-wrap:pretty">{{ z.note }}</div>
+                          <div style="font-size:13px;line-height:19px;color:var(--ion-color-primary);font-weight:600">{{ z.groep }}</div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right" aria-hidden="true" style="flex:none;color:var(--text-secondary);font-size:14px"></i>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ zoekLeeg }}" hint-placeholder-val="{{ false }}">
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.EmptyState" variant="no-results" title="Geen resultaten gevonden" subtitle="Probeer het opnieuw met andere zoektermen." hint-size="100%,260px"></x-import>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ sMeldingen }}" hint-placeholder-val="{{ true }}">
+          <div data-screen-label="Meldingen">
+            <div style="position:sticky;top:0;z-index:5;background:var(--surface-card)">
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Header" title="Meldingen" on-back="{{ back }}" hint-size="100%,56px"></x-import>
+            </div>
+            <div style="padding:18px 16px 28px;display:flex;flex-direction:column;gap:22px">
+              <p style="margin:0;font-size:16px;line-height:24px;color:var(--text-secondary);text-wrap:pretty">Wat de anderen in de app hebben gedaan. Alles wat nog van jou wordt verwacht staat op het overzicht onder Nog te doen.</p>
+
+              <sc-if value="{{ heeftMeldingen }}" hint-placeholder-val="{{ true }}">
+                <div>
+                  <h2 style="font-size:20px;line-height:28px;margin-bottom:12px">Nieuw voor jou</h2>
+                  <div style="background:var(--surface-card);border-radius:12px;overflow:hidden">
+                    <sc-for list="{{ meldingenNieuw }}" as="m" hint-placeholder-count="3">
+                      <div onClick="{{ m.open }}" style="{{ m.rowStyle }}">
+                        <div style="width:40px;height:40px;flex:none;border-radius:50%;background:var(--ion-color-secondary);color:var(--ion-color-primary);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">{{ m.init }}</div>
+                        <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+                          <div style="font-size:16px;line-height:24px;font-weight:600">{{ m.titel }}</div>
+                          <div style="font-size:14px;line-height:20px;color:var(--text-secondary);text-wrap:pretty">{{ m.note }}</div>
+                          <div style="font-size:13px;line-height:19px;color:var(--text-secondary)">{{ m.wanneer }}</div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right" aria-hidden="true" style="flex:none;color:var(--text-secondary);font-size:14px"></i>
+                      </div>
+                    </sc-for>
+                  </div>
+                  <div style="margin-top:12px">
+                    <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Button" variant="tertiary" icon-left="fa-solid fa-circle-check" on-click="{{ markeerGelezen }}" hint-size="auto,44px">Alles als gelezen markeren</x-import>
+                  </div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ geenMeldingen }}" hint-placeholder-val="{{ false }}">
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.InlineNotification" type="success" title="Je bent bij" subtitle="Er is niets nieuws sinds je voor het laatst keek." hint-size="100%,96px"></x-import>
+              </sc-if>
+
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ sBoekingen }}" hint-placeholder-val="{{ true }}">
+          <div data-screen-label="Boekingen">
+            <div style="position:sticky;top:0;z-index:5;background:var(--surface-card)">
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Header" title="Boekingen" on-back="{{ back }}" hint-size="100%,56px"></x-import>
+            </div>
+            <div style="padding:18px 16px 28px;display:flex;flex-direction:column;gap:16px">
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.List" hint-size="100%,420px">
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-plane-departure" title="Vlucht heen" subtitle="vr 7 mei &middot; 13:05 D&uuml;sseldorf naar 15:25 Palma &middot; 2 uur 20" badge="Geboekt" badge-type="success" hint-size="100%,96px"></x-import>
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-plane-arrival" title="Vlucht terug" subtitle="vr 14 mei &middot; 13:15 Palma naar 15:35 D&uuml;sseldorf &middot; 2 uur 20" badge="Geboekt" badge-type="success" hint-size="100%,96px"></x-import>
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-car" title="Huurauto" subtitle="Zevenpersoons &middot; ophalen Palma Airport" badge="Geboekt" badge-type="success" hint-size="100%,96px"></x-import>
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-house" title="Villa Ca na Saurina" subtitle="7 nachten &middot; Interhome &middot; in Crestatx bij Sa Pobla" badge="Geboekt" badge-type="success" on-click="{{ goHuis }}" hint-size="100%,96px"></x-import>
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-ticket" title="Coves del Drac" subtitle="zo 9 mei 10:00 &middot; 6 tickets" badge="Nog boeken" badge-type="warning" hint-size="100%,96px"></x-import>
+              </x-import>
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListSection" label="Vluchtgegevens" hint-size="100%,220px">
+                <div style="border-radius:12px;overflow:hidden;background:var(--surface-card)">
+                  <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-hashtag" title="Vluchtnummer heen" subtitle="Nog invullen zodra de bevestiging binnen is" hint-size="100%,70px"></x-import>
+                  <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-hashtag" title="Vluchtnummer terug" subtitle="Nog invullen zodra de bevestiging binnen is" hint-size="100%,70px"></x-import>
+                  <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-chair" title="Stoelen" subtitle="Zes plekken bij elkaar, kinderen bij het raam" note="Reserveer ze zodra de check-in opent, 24 uur voor vertrek" hint-size="100%,90px"></x-import>
+                </div>
+              </x-import>
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.InlineNotification" type="info" title="Alles op één plek" subtitle="Stuur bevestigingen door naar de app. Boarding passes komen automatisch bij de goede dag te staan." hint-size="100%,96px"></x-import>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ sEten }}" hint-placeholder-val="{{ true }}">
+          <div data-screen-label="Eten en drinken">
+            <div style="position:sticky;top:0;z-index:5;background:var(--surface-card)">
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Header" title="Eten en drinken" on-back="{{ back }}" hint-size="100%,56px"></x-import>
+            </div>
+            <div style="padding:18px 16px 28px;display:flex;flex-direction:column;gap:22px">
+              <p style="margin:0;font-size:15px;line-height:22px;color:var(--text-secondary);text-wrap:pretty">De eerste drie lijstjes liggen op 12 tot 20 minuten van de villa: het strand van Platja de Muro, de oude stad van Alc&uacute;dia en het natuurgebied S&rsquo;Albufera. Onder &ldquo;verder op het eiland&rdquo; staan adressen bij de plekken die we op de kaart hebben staan.</p>
+              <div>
+                <h2 style="font-size:20px;line-height:28px;margin-bottom:12px">Voeten in het zand &middot; Platja de Muro</h2>
+                <div style="border-radius:12px;overflow:hidden;background:var(--surface-card)">
+                  <sc-for list="{{ etenStrand }}" as="e" hint-placeholder-count="3">
+                    <div style="{{ e.rowStyle }}">
+                      <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" thumbnail="{{ e.foto }}" title="{{ e.naam }}" subtitle="{{ e.note }}" note="{{ e.meta }}" on-click="{{ e.open }}" hint-size="100%,96px"></x-import>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <div>
+                <h2 style="font-size:20px;line-height:28px;margin-bottom:12px">Oude stad &middot; Alc&uacute;dia</h2>
+                <div style="border-radius:12px;overflow:hidden;background:var(--surface-card)">
+                  <sc-for list="{{ etenStad }}" as="e" hint-placeholder-count="3">
+                    <div style="{{ e.rowStyle }}">
+                      <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" thumbnail="{{ e.foto }}" title="{{ e.naam }}" subtitle="{{ e.note }}" note="{{ e.meta }}" on-click="{{ e.open }}" hint-size="100%,96px"></x-import>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <div>
+                <h2 style="font-size:20px;line-height:28px;margin-bottom:12px">Tussen de velden &middot; S&rsquo;Albufera</h2>
+                <div style="border-radius:12px;overflow:hidden;background:var(--surface-card)">
+                  <sc-for list="{{ etenNatuur }}" as="e" hint-placeholder-count="1">
+                    <div style="{{ e.rowStyle }}">
+                      <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" thumbnail="{{ e.foto }}" title="{{ e.naam }}" subtitle="{{ e.note }}" note="{{ e.meta }}" on-click="{{ e.open }}" hint-size="100%,96px"></x-import>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <div>
+                <h2 style="font-size:20px;line-height:28px;margin-bottom:12px">Verder op het eiland</h2>
+                <p style="margin:0 0 12px;font-size:15px;line-height:22px;color:var(--text-secondary);text-wrap:pretty">Adressen bij de plekken die al op de kaart staan, van de cellers in het binnenland tot de rotsen van Cala Dei&agrave;. Openingstijden wisselen per seizoen, check ze op de dag zelf.</p>
+                <div style="border-radius:12px;overflow:hidden;background:var(--surface-card)">
+                  <sc-for list="{{ etenVerder }}" as="e" hint-placeholder-count="9">
+                    <div style="{{ e.rowStyle }}">
+                      <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="{{ e.icon }}" title="{{ e.naam }}" subtitle="{{ e.note }}" note="{{ e.meta }}" on-click="{{ e.open }}" hint-size="100%,96px"></x-import>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <div>
+                <h2 style="font-size:20px;line-height:28px;margin-bottom:12px">Dit moeten we proberen</h2>
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <sc-for list="{{ gerechten }}" as="g" hint-placeholder-count="4">
+                    <div style="background:var(--surface-card);border-radius:12px;padding:14px 16px">
+                      <div style="font-size:16px;line-height:24px;font-weight:600">{{ g.naam }}</div>
+                      <div style="font-size:15px;line-height:22px;color:var(--text-secondary);text-wrap:pretty">{{ g.note }}</div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.InlineNotification" type="info" title="Met de kinderen" subtitle="Om 17.30 eten lukt hier prima: de strandtenten zijn dan net open en het is nog rustig. Reserveer bij Can Gavella en Figueret." hint-size="100%,96px"></x-import>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ sResto }}" hint-placeholder-val="{{ true }}">
+          <div data-screen-label="Restaurant">
+            <div style="position:sticky;top:0;z-index:5;background:var(--surface-card)">
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Header" on-back="{{ backEten }}" action-icon="fa-solid fa-heart" hint-size="100%,56px"></x-import>
+            </div>
+            <sc-if value="{{ restoHeeftFoto }}" hint-placeholder-val="{{ false }}">
+              <div style="position:relative;height:200px;overflow:hidden;background:var(--ion-color-secondary)">
+                <img ref="{{ restoFotoRef }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block" />
+                <span style="position:absolute;left:16px;bottom:12px;padding:0 12px;height:26px;border-radius:999px;background:#fff;color:var(--text-secondary);font-size:12px;line-height:26px;font-weight:600;max-width:calc(100% - 32px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ restoSfeerCredit }}</span>
+              </div>
+            </sc-if>
+            <div style="padding:20px 16px 28px;display:flex;flex-direction:column;gap:20px">
+              <div>
+                <div style="display:flex;align-items:center;gap:8px;color:var(--ion-color-primary)">
+                  <i class="{{ restoIcon }}" aria-hidden="true" style="font-size:14px"></i>
+                  <span style="font-size:14px;line-height:20px;font-weight:600">{{ restoKeuken }}</span>
+                </div>
+                <h1 style="font-size:26px;line-height:34px;margin-top:6px">{{ restoNaam }}</h1>
+                <p style="margin:8px 0 0;font-size:16px;line-height:24px;color:var(--text-secondary);text-wrap:pretty">{{ restoSfeer }}</p>
+              </div>
+              <div style="background:var(--surface-card);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:14px">
+                <div>
+                  <div style="font-size:16px;line-height:24px;font-weight:700">Waar</div>
+                  <div style="font-size:16px;line-height:24px;color:var(--text-secondary)">{{ restoPlaats }}</div>
+                </div>
+                <div>
+                  <div style="font-size:16px;line-height:24px;font-weight:700">Vanaf de villa</div>
+                  <div style="font-size:16px;line-height:24px;color:var(--text-secondary)">{{ restoMeta }}</div>
+                </div>
+                <div>
+                  <div style="font-size:16px;line-height:24px;font-weight:700">Reserveren</div>
+                  <div style="font-size:16px;line-height:24px;color:var(--text-secondary)">{{ restoReserveren }}</div>
+                </div>
+              </div>
+
+              <div style="background:var(--ion-color-secondary);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px">
+                <div style="display:flex;align-items:center;gap:8px;color:var(--ion-color-primary)">
+                  <i class="fa-solid fa-location-dot" aria-hidden="true" style="font-size:14px"></i>
+                  <span style="font-size:13px;line-height:19px;font-weight:700;letter-spacing:.04em;text-transform:uppercase">Navigatie</span>
+                </div>
+                <div>
+                  <div style="font-size:16px;line-height:24px;font-weight:600;color:var(--ion-color-primary)">{{ restoPlaats }}</div>
+                  <div style="font-size:14px;line-height:20px;color:var(--ion-color-primary);margin-top:2px">Zet {{ restoBijNaam }} in de navigatie, daar zoek je het laatste stukje op straat.</div>
+                  <div style="font-family:var(--font-body);font-size:18px;line-height:26px;font-weight:700;color:var(--ion-color-primary);margin-top:6px">{{ restoBijCoord }}</div>
+                </div>
+                <div>
+                  <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Button" size="sm" icon-left="fa-solid fa-copy" on-click="{{ restoKopieer }}" hint-size="auto,44px">Coördinaten kopiëren</x-import>
+                </div>
+                <sc-if value="{{ restoGekopieerd }}" hint-placeholder-val="{{ false }}">
+                  <div style="font-size:14px;line-height:20px;font-weight:600;color:var(--ion-color-primary)">Gekopieerd, plak het in de autonavigatie.</div>
+                </sc-if>
+                <sc-if value="{{ restoKopieFout }}" hint-placeholder-val="{{ false }}">
+                  <div style="font-size:14px;line-height:20px;font-weight:600;color:var(--ion-color-primary)">Kopiëren lukt hier niet. Houd de coördinaten hierboven ingedrukt en kopieer ze zelf.</div>
+                </sc-if>
+                <div style="font-size:13px;line-height:19px;color:var(--ion-color-primary)">Coördinaten van de plek in de buurt, niet van de deur. Werkt ook zonder internet.</div>
+              </div>
+              <div>
+                <h2 style="font-size:20px;line-height:28px;margin-bottom:12px">Wat ze hier serveren</h2>
+                <div style="border-radius:12px;overflow:hidden;background:var(--surface-card)">
+                  <sc-for list="{{ restoMenu }}" as="m" hint-placeholder-count="4">
+                    <div style="{{ m.rowStyle }}">
+                      <div style="font-size:16px;line-height:24px;font-weight:600">{{ m.g }}</div>
+                      <div style="font-size:15px;line-height:22px;color:var(--text-secondary);text-wrap:pretty">{{ m.n }}</div>
+                    </div>
+                  </sc-for>
+                </div>
+                <p style="margin:10px 0 0;font-size:13px;line-height:19px;color:var(--text-secondary)">Een greep uit de kaart, geen officieel menu. Check de actuele kaart en openingstijden bij het restaurant zelf.</p>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div style="font-size:16px;line-height:24px;font-weight:700">Foto's</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+                  <image-slot id="{{ restoSlotId }}" shape="rounded" radius="10" placeholder="Voorkant" style="height:96px"></image-slot>
+                  <image-slot id="{{ restoSlot1 }}" shape="rounded" radius="10" placeholder="Gerecht" style="height:96px"></image-slot>
+                  <image-slot id="{{ restoSlot2 }}" shape="rounded" radius="10" placeholder="Terras" style="height:96px"></image-slot>
+                </div>
+                <p style="margin:0;font-size:13px;line-height:19px;color:var(--text-secondary);text-wrap:pretty">De foto bovenaan is een vrij te gebruiken sfeerbeeld. Eigen foto's van het restaurant sleep je hier naartoe, bijvoorbeeld uit Google Maps of hun eigen site. Ze blijven per restaurant bewaard.</p>
+              </div>
+              <div style="border-radius:12px;overflow:hidden;background:var(--surface-card)">
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-globe" title="{{ restoWebLabel }}" subtitle="{{ restoWebSub }}" on-click="{{ restoWebOpen }}" hint-size="100%,68px"></x-import>
+              </div>
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.InlineNotification" type="info" title="Met ons gezin" subtitle="{{ restoMetOns }}" hint-size="100%,96px"></x-import>
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Button" variant="secondary" icon-left="fa-solid fa-arrow-left" expand="{{ true }}" on-click="{{ backEten }}" hint-size="100%,48px">Terug naar eten en drinken</x-import>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ sHuis }}" hint-placeholder-val="{{ true }}">
+          <div data-screen-label="Het huis">
+            <div style="position:sticky;top:0;z-index:5;background:var(--surface-card)">
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Header" title="Het huis" on-back="{{ back }}" hint-size="100%,56px"></x-import>
+            </div>
+            <div style="position:relative;height:224px;overflow:hidden;background:var(--ion-color-secondary)">
+              <image-slot id="mal-huis-hero" shape="rect" placeholder="Sleep hier de hoofdfoto uit je Interhome-mail" style="position:absolute;inset:0"></image-slot>
+            </div>
+            <div style="padding:20px 16px 28px;display:flex;flex-direction:column;gap:22px">
+              <div>
+                <h1 style="font-size:26px;line-height:34px">Villa Ca na Saurina</h1>
+                <p style="margin:8px 0 0;font-size:16px;line-height:24px;color:var(--text-secondary);text-wrap:pretty">Vijfkamervilla van 200 m² met eigen zwembad in Crestatx, gemeente Sa Pobla. Zeven nachten via Interhome, 7 t/m 14 mei 2027, plek voor zeven personen.</p>
+              </div>
+              <div style="background:var(--surface-card);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px">
+                <div style="font-size:16px;line-height:24px;font-weight:700">Voorzieningen</div>
+                <div style="display:grid;grid-template-columns:1fr;gap:10px">
+                  <sc-for list="{{ huisVoorzieningen }}" as="v" hint-placeholder-count="10">
+                    <div style="display:flex;gap:10px;align-items:flex-start">
+                      <i class="{{ v.icon }}" aria-hidden="true" style="width:18px;flex:none;font-size:15px;color:var(--ion-color-primary);padding-top:3px"></i>
+                      <span style="font-size:15px;line-height:22px">{{ v.label }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <div>
+                <h2 style="font-size:20px;line-height:28px;margin-bottom:12px">Wie slaapt waar</h2>
+                <div style="border-radius:12px;overflow:hidden;background:var(--surface-card)">
+                  <sc-for list="{{ slaapkamers }}" as="k" hint-placeholder-count="4">
+                    <div style="{{ k.rowStyle }}">
+                      <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="{{ k.icon }}" title="{{ k.titel }}" subtitle="{{ k.note }}" hint-size="100%,96px"></x-import>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <div>
+                <h2 style="font-size:20px;line-height:28px;margin-bottom:12px">Goed om te weten</h2>
+                <div style="background:var(--surface-card);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:14px">
+                  <sc-for list="{{ huisFeiten }}" as="h" hint-placeholder-count="7">
+                    <div>
+                      <div style="font-size:16px;line-height:24px;font-weight:700">{{ h.label }}</div>
+                      <div style="font-size:16px;line-height:24px;color:var(--text-secondary);text-wrap:pretty">{{ h.waarde }}</div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <div>
+                <h2 style="font-size:20px;line-height:28px;margin-bottom:12px">Afstanden vanaf de deur</h2>
+                <div style="background:var(--surface-card);border-radius:12px;padding:6px 16px">
+                  <sc-for list="{{ afstanden }}" as="a" hint-placeholder-count="11">
+                    <div style="{{ a.rowStyle }}">
+                      <span style="font-size:15px;line-height:22px">{{ a.label }}</span>
+                      <span style="font-size:15px;line-height:22px;color:var(--text-secondary)">{{ a.waarde }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div style="font-size:16px;line-height:24px;font-weight:700">Foto's van het huis</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                  <image-slot id="mal-huis-1" shape="rounded" radius="12" placeholder="Zwembad en tuin" style="height:120px"></image-slot>
+                  <image-slot id="mal-huis-2" shape="rounded" radius="12" placeholder="Patio en pergola" style="height:120px"></image-slot>
+                  <image-slot id="mal-huis-3" shape="rounded" radius="12" placeholder="Woon-eetkamer" style="height:120px"></image-slot>
+                  <image-slot id="mal-huis-4" shape="rounded" radius="12" placeholder="Slaapkamers" style="height:120px"></image-slot>
+                </div>
+                <p style="margin:0;font-size:13px;line-height:19px;color:var(--text-secondary);text-wrap:pretty">De foto's van Interhome en Booking zijn auteursrechtelijk beschermd, dus die haal ik er niet automatisch bij. Sleep ze hier uit je boekingsmail, dan staan ze in de app.</p>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Button" icon-left="fa-solid fa-utensils" expand="{{ true }}" on-click="{{ goEten }}" hint-size="100%,48px">Uit eten in de buurt</x-import>
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Button" variant="secondary" icon-left="fa-solid fa-map-location-dot" expand="{{ true }}" on-click="{{ huisOpKaart }}" hint-size="100%,48px">Bekijk op de kaart</x-import>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ sPlek }}" hint-placeholder-val="{{ true }}">
+          <div data-screen-label="Plek">
+            <div style="position:sticky;top:0;z-index:5;background:var(--surface-card)">
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Header" on-back="{{ back }}" action-icon="fa-solid fa-heart" hint-size="100%,56px"></x-import>
+            </div>
+            <div style="position:relative;height:216px;overflow:hidden;background:var(--ion-color-secondary)">
+              <sc-if value="{{ plekHeeftFoto }}" hint-placeholder-val="{{ false }}">
+                <img ref="{{ plekFotoRef }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block" />
+              </sc-if>
+              <sc-if value="{{ plekGeenFoto }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--ion-color-primary)">
+                  <i class="{{ plekIcon }}" aria-hidden="true" style="font-size:46px"></i>
+                  <span style="font-size:14px;line-height:20px;font-weight:600">Nog geen foto van deze plek</span>
+                </div>
+              </sc-if>
+              <sc-if value="{{ plekIsVilla }}" hint-placeholder-val="{{ false }}">
+                <image-slot id="mal-villa-foto" shape="rect" placeholder="Sleep hier een foto van de villa" style="position:absolute;inset:0"></image-slot>
+              </sc-if>
+
+              <span style="position:absolute;left:16px;bottom:14px;padding:0 12px;height:28px;border-radius:999px;background:#fff;color:var(--ion-color-primary);font-size:13px;line-height:28px;font-weight:600">{{ plekCat }}</span>
+            </div>
+            <div style="padding:20px 16px 28px;display:flex;flex-direction:column;gap:18px">
+              <sc-if value="{{ plekHeeftCredit }}" hint-placeholder-val="{{ false }}">
+                <div style="font-size:13px;line-height:19px;color:var(--text-secondary);text-wrap:pretty">{{ plekCredit }}</div>
+              </sc-if>
+              <div>
+                <h1 style="font-size:26px;line-height:34px">{{ plekNaam }}</h1>
+                <p style="margin:8px 0 0;font-size:16px;line-height:24px;color:var(--text-secondary);text-wrap:pretty">{{ plekNote }}</p>
+              </div>
+              <div style="background:var(--surface-card);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:16px">
+                <div>
+                  <div style="font-size:16px;line-height:24px;font-weight:700">Vanaf de villa</div>
+                  <div style="font-size:16px;line-height:24px;color:var(--text-secondary)">{{ plekRijtijd }}</div>
+                </div>
+                <div>
+                  <div style="font-size:16px;line-height:24px;font-weight:700">Goed voor</div>
+                  <div style="font-size:16px;line-height:24px;color:var(--text-secondary)">{{ plekGoedVoor }}</div>
+                </div>
+                <div>
+                  <div style="font-size:16px;line-height:24px;font-weight:700">Parkeren</div>
+                  <div style="font-size:16px;line-height:24px;color:var(--text-secondary)">{{ plekParkeren }}</div>
+                </div>
+                <div>
+                  <div style="font-size:16px;line-height:24px;font-weight:700">Openingstijden</div>
+                  <div style="font-size:16px;line-height:24px;color:var(--text-secondary);text-wrap:pretty">{{ plekOpen }}</div>
+                </div>
+              </div>
+
+              <div style="background:var(--ion-color-secondary);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px">
+                <div style="display:flex;align-items:center;gap:8px;color:var(--ion-color-primary)">
+                  <i class="fa-solid fa-location-dot" aria-hidden="true" style="font-size:14px"></i>
+                  <span style="font-size:13px;line-height:19px;font-weight:700;letter-spacing:.04em;text-transform:uppercase">Navigatie</span>
+                </div>
+                <div>
+                  <div style="font-size:16px;line-height:24px;font-weight:600;color:var(--ion-color-primary)">{{ plekPlaats }}</div>
+                  <div style="font-family:var(--font-body);font-size:18px;line-height:26px;font-weight:700;color:var(--ion-color-primary);margin-top:4px">{{ plekCoord }}</div>
+                </div>
+                <div>
+                  <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Button" size="sm" icon-left="fa-solid fa-copy" on-click="{{ plekKopieer }}" hint-size="auto,44px">Coördinaten kopiëren</x-import>
+                </div>
+                <sc-if value="{{ plekGekopieerd }}" hint-placeholder-val="{{ false }}">
+                  <div style="font-size:14px;line-height:20px;font-weight:600;color:var(--ion-color-primary)">Gekopieerd, plak het in de autonavigatie.</div>
+                </sc-if>
+                <sc-if value="{{ plekKopieFout }}" hint-placeholder-val="{{ false }}">
+                  <div style="font-size:14px;line-height:20px;font-weight:600;color:var(--ion-color-primary)">Kopiëren lukt hier niet. Houd de coördinaten hierboven ingedrukt en kopieer ze zelf.</div>
+                </sc-if>
+                <div style="font-size:13px;line-height:19px;color:var(--ion-color-primary)">Deze gegevens staan in de app en werken ook zonder internet.</div>
+              </div>
+              <div style="border-radius:12px;overflow:hidden;background:var(--surface-card)">
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="fa-solid fa-globe" title="{{ plekWebLabel }}" subtitle="{{ plekWebSub }}" on-click="{{ plekWebOpen }}" hint-size="100%,68px"></x-import>
+              </div>
+              <sc-if value="{{ plekHeeftRestos }}" hint-placeholder-val="{{ false }}">
+                <div>
+                  <h2 style="font-size:20px;line-height:28px;margin-bottom:12px">Hier eet je</h2>
+                  <div style="border-radius:12px;overflow:hidden;background:var(--surface-card)">
+                    <sc-for list="{{ plekRestos }}" as="r" hint-placeholder-count="2">
+                      <div style="{{ r.rowStyle }}">
+                        <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.ListItem" icon="{{ r.icon }}" title="{{ r.naam }}" subtitle="{{ r.note }}" note="{{ r.meta }}" on-click="{{ r.open }}" hint-size="100%,96px"></x-import>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+              <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.InlineNotification" type="info" title="Tip van de groep" subtitle="{{ plekTip }}" hint-size="100%,96px"></x-import>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Button" variant="{{ addVariant }}" icon-left="{{ addIcon }}" expand="{{ true }}" on-click="{{ addToProgramma }}" hint-size="100%,48px">{{ addLabel }}</x-import>
+                <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.Button" variant="secondary" icon-left="fa-solid fa-map-location-dot" expand="{{ true }}" on-click="{{ showOnMap }}" hint-size="100%,48px">Bekijk op de kaart</x-import>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+      </div>
+
+      <sc-if value="{{ isApp }}" hint-placeholder-val="{{ true }}">
+        <div style="flex:none;padding-bottom:22px;background:var(--surface-card);border-top:1px solid var(--color-divider)">
+          <x-import component-from-global-scope="SpreekuurDesignSystem_5ed928.TabBar" tabs="{{ tabs }}" active="{{ tab }}" on-change="{{ setTab }}" hint-size="100%,60px"></x-import>
+        </div>
+      </sc-if>
+    </div>
+  </x-import>
+
+  <div style="max-width:430px;font-size:13px;line-height:19px;color:var(--text-secondary);text-align:center">Tik door de app: overzicht met aftellen, dagprogramma, kaart met echte plekken, ideeën met stemmen en de paklijst. Reisgenoten: Tijmen, Lis, Juna, Mila, Opa Louis en Oma Marjo.</div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:470,&quot;height&quot;:1010},&quot;tripMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Voor de reis&quot;,&quot;Tijdens de reis&quot;],&quot;default&quot;:&quot;Voor de reis&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Gedrag&quot;},&quot;startInWelkom&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Gedrag&quot;},&quot;countdownStijl&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Groot getal&quot;,&quot;Compacte regel&quot;],&quot;default&quot;:&quot;Groot getal&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Overzicht&quot;},&quot;toonWeer&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Overzicht&quot;}}">
+class Component extends DCLogic {
+  mapRef = React.createRef();
+
+  state = { ik: "jij", hist: [], zoek: "", screen: null, tab: "overzicht", day: null, plekId: null, filter: "alles", ideeFilter: "Alles", packed: {}, votes: {}, mee: {}, wens: {}, added: {}, eigenPack: [], doen: {}, packInput: "", ideeDag: {}, restoId: null, weerNu: null, weerDagen: null };
+
+  WEERCODES = {
+    0: { label: "onbewolkt", icon: "fa-solid fa-sun" },
+    1: { label: "vooral zonnig", icon: "fa-solid fa-sun" },
+    2: { label: "half bewolkt", icon: "fa-solid fa-cloud-sun" },
+    3: { label: "bewolkt", icon: "fa-solid fa-cloud" },
+    45: { label: "nevelig", icon: "fa-solid fa-smog" },
+    48: { label: "nevelig", icon: "fa-solid fa-smog" },
+    51: { label: "lichte motregen", icon: "fa-solid fa-cloud-rain" },
+    53: { label: "motregen", icon: "fa-solid fa-cloud-rain" },
+    55: { label: "motregen", icon: "fa-solid fa-cloud-rain" },
+    61: { label: "lichte regen", icon: "fa-solid fa-cloud-rain" },
+    63: { label: "regen", icon: "fa-solid fa-cloud-showers-heavy" },
+    65: { label: "veel regen", icon: "fa-solid fa-cloud-showers-heavy" },
+    80: { label: "buien", icon: "fa-solid fa-cloud-sun-rain" },
+    81: { label: "buien", icon: "fa-solid fa-cloud-sun-rain" },
+    82: { label: "zware buien", icon: "fa-solid fa-cloud-showers-heavy" },
+    95: { label: "onweer", icon: "fa-solid fa-cloud-bolt" },
+    96: { label: "onweer", icon: "fa-solid fa-cloud-bolt" },
+    99: { label: "onweer", icon: "fa-solid fa-cloud-bolt" }
+  };
+
+  weerInfo(code) { return this.WEERCODES[code] || { label: "wisselend", icon: "fa-solid fa-cloud-sun" }; }
+
+  ETEN = [
+    { id: "gavella", groep: "strand", naam: "Can Gavella", icon: "fa-solid fa-fire-burner", note: "Strandtent sinds 1976, vispaella en fideuá met je voeten in het zand", meta: "Platja de Muro · 15 min · reserveren",
+      plaats: "Platja de Muro, aan het strand", keuken: "Mallorcaanse vis en rijstgerechten", sfeer: "Levendige strandtent, tafels in het zand, mediterraan en gezellig",
+      metOns: "Om 17:30 net open en nog rustig, daarna terug voor bedtijd om 19:00", reserveren: "In het seizoen verplicht, bel een dag vooraf",
+      menu: [ { g: "Vispaella voor twee", n: "Hun bekendste gerecht, reken op een half uur wachten" }, { g: "Fideuá", n: "Paella met dunne noedels in plaats van rijst" }, { g: "Pa amb oli", n: "Brood met tomaat en olijfolie, makkelijk voor Juna en Mila" }, { g: "Gegrilde vis van de dag", n: "Wordt per gewicht afgerekend" } ] },
+    { id: "figueret", groep: "strand", naam: "Figueret Restaurant", icon: "fa-solid fa-bowl-food", note: "Rustiger en netter, beroemd om de Figueret-paella zonder schelpen en graten", meta: "Platja de Muro · 15 min · reserveren",
+      plaats: "Platja de Muro, achter de boulevard", keuken: "Paella en zeevruchten", sfeer: "Elegant en rustig, prettig als de kinderen even willen zitten",
+      metOns: "De paella zonder graten en schelpen scheelt een hoop gepriegel met de kinderen", reserveren: "Aanrader, vooral in het weekend",
+      menu: [ { g: "Figueret-paella", n: "Rijk gevuld met zeevruchten en vlees, alles voorgepeld" }, { g: "Arroz negro", n: "Zwarte rijst met inktvis" }, { g: "Croquetas", n: "Voor de kinderen om mee te beginnen" }, { g: "Crema catalana", n: "Toetje om te delen" } ] },
+    { id: "nu", groep: "strand", naam: "NU Mallorca", icon: "fa-solid fa-martini-glass", note: "Beachclub aan zee met sushi, fusion en cocktails, dj op het terras", meta: "Platja de Muro · 15 min · zonder kinderen",
+      plaats: "Platja de Muro, direct aan zee", keuken: "Sushi en fusion", sfeer: "Beachclub met dj, luxer en later op de avond",
+      metOns: "Eerder iets voor een avond dat Louis en Marjo oppassen", reserveren: "Online, vooral voor een tafel bij zonsondergang",
+      menu: [ { g: "Sushi om te delen", n: "Rolls en sashimi" }, { g: "Ceviche", n: "Fris, met limoen en koriander" }, { g: "Gegrilde tonijn", n: "Met sesam en teriyaki" }, { g: "Cocktails", n: "Van klassiek tot eigen creaties" } ] },
+    { id: "costa", groep: "stad", naam: "Celler Ca'n Costa", icon: "fa-solid fa-drumstick-bite", note: "Een van de oudste cellers van de oude stad, speenvarken en vis met sobrasada in de binnentuin", meta: "Alcúdia · 20 min",
+      plaats: "Binnen de stadsmuren van Alcúdia", keuken: "Traditioneel Mallorcaans", sfeer: "Historisch pand met binnentuin, wijnvaten aan de muur",
+      metOns: "Mooie plek voor een keer echt uit eten met Louis en Marjo", reserveren: "Handig in het weekend",
+      menu: [ { g: "Lechona", n: "Langzaam gegaard speenvarken, hun klassieker" }, { g: "Vis met sobrasada", n: "Typisch eiland-gerecht" }, { g: "Tumbet", n: "Ovenschotel van aardappel, aubergine en tomaat, vegetarisch" }, { g: "Arròs brut", n: "Natte rijst met vlees en groenten" } ] },
+    { id: "merlet", groep: "stad", naam: "Merlet", icon: "fa-solid fa-pepper-hot", note: "Familierestaurant bij de stadspoort, tapas op bestelling: gegrilde octopus, aubergine met geitenkaas", meta: "Alcúdia · 20 min",
+      plaats: "Bij de oude stadspoort van Alcúdia", keuken: "Tapas, alles vers gemaakt", sfeer: "Klein familierestaurant, terras aan een pleintje",
+      metOns: "Veel kleine gerechten, dus iedereen vindt wel iets", reserveren: "Kleine zaak, dus wel slim",
+      menu: [ { g: "Gegrilde octopus", n: "Extreem mals, hun bekendste tapa" }, { g: "Aubergine met geitenkaas", n: "Uit de oven, met honing" }, { g: "Patatas bravas", n: "Voor Juna en Mila" }, { g: "Gambas al ajillo", n: "Garnalen in knoflookolie" } ] },
+    { id: "portassa", groep: "stad", naam: "Sa Portassa", icon: "fa-solid fa-bread-slice", note: "Herenhuis met knusse patio, royale tapasschotels en de beste pa amb oli", meta: "Alcúdia · 20 min · alleen langslopen of bellen",
+      plaats: "Authentiek herenhuis in Alcúdia", keuken: "Pa amb oli en tapas om te delen", sfeer: "Verborgen patio, rustig en betaalbaar",
+      metOns: "Simpel en snel, prima voor een vroege hap na de oude stad", reserveren: "Doen ze niet online, dus bellen of op tijd langslopen",
+      menu: [ { g: "Pa amb oli compleet", n: "Met lokale tomaat, olijfolie, ham en kaas" }, { g: "Tapasschotel", n: "Royaal en om te delen" }, { g: "Sobrasada met honing", n: "Op geroosterd brood" }, { g: "Huiswijn per karaf", n: "Eenvoudig en goed" } ] },
+    { id: "patos", groep: "natuur", naam: "Los Patos", icon: "fa-solid fa-tree", note: "Familiezaak aan de rand van het natuurgebied, arroz brut en paling, kindvriendelijk terras", meta: "S'Albufera · 12 min",
+      plaats: "Aan de rand van natuurpark S'Albufera", keuken: "Streekgerechten uit het moerasgebied", sfeer: "Familiezaak met groot, kindvriendelijk terras",
+      metOns: "Het dichtste bij het huis en de kinderen kunnen er buiten rondlopen", reserveren: "Meestal niet nodig, behalve zondagmiddag",
+      menu: [ { g: "Arroz brut", n: "Traditionele natte rijst, hun specialiteit" }, { g: "Paling uit S'Albufera", n: "Voor wie het aandurft, echt streekeigen" }, { g: "Gegrild vlees van de kolen", n: "Simpel en goed" }, { g: "Flan", n: "Klassiek toetje" } ] },
+    { id: "patro-march", groep: "verder", naam: "Ca's Patró March", icon: "fa-solid fa-fish", note: "Eenvoudig visrestaurant op de rotsen van Cala Deià, tafels vlak boven het water", meta: "Cala Deià · 65 min · ver vooruit reserveren",
+      plaats: "Cala Deià, op de rotsen onder het dorp", keuken: "Verse vis en zeevruchten van die dag", sfeer: "Rustiek en simpel, het uitzicht is de luxe",
+      metOns: "Doe het als lunch: het laatste stuk naar de baai is steil en met de auto kom je er niet tot onderaan", reserveren: "Heel populair, bel weken vooruit; alleen open in het seizoen",
+      menu: [ { g: "Gegrilde vis van de dag", n: "Wordt per gewicht afgerekend" }, { g: "Gamba's van de grill", n: "Simpel met citroen" }, { g: "Hamkroketten", n: "Makkelijk voor Juna en Mila" }, { g: "Gató met amandelijs", n: "Mallorcaanse amandelcake" } ] },
+    { id: "can-lluc", groep: "verder", naam: "Can Lluc", icon: "fa-solid fa-utensils", note: "Het tweede restaurant aan hetzelfde baaitje, vergelijkbare kaart en makkelijker te boeken", meta: "Cala Deià · 65 min · makkelijker te boeken",
+      plaats: "Cala Deià, naast Ca's Patró March", keuken: "Vis, salades en frietjes", sfeer: "Informeler, meer een cafetaria aan het water",
+      metOns: "Prima plan B als Ca's Patró March vol zit, en losser met kinderen", reserveren: "Meestal lukt het ook zonder",
+      menu: [ { g: "Vis van de dag", n: "Wat de boot die ochtend heeft" }, { g: "Frietjes en salade", n: "Zekerheidje voor de kinderen" }, { g: "Pa amb oli", n: "Brood met tomaat en olijfolie" } ] },
+    { id: "canamer", groep: "verder", naam: "Celler Ca'n Amer", icon: "fa-solid fa-wine-bottle", note: "Bekendste celler van Inca, sinds 1970 in een oude wijnkelder met herstelde eilandrecepten", meta: "Inca · 20 min · reserveren aangeraden",
+      plaats: "Binnenstad van Inca", keuken: "Traditioneel Mallorcaans", sfeer: "Enorme wijnvaten, donker hout, koel op een hete dag",
+      metOns: "Fijn plan voor een regendag of na de markt van Inca", reserveren: "In het weekend zeker doen",
+      menu: [ { g: "Frito mallorquín", n: "Gebakken lever met aardappel en paprika" }, { g: "Lamsschouder uit de oven", n: "Langzaam gegaard" }, { g: "Tumbet", n: "Vegetarische ovenschotel" }, { g: "Gató", n: "Amandelcake met ijs" } ] },
+    { id: "travessa", groep: "verder", naam: "Celler Sa Travessa", icon: "fa-solid fa-wine-bottle", note: "Celler in een oude kelder, sopes mallorquines en lamsvlees tussen de wijnvaten", meta: "Inca · 20 min · menú del día",
+      plaats: "Carrer de sa Murtra, Inca", keuken: "Mallorcaans, met dagmenu", sfeer: "Familiezaak, balken en grote vaten, weinig toeristen",
+      metOns: "Het dagmenu is voordelig, prima voor een lunch met de hele groep", reserveren: "Op marktdagen druk, dus bellen",
+      menu: [ { g: "Sopes mallorquines", n: "Broodsoep met groenten" }, { g: "Bacalao a la mallorquina", n: "Kabeljauw uit de oven" }, { g: "Lamsbout", n: "Hun bekendste hoofdgerecht" }, { g: "Flan of kaastaart", n: "Huisgemaakt" } ] },
+    { id: "son-toreo", groep: "verder", naam: "Celler Son Toreó", icon: "fa-solid fa-drumstick-bite", note: "Celler in het hart van Sineu, ruime porties en klassiekers als konijnstoof en lamsschouder", meta: "Sineu · 30 min · op marktdag geen reservering",
+      plaats: "Carrer Son Torelló 1, Sineu", keuken: "Traditioneel Mallorcaans", sfeer: "Oude bodega van steen en donker hout, ook voor grote gezelschappen",
+      metOns: "Kindvriendelijk en met plek voor zeven, handig op de markt-dinsdag", reserveren: "Kan meestal wel, behalve op marktdag: dan op volgorde van aankomst",
+      menu: [ { g: "Frito mallorquín", n: "De klassieker van het huis" }, { g: "Konijnstoof", n: "Langzaam gegaard met groenten" }, { g: "Spinaziekroketten", n: "Voor de kinderen" }, { g: "Gató met amandelijs", n: "Veel geprezen toetje" } ] },
+    { id: "celler-petra", groep: "verder", naam: "Es Celler de Petra", icon: "fa-solid fa-fire-burner", note: "Gewelfde 19e-eeuwse kelder, speenvarken en lamsschouder uit de oven", meta: "Petra · 30 min · maandag gesloten",
+      plaats: "Centrum van Petra", keuken: "Mallorcaans, veel vlees van de grill", sfeer: "Hoge gewelven en oude wijnvaten, verrassend koel",
+      metOns: "Grote tafels en ruime porties, fijn voor een avond met Louis en Marjo erbij", reserveren: "Doen, ook al lijkt het dorp stil",
+      menu: [ { g: "Speenvarken uit de oven", n: "Hun bekendste gerecht" }, { g: "Lamsschouder", n: "Langzaam gegaard" }, { g: "Gevulde aubergine", n: "Mallorcaanse klassieker" }, { g: "Groentepaella", n: "Vegetarisch, om te delen" } ] },
+    { id: "sa-placa", groep: "verder", naam: "Restaurant Sa Plaça", icon: "fa-solid fa-mug-saucer", note: "Aan het dorpsplein van Petra, terras onder de bomen en een rustige kaart", meta: "Petra · 30 min · terras aan het plein",
+      plaats: "Aan het plein in Petra", keuken: "Mallorcaans en mediterraan", sfeer: "Dorpsterras, kinderen kunnen op het plein rondlopen",
+      metOns: "Losser dan de celler en je zit buiten, prima voor een vroege hap", reserveren: "Meestal niet nodig",
+      menu: [ { g: "Pa amb oli", n: "Met tomaat, olijfolie en ham" }, { g: "Vlees van de grill", n: "Simpel en goed" }, { g: "Salades", n: "Ruim en fris" }, { g: "Ijs voor de kinderen", n: "Op het terras" } ] },
+    { id: "cala-barques", groep: "verder", naam: "Restaurant Cala Barques", icon: "fa-solid fa-umbrella-beach", note: "Terras direct boven het strandje van Cala Barques, vis en pizza door elkaar", meta: "Cala Sant Vicenç · 25 min · lunch aan het water",
+      plaats: "Boven het strand van Cala Barques", keuken: "Vis, pasta en pizza", sfeer: "Strandterras met zicht op de baai en de Cavall Bernat",
+      metOns: "Je loopt van het handdoekje naar de tafel, ideaal midden op een stranddag", reserveren: "In mei loop je meestal binnen",
+      menu: [ { g: "Vis van de dag", n: "Van de grill" }, { g: "Paella", n: "Voor twee of meer" }, { g: "Pizza", n: "Zekerheidje voor de kinderen" }, { g: "Tostada met tomaat", n: "Kleine honger" } ] },
+    { id: "la-tasca", groep: "verder", naam: "La Tasca", icon: "fa-solid fa-pepper-hot", note: "Vaste waarde in Cala Sant Vicenç, ruime kaart en een rustig terras weg van het strand", meta: "Cala Sant Vicenç · 25 min · 's avonds",
+      plaats: "In het dorp van Cala Sant Vicenç", keuken: "Tapas en mediterraan", sfeer: "Vriendelijk en informeel, rustiger dan de strandterrassen",
+      metOns: "Goede keuze voor een avond na het snorkelen, iedereen vindt hier iets", reserveren: "In het seizoen handig",
+      menu: [ { g: "Tapas om te delen", n: "Warm en koud door elkaar" }, { g: "Gegrilde vis", n: "Met aardappel en salade" }, { g: "Pasta voor de kinderen", n: "Simpel klaargemaakt" }, { g: "Crema catalana", n: "Toetje" } ] }
+  ];
+
+  GERECHTEN = [
+    { naam: "Pa amb oli", note: "Boerenbrood met verse tomaat en olijfolie, met ham of kaas erbij. Ook voor Juna en Mila een makkelijke keuze." },
+    { naam: "Sobrasada", note: "Zachte gekruide worst met paprika van het eiland, lekker op brood met een beetje honing." },
+    { naam: "Tumbet", note: "Ovenschotel van aardappel, aubergine en veel tomatensaus met knoflook. Vegetarisch." },
+    { naam: "Arroz brut", note: "Traditionele natte rijst met vlees en groenten, precies goed na een lange stranddag." },
+    { naam: "Hierbas", note: "Lokale kruidenlikeur als shotje na het eten, voor Louis en Marjo op het terras." }
+  ];
+
+  VOORZIENINGEN = [
+    { icon: "fa-solid fa-water-ladder", label: "Privézwembad 6 × 3 m, 1,00–1,50 m diep" },
+    { icon: "fa-solid fa-bed", label: "4 slaapkamers, plek voor 7" },
+    { icon: "fa-solid fa-shower", label: "2 badkamers, buitendouche in de tuin" },
+    { icon: "fa-solid fa-ruler-combined", label: "200 m² over twee verdiepingen" },
+    { icon: "fa-solid fa-snowflake", label: "Airco en warmtepomp in alle kamers" },
+    { icon: "fa-solid fa-fire-burner", label: "Barbecue, pergola en tuinmeubels" },
+    { icon: "fa-solid fa-wifi", label: "Gratis wifi en digitale tv" },
+    { icon: "fa-solid fa-utensils", label: "Vaatwasser en wasmachine" },
+    { icon: "fa-solid fa-car", label: "Eigen parkeerplaats op het terrein" },
+    { icon: "fa-solid fa-tree", label: "Grote tuin met gras en bomen" }
+  ];
+
+  HUISFEITEN = [
+    { label: "Adres", waarde: "Crestatx, gemeente Sa Pobla · rustige villawijk, 500 m van de bosrand" },
+    { label: "Objectnummer", waarde: "Interhome ES8367.100.1 · licentie ETV/10554" },
+    { label: "Indeling", waarde: "Vijfkamervilla van 200 m² op twee woonlagen, volledig gerenoveerd" },
+    { label: "Zwembad", waarde: "Eigen hoekzwembad 6 × 3 m, 1,00 tot 1,50 m diep, onderhoud door de tuinman" },
+    { label: "Check-in", waarde: "Vrijdag 7 mei vanaf 15:00 · geef je aankomsttijd vooraf door aan Interhome" },
+    { label: "Borg", waarde: "€ 300 contant bij aankomst, terug bij check-out" },
+    { label: "Huisregels", waarde: "Niet-roken huis, geen feesten, stil tussen 22:00 en 08:00" }
+  ];
+
+  SLAAPKAMERS = [
+    { icon: "fa-solid fa-bed", titel: "Grote slaapkamer · Tijmen en Lis", note: "Tweepersoonsbed 160 × 200 cm, eigen bad, douche en wc met dubbele wastafel, deur naar de patio" },
+    { icon: "fa-solid fa-bed", titel: "Slaapkamer · Louis en Marjo", note: "Tweepersoonsbed 150 × 190 cm, deur naar de patio, airco" },
+    { icon: "fa-solid fa-stairs", titel: "Kinderkamer · Juna en Mila", note: "Twee stapelbedden 90 × 190 cm met eigen douche en wc" },
+    { icon: "fa-solid fa-couch", titel: "Vierde kamer", note: "Extra slaapkamer, handig als Mila apart moet slapen tijdens haar middagslaapje" }
+  ];
+
+  AFSTANDEN = [
+    { label: "Supermarkt in Sa Pobla", waarde: "3,5 km" },
+    { label: "Eerste restaurant", waarde: "3,9 km" },
+    { label: "Bushalte Crestatx 2", waarde: "450 m" },
+    { label: "Fietspad", waarde: "200 m" },
+    { label: "Playa de Muro", waarde: "11 km" },
+    { label: "Strand Port d'Alcúdia", waarde: "12,5 km" },
+    { label: "Oude stad Alcúdia", waarde: "13 km" },
+    { label: "Natuurpark S'Albufera", waarde: "14 km" },
+    { label: "Klooster van Lluc", waarde: "26 km" },
+    { label: "Cap de Formentor", waarde: "36 km" },
+    { label: "Vliegveld Palma", waarde: "52 km" }
+  ];
+
+  REIZIGERS = [
+    { id: "jij", naam: "Tijmen", rol: "Zet de reis in elkaar", init: "T" },
+    { id: "vrouw", naam: "Lis", rol: "Zoekt de baaitjes uit", init: "L" },
+    { id: "kind1", naam: "Juna", rol: "Zwemmen en krabben zoeken", init: "J" },
+    { id: "kind2", naam: "Mila", rol: "Zwemmen en ijsjes", init: "M" },
+    { id: "opa", naam: "Opa Louis", rol: "Graag rustige dagen", init: "Lo" },
+    { id: "oma", naam: "Oma Marjo", rol: "Dorpjes en markten", init: "Ma" }
+  ];
+
+  WENSEN = [
+    { id: "zwembad", titel: "Zwemmen bij het huis", note: "Zwembad bij de villa" },
+    { id: "strand", titel: "Stranden", note: "Ondiep water voor de kinderen" },
+    { id: "baai", titel: "Kleine baaitjes", note: "Vroeg gaan, weinig plek" },
+    { id: "dorp", titel: "Knusse dorpjes", note: "Markten en terrasjes" },
+    { id: "eten", titel: "Heerlijk eten", note: "Van tapas tot paella" },
+    { id: "bijzonder", titel: "Bijzondere plekjes", note: "Grotten, uitzichten, oude stadjes" },
+    { id: "kind", titel: "Kinderactiviteiten", note: "Ook iets voor als het regent" }
+  ];
+
+  PLEKKEN = [
+    { id: "villa", naam: "Villa Ca na Saurina", cat: "villa", icon: "fa-solid fa-house", note: "Ons huis met eigen zwembad in Crestatx, gemeente Sa Pobla", min: 0, goedVoor: "Rustige middagen en zwemmen zonder rijden", parkeren: "Eigen oprit", tip: "Zonnebrand bij de deur leggen, dan vergeet je het niet." },
+    { id: "cala-varques", naam: "Cala Varques", cat: "baai", icon: "fa-solid fa-umbrella-beach", note: "Verstopt baaitje, 15 minuten lopen vanaf de weg", min: 45, goedVoor: "Snorkelen, weinig voorzieningen", parkeren: "Langs de weg, kom voor tien uur", tip: "Neem water en schaduw mee, er is geen strandtent." },
+    { id: "cala-llombards", naam: "Cala Llombards", cat: "baai", icon: "fa-solid fa-umbrella-beach", note: "Rustige baai met strandtent en trapjes", min: 75, goedVoor: "Halve dag met de kinderen", parkeren: "Kleine parkeerplaats bovenaan", tip: "De trap terug is steil, badslippers zijn handig." },
+    { id: "calo-des-moro", naam: "Caló des Moro", cat: "baai", icon: "fa-solid fa-umbrella-beach", note: "Het bekende blauwe baaitje", min: 75, goedVoor: "Foto's en vroeg zwemmen", parkeren: "In het dorp, dan lopen", tip: "Voor negen uur is het rustig, daarna staat er een rij." },
+    { id: "es-trenc", naam: "Es Trenc", cat: "strand", icon: "fa-solid fa-umbrella-beach", note: "Lang zandstrand met ondiep water", min: 70, goedVoor: "Kinderen die willen pootjebaden", parkeren: "Betaalde parkeerplaats", tip: "Ga aan de kant van Ses Covetes, daar is meer schaduw." },
+    { id: "mondrago", naam: "Cala Mondragó", cat: "strand", icon: "fa-solid fa-umbrella-beach", note: "Natuurpark met twee zandstranden", min: 70, goedVoor: "Strand plus een kort wandelingetje", parkeren: "Parkeerterrein in het park", tip: "De wandeling tussen de twee stranden duurt tien minuten." },
+    { id: "playa-muro", naam: "Playa de Muro", cat: "strand", icon: "fa-solid fa-umbrella-beach", note: "Heel ondiep water, veel voorzieningen", min: 15, goedVoor: "De hele dag met Louis en Marjo erbij", parkeren: "Ruim, betaald", tip: "Er zijn bedjes en een strandtent, fijn voor een lange dag.", ook: "eten", etenNote: "Strandtenten langs het strand, ook voor een lunch" },
+    { id: "valldemossa", naam: "Valldemossa", cat: "dorp", icon: "fa-solid fa-mountain", note: "Bergdorp in de Serra de Tramuntana", min: 60, goedVoor: "Ochtendje slenteren en koffie", parkeren: "Parkeergarage aan de rand", tip: "Probeer een coca de patata bij de bakker." },
+    { id: "deia", naam: "Deià", cat: "dorp", icon: "fa-solid fa-mountain", note: "Klein dorp met uitzicht over de kust", min: 65, goedVoor: "Lunch met uitzicht", parkeren: "Beperkt, kom vroeg", tip: "De weg erheen is bochtig, houd rekening met wagenziekte.", ook: "eten", etenNote: "Lunch aan de rotsen bij Cala Deià" },
+    { id: "santanyi", naam: "Santanyí", cat: "dorp", icon: "fa-solid fa-store", note: "Zandsteen dorp met markt op woensdag en zaterdag", min: 60, goedVoor: "Markt, ijsje en terrasje", parkeren: "Rond het centrum", tip: "De markt is rond twaalf uur het drukst." },
+    { id: "soller", naam: "Sóller", cat: "dorp", icon: "fa-solid fa-train-tram", note: "Dorp met de oude tram naar de haven", min: 65, goedVoor: "Kinderen die van treintjes houden", parkeren: "Bij het station", tip: "Heen met de tram, terug lopen langs het water." },
+    { id: "alcudia", naam: "Alcúdia", cat: "dorp", icon: "fa-solid fa-store", note: "Oude stadsmuur en smalle straatjes", min: 20, goedVoor: "Combineren met Playa de Muro", parkeren: "Buiten de muren", tip: "Op dinsdag en zondag is er markt." },
+    { id: "porto-cristo", naam: "Porto Cristo", cat: "eten", icon: "fa-solid fa-utensils", note: "Haventje met terrasjes aan het water", min: 40, goedVoor: "Avondeten met uitzicht op de boten", parkeren: "Bij de haven", tip: "Reserveer in het hoogseizoen, in mei loop je meestal binnen." },
+    { id: "palma", naam: "Palma", cat: "eten", icon: "fa-solid fa-utensils", note: "Stad met kathedraal, markten en terrassen", min: 50, goedVoor: "Een dag zonder strand", parkeren: "Parkeergarage bij het park", tip: "De Mercat de l'Olivar is fijn voor een simpele lunch." },
+    { id: "coves-drac", naam: "Coves del Drac", cat: "kind", icon: "fa-solid fa-ticket", note: "Druipsteengrotten met een bootje en muziek", min: 40, goedVoor: "Indruk maken op de kinderen", parkeren: "Grote parkeerplaats", tip: "Tickets vooraf online, anders sta je in de rij." },
+    { id: "palma-aquarium", naam: "Palma Aquarium", cat: "kind", icon: "fa-solid fa-fish", note: "Binnen, dus ook leuk als het regent", min: 50, goedVoor: "Regendag of te veel zon", parkeren: "Eigen parkeerplaats", tip: "Ga aan het eind van de middag, dan is het rustiger." },
+    { id: "cala-sant-vicenc", naam: "Cala Sant Vicenç", cat: "baai", icon: "fa-solid fa-umbrella-beach", note: "Vier kleine baaien onder de bergen, helder water", min: 25, goedVoor: "Snorkelen met Juna, halve dag", parkeren: "In de straatjes, kom voor elf uur", tip: "Cala Barques heeft het zachtste zand van de vier.", ook: "eten", etenNote: "Terrassen aan de baai met zicht op het water" },
+    { id: "formentor-strand", naam: "Platja de Formentor", cat: "strand", icon: "fa-solid fa-umbrella-beach", note: "Zandstrand onder de pijnbomen met uitzicht op de bergen", min: 35, goedVoor: "Schaduw zoeken op een hete dag", parkeren: "Betaald, of met het bootje uit Port de Pollença", tip: "De pijnbomen geven schaduw tot in de middag." },
+    { id: "pollenca", naam: "Pollença", cat: "dorp", icon: "fa-solid fa-church", note: "Dorp met de Calvari-trap van 365 treden", min: 15, goedVoor: "Zondagsochtend markt, daarna een terras", parkeren: "Aan de rand van het centrum", tip: "De trap is te veel voor Louis en Marjo, met de auto kan je bijna bovenaan komen." },
+    { id: "sineu", naam: "Sineu", cat: "dorp", icon: "fa-solid fa-store", note: "Dorp in het midden met de oudste markt van het eiland", min: 30, goedVoor: "Dinsdagmarkt, ook met dieren", parkeren: "Buiten het centrum, dan lopen", tip: "De markt is alleen op dinsdag en loopt tot ongeveer één uur.", ook: "eten", etenNote: "Marktdorp met oude cellers rond het plein" },
+    { id: "lluc", naam: "Santuari de Lluc", cat: "dorp", icon: "fa-solid fa-mountain", note: "Klooster hoog in de Tramuntana met een botanische tuin", min: 40, goedVoor: "Koele lucht en rustig rondlopen", parkeren: "Groot terrein bij het klooster", tip: "Er is een makkelijk pad naar het kruisbeeld met uitzicht." },
+    { id: "formentor", naam: "Cap de Formentor", cat: "uitje", icon: "fa-solid fa-binoculars", note: "Kliffen en een vuurtoren op de punt van het eiland", min: 45, goedVoor: "Uitzicht dat de kinderen niet vergeten", parkeren: "Bij de miradors, in het seizoen met shuttle", tip: "In mei mag je er nog met de eigen auto in, later niet meer." },
+    { id: "albufera", naam: "Parc de s'Albufera", cat: "uitje", icon: "fa-solid fa-feather", note: "Moerasgebied met vlonderpaden en heel veel vogels", min: 10, goedVoor: "Ochtendje fietsen of wandelen, dichtbij", parkeren: "Bij de ingang, dan te voet of op de fiets", tip: "Gratis toegang, wel even een permit halen bij het bezoekerscentrum." },
+    { id: "campanet", naam: "Coves de Campanet", cat: "uitje", icon: "fa-solid fa-mountain-sun", note: "Kleinere druipsteengrotten, veel rustiger dan del Drac", min: 15, goedVoor: "Alternatief als del Drac te druk of te ver is", parkeren: "Eigen parkeerplaats", tip: "Vlakbij het huis, dus prima voor een korte ochtend." },
+    { id: "alaro", naam: "Castell d'Alaró", cat: "uitje", icon: "fa-solid fa-tower-observation", note: "Burchtruïne op een tafelberg met wijd uitzicht", min: 40, goedVoor: "Een keer echt klimmen, zonder de kleintjes", parkeren: "Es Verger, daarna lopen", tip: "De klim is stevig, reken op anderhalf uur omhoog." },
+    { id: "sa-calobra", naam: "Sa Calobra", cat: "uitje", icon: "fa-solid fa-water", note: "Kiezelstrandje aan het eind van een kloof", min: 60, goedVoor: "Indrukwekkend uitje, wel een lange rit", parkeren: "Bij het dorpje, vaak vol", tip: "De weg erheen zit vol haarspeldbochten, geen goede dag voor wagenziekte." },
+    { id: "hidropark", naam: "Hidropark Alcúdia", cat: "kind", icon: "fa-solid fa-water-ladder", note: "Klein waterpark met glijbanen en een peuterbad", min: 20, goedVoor: "Een middag waarop de kinderen de baas zijn", parkeren: "Bij het park", tip: "Ga na de siësta, dan zijn de rijen korter." },
+    { id: "pine-walk", naam: "Pine Walk, Port de Pollença", cat: "eten", icon: "fa-solid fa-utensils", note: "Boulevard onder de pijnbomen met terrassen aan het water", min: 20, goedVoor: "Avondwandeling en ergens neerstrijken", parkeren: "In de zijstraten", tip: "Loop tot het eind, daar is het rustiger en kijk je op de bergen." },
+    { id: "sa-pobla", naam: "Sa Pobla", cat: "eten", icon: "fa-solid fa-mug-saucer", note: "Ons eigen dorp, plein met tapasbars en een supermarkt", min: 5, goedVoor: "Boodschappen en een snelle hap dichtbij", parkeren: "Rond het plein", tip: "Hier doe je de boodschappen, en op zondag is er markt." },
+    { id: "arta", naam: "Artà", cat: "dorp", icon: "fa-solid fa-church", note: "Dorp met een trappenpad naar het bergheiligdom Sant Salvador", min: 35, goedVoor: "Dinsdagmarkt en uitzicht van boven", parkeren: "Onderaan het dorp", tip: "Rijd om het dorp heen naar boven, dan hoef je de trappen niet op." },
+    { id: "fornalutx", naam: "Fornalutx", cat: "dorp", icon: "fa-solid fa-mountain", note: "Steile straatjes van natuursteen tussen de sinaasappelboomgaarden", min: 65, goedVoor: "Koffie op een piepklein pleintje", parkeren: "Aan de rand, het dorp zelf is te smal", tip: "Combineer met Sóller, ze liggen tien minuten uit elkaar." },
+    { id: "capdepera", naam: "Capdepera", cat: "dorp", icon: "fa-solid fa-chess-rook", note: "Middeleeuws kasteel op de heuvel boven het dorp", min: 45, goedVoor: "Ridders en kantelen, leuk voor Juna", parkeren: "Onder het kasteel", tip: "Binnen de muren mag je rondrennen, dat scheelt gezeur." },
+    { id: "petra", naam: "Petra", cat: "dorp", icon: "fa-solid fa-wine-bottle", note: "Rustig binnenlanddorp, geboorteplaats van Juníper Serra", min: 30, goedVoor: "Een dorp zonder toeristen", parkeren: "Overal vrij", tip: "Hier eet je Mallorcaans voor de helft van de kustprijzen.", ook: "eten", etenNote: "Dorpscellers, Mallorcaans eten voor dorpsprijzen" },
+    { id: "banyalbufar", naam: "Banyalbufar", cat: "dorp", icon: "fa-solid fa-mountain-sun", note: "Dorp op oude landbouwterrassen die aflopen naar zee", min: 70, goedVoor: "Uitzicht bij zonsondergang", parkeren: "Langs de doorgaande weg", tip: "De weg erheen is smal en bochtig, neem de tijd." },
+    { id: "cala-agulla", naam: "Cala Agulla", cat: "strand", icon: "fa-solid fa-umbrella-beach", note: "Breed zandstrand omringd door dennenbos", min: 45, goedVoor: "Schaduw achter het strand, ruimte om te rennen", parkeren: "Grote betaalde parkeerplaats", tip: "Vanaf hier loop je in een half uur naar Cala Mesquida." },
+    { id: "cala-mesquida", naam: "Cala Mesquida", cat: "strand", icon: "fa-solid fa-wind", note: "Duinen en golven, wilder dan de baaien in het zuiden", min: 45, goedVoor: "Golfjes voor grotere kinderen", parkeren: "Bij de duinovergang", tip: "Er staat vaak wind, fijn op een snikhete dag." },
+    { id: "platja-alcudia", naam: "Platja d'Alcúdia", cat: "strand", icon: "fa-solid fa-umbrella-beach", note: "Kilometerslang ondiep strand met boulevard erlangs", min: 20, goedVoor: "Strand plus ijsjes zonder ver te lopen", parkeren: "Langs de boulevard, betaald", tip: "Het loopt heel geleidelijk af, ideaal voor Mila." },
+    { id: "can-picafort", naam: "Can Picafort", cat: "strand", icon: "fa-solid fa-umbrella-beach", note: "Familiestrand met promenade, dichtbij het huis", min: 15, goedVoor: "Korte strandmiddag tussen de siësta door", parkeren: "In de zijstraten", tip: "Aan de kant van Son Bauló is het rustiger." },
+    { id: "cala-figuera", naam: "Cala Figuera", cat: "baai", icon: "fa-solid fa-anchor", note: "Smalle vissershaven met botenhuizen aan het water", min: 65, goedVoor: "Kijken naar boten, niet om te zwemmen", parkeren: "Boven in het dorp", tip: "Ga tegen zessen, dan komen de vissersboten binnen." },
+    { id: "cala-ratjada", naam: "Cala Rajada", cat: "eten", icon: "fa-solid fa-fish", note: "Levendig haventje met visrestaurants aan de kade", min: 50, goedVoor: "Verse vis kijken en eten", parkeren: "Bij de haven", tip: "De kraampjes op de kade zijn 's avonds het gezelligst." },
+    { id: "colonia-sant-pere", naam: "Colònia de Sant Pere", cat: "eten", icon: "fa-solid fa-sailboat", note: "Klein en rustig haventje met een handvol terrassen", min: 30, goedVoor: "Avondeten zonder drukte", parkeren: "Aan de haven", tip: "Hier komen bijna alleen Mallorcanen, reserveren hoeft niet." },
+    { id: "muro", naam: "Muro", cat: "eten", icon: "fa-solid fa-utensils", note: "Dorpsplein met oude cellers waar ze streekgerechten maken", min: 10, goedVoor: "Echt Mallorcaans eten vlakbij het huis", parkeren: "Rond het plein", tip: "Cellers zitten vaak in oude wijnkelders, koel op een hete dag." },
+    { id: "es-comu", naam: "Es Comú de Muro", cat: "uitje", icon: "fa-solid fa-shoe-prints", note: "Vlonderpad door de duinen tussen strand en moeras", min: 12, goedVoor: "Kort wandelingetje voor het ontbijt", parkeren: "Bij Platja de Muro", tip: "Vlak pad, dus ook prima met Louis en Marjo." },
+    { id: "inca", naam: "Inca", cat: "eten", icon: "fa-solid fa-wine-bottle", note: "Stadje met oude cellers in de kelders van de binnenstad", min: 20, goedVoor: "Mallorcaans eten op een regenachtige dag", parkeren: "Parkeergarage bij de markt", tip: "Ca'n Amer en Sa Travessa zijn de bekendste cellers, reserveer voor het weekend." },
+    { id: "es-barcares", naam: "Es Barcarès", cat: "eten", icon: "fa-solid fa-sailboat", note: "Piepklein vissershaventje met botenhuisjes en een enkel terras", min: 25, goedVoor: "Zonsondergang met een hapje, heel rustig", parkeren: "Langs de weg bij het haventje", tip: "Er is maar een handvol plekken, ga voor zeven uur." },
+    { id: "port-alcudia", naam: "Port d'Alcúdia", cat: "eten", icon: "fa-solid fa-utensils", note: "Boulevard langs de marina met terrassen en ijssalons", min: 20, goedVoor: "Avondje slenteren met de kinderen", parkeren: "Langs de boulevard, betaald", tip: "Aan de kant van de marina is het rustiger dan bij het strand." },
+    { id: "port-soller", naam: "Port de Sóller", cat: "eten", icon: "fa-solid fa-fish", note: "Ronde baai met visrestaurants langs het water", min: 70, goedVoor: "Lunch na het tramritje uit Sóller", parkeren: "Bij de haven, betaald", tip: "Kom met de tram uit Sóller, dan hoef je hier niet te parkeren." },
+    { id: "portixol", naam: "Portixol, Palma", cat: "eten", icon: "fa-solid fa-mug-saucer", note: "Oude vissersbuurt van Palma, nu vol ontbijttentjes", min: 55, goedVoor: "Laat ontbijt voordat je de stad in gaat", parkeren: "In de zijstraten achter de boulevard", tip: "Combineer met een strandwandeling naar Ciutat Jardí." },
+    { id: "santa-catalina", naam: "Santa Catalina, Palma", cat: "eten", icon: "fa-solid fa-store", note: "Markthal in Palma met eetkraampjes en terrassen eromheen", min: 55, goedVoor: "Lunch tijdens een dag in Palma", parkeren: "Parkeergarage in de buurt", tip: "De markt sluit rond twee uur, de terrassen blijven open." },
+    { id: "manacor", naam: "Manacor", cat: "eten", icon: "fa-solid fa-utensils", note: "Werkstad in het binnenland met tapasbars in het centrum", min: 40, goedVoor: "Eten voor dorpsprijzen op de terugweg", parkeren: "Rond de markt", tip: "Goed te combineren met Coves del Drac of Porto Cristo." },
+    { id: "binissalem", naam: "Binissalem", cat: "dorp", icon: "fa-solid fa-wine-bottle", note: "Wijndorp met bodega's rond een groot dorpsplein", min: 30, goedVoor: "Wijn proeven en een lange lunch", parkeren: "Rond het plein", tip: "Bij sommige bodega's kan je zonder reserveren binnenlopen." },
+    { id: "campanet-dorp", naam: "Campanet", cat: "dorp", icon: "fa-solid fa-church", note: "Stil dorpje met een plein, een kerk en een paar cafés", min: 10, goedVoor: "Koffie zonder toeristen, tien minuten rijden", parkeren: "Overal vrij", tip: "Combineer met de Coves de Campanet even buiten het dorp." },
+    { id: "caimari", naam: "Caimari", cat: "dorp", icon: "fa-solid fa-mountain", note: "Natuurstenen dorpje aan de voet van de Tramuntana", min: 20, goedVoor: "Stop onderweg naar Lluc", parkeren: "Aan de rand van het dorp", tip: "Hier begint het oude pelgrimspad naar het klooster." },
+    { id: "santa-maria", naam: "Santa Maria del Camí", cat: "dorp", icon: "fa-solid fa-store", note: "Dorp met een grote zondagsmarkt door de hele hoofdstraat", min: 35, goedVoor: "Zondagochtend markt en koffie", parkeren: "Buiten het centrum, dan lopen", tip: "De markt loopt op zondag tot ongeveer half twee." },
+    { id: "esporles", naam: "Esporles", cat: "dorp", icon: "fa-solid fa-mountain-sun", note: "Groen Tramuntanadorp met een beek langs de hoofdstraat", min: 55, goedVoor: "Terras in de schaduw op een hete dag", parkeren: "Langs de doorgaande weg", tip: "Te combineren met Valldemossa, twintig minuten verder." },
+    { id: "es-colomer", naam: "Mirador Es Colomer", cat: "uitje", icon: "fa-solid fa-binoculars", note: "Uitzichtpunt hoog boven de kliffen op de weg naar Formentor", min: 35, goedVoor: "Even uitstappen voor het uitzicht", parkeren: "Kleine parkeerplaats bij de mirador", tip: "Vroeg of laat op de dag is er plek, daartussen staat het vol." },
+    { id: "talaia-alcudia", naam: "Talaia d'Alcúdia", cat: "uitje", icon: "fa-solid fa-shoe-prints", note: "Wandeling over de kaap achter Alcúdia met zicht op beide baaien", min: 30, goedVoor: "Ochtendwandeling zonder de kleintjes", parkeren: "Bij de slagboom van Es Coll Baix", tip: "Neem water mee, op de top is geen schaduw." },
+    { id: "ses-paisses", naam: "Ses Païsses", cat: "uitje", icon: "fa-solid fa-landmark", note: "Prehistorisch dorp van reuzenstenen in een olijfbos bij Artà", min: 35, goedVoor: "Kort en verrassend uitje voor Juna", parkeren: "Bij de ingang", tip: "Een rondje duurt een half uur, fijn te combineren met Artà." },
+    { id: "cuber", naam: "Cúber en Gorg Blau", cat: "uitje", icon: "fa-solid fa-water", note: "Twee stuwmeren tussen de hoogste bergen van het eiland", min: 45, goedVoor: "Vlak wandelpad met groot uitzicht", parkeren: "Langs de weg bij het meer", tip: "Het pad om Cúber is vlak, dus ook met Louis en Marjo te doen." },
+    { id: "rafa-nadal", naam: "Rafa Nadal Museum", cat: "uitje", icon: "fa-solid fa-trophy", note: "Sportmuseum bij de tennisacademie in Manacor", min: 45, goedVoor: "Regendag met de grotere kinderen", parkeren: "Eigen parkeerplaats", tip: "Er zijn ook interactieve sportspellen, niet alleen vitrines." }
+  ];
+
+  PRAKTISCH = {
+    arta: { plaats: "Artà", coord: "39.6944, 3.3497", open: "Markt op dinsdag, 08:00 tot 13:30" },
+    fornalutx: { plaats: "Fornalutx", coord: "39.7828, 2.7333", open: "Terrassen vanaf 10:00" },
+    capdepera: { plaats: "Capdepera", coord: "39.7025, 3.4344", open: "Kasteel dagelijks overdag open" },
+    petra: { plaats: "Petra", coord: "39.6136, 3.1017", open: "Restaurants vanaf 13:00 en weer vanaf 20:00" },
+    banyalbufar: { plaats: "Banyalbufar", coord: "39.6864, 2.5136", open: "Terrassen overdag, mooiste licht rond zonsondergang" },
+    "cala-agulla": { plaats: "Cala Agulla, Capdepera", coord: "39.7175, 3.4433", open: "Vrij toegankelijk, strandtent vanaf 10:00" },
+    "cala-mesquida": { plaats: "Cala Mesquida, Capdepera", coord: "39.7442, 3.4353", open: "Vrij toegankelijk" },
+    "platja-alcudia": { plaats: "Port d'Alcúdia", coord: "39.8320, 3.1108", open: "Strandtenten vanaf 10:00" },
+    "can-picafort": { plaats: "Can Picafort, Santa Margalida", coord: "39.7647, 3.1553", open: "Promenade altijd, terrassen vanaf 11:00" },
+    "cala-figuera": { plaats: "Cala Figuera, Santanyí", coord: "39.3269, 3.1633", open: "Haven vrij toegankelijk, terrassen vanaf 12:00" },
+    "cala-ratjada": { plaats: "Cala Rajada, Capdepera", coord: "39.7136, 3.4633", open: "Restaurants vanaf 12:00 tot laat" },
+    "colonia-sant-pere": { plaats: "Colònia de Sant Pere, Artà", coord: "39.7444, 3.2794", open: "Terrassen vanaf 12:00" },
+    muro: { plaats: "Muro", coord: "39.7364, 3.0553", open: "Cellers 13:00 tot 15:30 en vanaf 20:00" },
+    "es-comu": { plaats: "Es Comú, Muro", coord: "39.7961, 3.1085", open: "Vrij toegankelijk, mooiste vroeg in de ochtend" },
+    "cala-sant-vicenc": { plaats: "Cala Sant Vicenç, Pollença", coord: "39.9200, 3.0553", open: "Vrij toegankelijk, strandtenten vanaf 10:00" },
+    "formentor-strand": { plaats: "Platja de Formentor, Pollença", coord: "39.9247, 3.1327", open: "Vrij toegankelijk, parkeren betaald" },
+    pollenca: { plaats: "Pollença", coord: "39.8767, 3.0164", open: "Markt op zondag, 08:00 tot 13:30" },
+    sineu: { plaats: "Sineu", coord: "39.6425, 3.0106", open: "Markt op dinsdag, 08:00 tot 13:00" },
+    lluc: { plaats: "Santuari de Lluc, Escorca", coord: "39.8231, 2.8853", open: "Terrein dagelijks open, tuin en museum overdag" },
+    formentor: { plaats: "Cap de Formentor, Pollença", coord: "39.9583, 3.2130", open: "Weg overdag open, in het hoogseizoen alleen met shuttle" },
+    albufera: { plaats: "Parc natural de s'Albufera, Muro", coord: "39.7906, 3.1064", open: "Dagelijks, permit bij het bezoekerscentrum" },
+    campanet: { plaats: "Coves de Campanet", coord: "39.8092, 2.9497", open: "Rondleidingen dagelijks, laatste eind van de middag" },
+    alaro: { plaats: "Castell d'Alaró, Alaró", coord: "39.7290, 2.7930", open: "Pad vrij toegankelijk, restaurant boven wisselend" },
+    "sa-calobra": { plaats: "Sa Calobra, Escorca", coord: "39.8497, 2.8003", open: "Vrij toegankelijk, terrassen vanaf 11:00" },
+    hidropark: { plaats: "Port d'Alcúdia", coord: "39.8447, 3.1157", open: "Seizoen vanaf mei, meestal 10:00 tot 17:30" },
+    "pine-walk": { plaats: "Port de Pollença", coord: "39.9075, 3.0844", open: "Terrassen van 11:00 tot laat" },
+    "sa-pobla": { plaats: "Sa Pobla", coord: "39.7686, 3.0231", open: "Winkels tot 13:30 en weer vanaf 17:00, markt op zondag" },
+    villa: { plaats: "Crestatx, Sa Pobla", coord: "39.8037, 3.0145", open: "Sleutels vanaf 16:00 op de aankomstdag" },
+    "cala-varques": { plaats: "Manacor", coord: "39.4886, 3.2894", open: "Vrij toegankelijk, geen voorzieningen" },
+    "cala-llombards": { plaats: "Santanyí", coord: "39.3283, 3.1372", open: "Strandtent meestal vanaf 10:00" },
+    "calo-des-moro": { plaats: "Santanyí", coord: "39.3325, 3.1153", open: "Vrij toegankelijk, kom voor 09:00" },
+    "es-trenc": { plaats: "Campos, Ses Covetes", coord: "39.3547, 2.9800", open: "Parkeerplaats vanaf 09:00, betaald" },
+    mondrago: { plaats: "Natuurpark Mondragó, Santanyí", coord: "39.3474, 3.1832", open: "Park dagelijks open, parkeren betaald" },
+    "playa-muro": { plaats: "Muro, Badia d'Alcúdia", coord: "39.8078, 3.1236", open: "Strandtent en bedjes vanaf 10:00" },
+    valldemossa: { plaats: "Valldemossa", coord: "39.7092, 2.6225", open: "Winkels vanaf 10:00, siësta rond 14:00" },
+    deia: { plaats: "Deià", coord: "39.7486, 2.6486", open: "Terrassen vanaf 12:00" },
+    santanyi: { plaats: "Santanyí", coord: "39.3547, 3.1289", open: "Markt woensdag en zaterdag, 08:00 tot 13:30" },
+    soller: { plaats: "Sóller", coord: "39.7663, 2.7150", open: "Tram rijdt ongeveer elk half uur" },
+    alcudia: { plaats: "Alcúdia oude stad", coord: "39.8531, 3.1211", open: "Markt dinsdag en zondag, 08:00 tot 13:30" },
+    "porto-cristo": { plaats: "Porto Cristo, Manacor", coord: "39.5386, 3.3325", open: "Terrassen vanaf 12:00" },
+    palma: { plaats: "Palma de Mallorca", coord: "39.5696, 2.6502", open: "Mercat de l'Olivar tot 14:30, maandag tot zaterdag" },
+    "coves-drac": { plaats: "Porto Cristo, Manacor", coord: "39.5347, 3.3308", open: "Rondleidingen op vaste tijden, tickets vooraf online" },
+    inca: { plaats: "Inca, binnenstad", coord: "39.7211, 2.9111", open: "Cellers vanaf 13:00, markt op donderdag" },
+    sineu: { plaats: "Sineu", coord: "39.6425, 3.0106", open: "Markt op woensdag, 08:00 tot 13:30" },
+    petra: { plaats: "Petra", coord: "39.6136, 3.1017", open: "Celler gesloten op maandag" },
+    "cala-sant-vicenc": { plaats: "Cala Sant Vicenç, Pollença", coord: "39.9200, 3.0553", open: "Strandterrassen vanaf 11:00" },
+    "palma-aquarium": { plaats: "Playa de Palma, Can Pastilla", coord: "39.5106, 2.7369", open: "Dagelijks, laatste toegang ruim voor sluiting" }
+  };
+
+  RESTOBIJ = {
+    gavella: "playa-muro",
+    figueret: "playa-muro",
+    nu: "playa-muro",
+    costa: "alcudia",
+    merlet: "alcudia",
+    portassa: "alcudia",
+    patos: "playa-muro",
+    "patro-march": "deia",
+    "can-lluc": "deia",
+    canamer: "inca",
+    travessa: "inca",
+    "son-toreo": "sineu",
+    "celler-petra": "petra",
+    "sa-placa": "petra",
+    "cala-barques": "cala-sant-vicenc",
+    "la-tasca": "cala-sant-vicenc"
+  };
+
+  FOTO = {
+    "arta": "https://commons.wikimedia.org/wiki/Special:FilePath/Art%C3%A0_Sant_Salvador_01.jpg?width=1000",
+    "fornalutx": "https://commons.wikimedia.org/wiki/Special:FilePath/Fornalutx-cropped.jpeg?width=1000",
+    "capdepera": "https://commons.wikimedia.org/wiki/Special:FilePath/Capdepera_-_Castell_de_Capdepera_06_ies.jpg?width=1000",
+    "petra": "https://commons.wikimedia.org/wiki/Special:FilePath/Petra_-_Mallorca_-_Mission_San_Carlos_Borroeo_de_Carmelo.jpg?width=1000",
+    "banyalbufar": "https://commons.wikimedia.org/wiki/Special:FilePath/Banyalbufar%2C_Sa_Rabassa%2C_sur.jpg?width=1000",
+    "cala-agulla": "https://commons.wikimedia.org/wiki/Special:FilePath/Cala_Agulla_01.jpg?width=1000",
+    "cala-mesquida": "https://commons.wikimedia.org/wiki/Special:FilePath/Cala_Mesquida_03.jpg?width=1000",
+    "platja-alcudia": "https://commons.wikimedia.org/wiki/Special:FilePath/Alcudia_beach_-_panoramio.jpg?width=1000",
+    "can-picafort": "https://commons.wikimedia.org/wiki/Special:FilePath/Mallorca_Can_Picafort_asv2023-04_img01.jpg?width=1000",
+    "cala-figuera": "https://commons.wikimedia.org/wiki/Special:FilePath/Puerto_Cala_Figuera_Santanyi_Mallorca.jpg?width=1000",
+    "cala-ratjada": "https://commons.wikimedia.org/wiki/Special:FilePath/Cala_Rajada_Hafen_und_Geb%C3%A4ude_der_Passeig_Colom_von_der_Mole_aus_2021-10-13.jpg?width=1000",
+    "colonia-sant-pere": "https://commons.wikimedia.org/wiki/Special:FilePath/Col%C3%B2nia_de_Sant_Pere_05.jpg?width=1000",
+    "muro": "https://commons.wikimedia.org/wiki/Special:FilePath/Vista_a%C3%A8ria_de_Muro.JPG?width=1000",
+    "es-comu": "https://commons.wikimedia.org/wiki/Special:FilePath/Luftbild_Es_Com%C3%BA_01.jpg?width=1000",
+    "cala-sant-vicenc": "https://commons.wikimedia.org/wiki/Special:FilePath/02017_0139_Cala_Sant_Vicen%C3%A7%2C_Majorca.jpg?width=1000",
+    "formentor-strand": "https://commons.wikimedia.org/wiki/Special:FilePath/Platja_formentor_talaia.JPG?width=1000",
+    "pollenca": "https://commons.wikimedia.org/wiki/Special:FilePath/Views_from_El_Calvari_towards_Pollen%C3%A7a_05.jpg?width=1000",
+    "sineu": "https://commons.wikimedia.org/wiki/Special:FilePath/Sineu_-_Markt_02_ies.jpg?width=1000",
+    "lluc": "https://commons.wikimedia.org/wiki/Special:FilePath/Santuari_de_Lluc_-_View_from_Monte_del_Rosario.jpg?width=1000",
+    "albufera": "https://commons.wikimedia.org/wiki/Special:FilePath/Parc_natural_de_s%E2%80%99Albufera_de_Mallorca_08.jpg?width=1000",
+    "campanet": "https://commons.wikimedia.org/wiki/Special:FilePath/Mallorca_Cave_of_Campanet_asv2023-04_img01.jpg?width=1000",
+    "alaro": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell_d'Alaro_1.JPG?width=1000",
+    "sa-calobra": "https://commons.wikimedia.org/wiki/Special:FilePath/Mallorca_Sa_Calobra_Torrent_de_Pareis_beach.jpg?width=1000",
+    hidropark: "https://commons.wikimedia.org/wiki/Special:FilePath/Alcudia_port_maritim.jpg?width=1000",
+    "pine-walk": "https://commons.wikimedia.org/wiki/Special:FilePath/Puerto_de_Pollenca%2C_02.jpg?width=1000",
+    "sa-pobla": "https://commons.wikimedia.org/wiki/Special:FilePath/Sa_Pobla_-_Mallorca_-_2014.jpg?width=1000",
+    "cala-varques": "https://commons.wikimedia.org/wiki/Special:FilePath/Cala_Varques,_Mallorca_(7788294442).jpg?width=1000",
+    "calo-des-moro": "https://commons.wikimedia.org/wiki/Special:FilePath/View_of_the_bay_at_Calo_des_Moro,_Mallorca_(Spain)_(23899506181).jpg?width=1000",
+    "cala-llombards": "https://commons.wikimedia.org/wiki/Special:FilePath/Beach_houses_and_beach_at_Cala_Llombards,_Mallorca_(Spain)_(23459322020).jpg?width=1000",
+    "mondrago": "https://commons.wikimedia.org/wiki/Special:FilePath/Vista_del_parque_natural_de_Mondrag%C3%B3.jpg?width=1000",
+    "es-trenc": "https://commons.wikimedia.org/wiki/Special:FilePath/Es_Trenc,_playa,_al_fondo_Sa_R%C3%A1pita.jpg?width=1000",
+    "playa-muro": "https://commons.wikimedia.org/wiki/Special:FilePath/16-02-22-Playa-de-Muro-Mallorca-RalfR_RR26350.jpg?width=1000",
+    "valldemossa": "https://commons.wikimedia.org/wiki/Special:FilePath/Die_Kartause_von_Valldemossa_auf_Mallorca%2C_Spanien_(48001716291).jpg?width=1000",
+    "deia": "https://commons.wikimedia.org/wiki/Special:FilePath/Dei%C3%A0%2C_Mallorca_(13333982693).jpg?width=1000",
+    "alcudia": "https://commons.wikimedia.org/wiki/Special:FilePath/Alcudia%2C_en_Mallorca_(Baleares%2C_Espa%C3%B1a).jpg?width=1000",
+    "santanyi": "https://commons.wikimedia.org/wiki/Special:FilePath/Mallorca-Santany%C3%AD_(city)-Pla%C3%A7a_Major-no_market-01.jpg?width=1000",
+    "soller": "https://commons.wikimedia.org/wiki/Special:FilePath/Tram_23_leading_4-car_train_in_Port_de_S%C3%B3ller,_next_to_the_bay.jpg?width=1000",
+    "porto-cristo": "https://commons.wikimedia.org/wiki/Special:FilePath/Porto_Cristo_(Baleares,_Espa%C3%B1a).jpg?width=1000",
+    "coves-drac": "https://commons.wikimedia.org/wiki/Special:FilePath/Mallorca-Porto_Cristo-Coves_del_Drac-48E.jpg?width=1000",
+    "palma": "assets/photos/palma-dusk.png",
+    "palma-aquarium": "https://commons.wikimedia.org/wiki/Special:FilePath/Palma_Aquarium-La_jungla.jpg?width=1000",
+    "formentor": "https://commons.wikimedia.org/wiki/Special:FilePath/Mallorca_Cap_de_Formentor_Mirador_de_Mal_Pas.jpg?width=1000",
+    "markt": "https://commons.wikimedia.org/wiki/Special:FilePath/Sineu_-_Markt_13_ies.jpg?width=1000",
+    "boottocht": "https://commons.wikimedia.org/wiki/Special:FilePath/Porto_Cristo_(Baleares,_Espa%C3%B1a).jpg?width=1000"
+  };
+
+  CREDIT = {
+    "arta": "Foto: Olaf Tausch / Wikimedia Commons, CC BY-SA 3.0",
+    "fornalutx": "Foto: Paucabot / Wikimedia Commons, CC BY-SA 3.0",
+    "capdepera": "Foto: Frank Vincentz / Wikimedia Commons, CC BY-SA 3.0",
+    "petra": "Foto: H. Zell / Wikimedia Commons, CC BY-SA 3.0",
+    "banyalbufar": "Foto: Malopez 21 / Wikimedia Commons, CC BY-SA 4.0",
+    "cala-agulla": "Foto: Olaf Tausch / Wikimedia Commons, CC BY-SA 3.0",
+    "cala-mesquida": "Foto: Olaf Tausch / Wikimedia Commons, CC BY-SA 3.0",
+    "platja-alcudia": "Foto: paul foster / Wikimedia Commons, CC BY 3.0",
+    "can-picafort": "Foto: A. Savin / Wikimedia Commons, Free Art License",
+    "cala-figuera": "Foto: Rafael Ortega Díaz / Wikimedia Commons, CC BY-SA 4.0",
+    "cala-ratjada": "Foto: Strubbl / Wikimedia Commons, CC BY-SA 4.0",
+    "colonia-sant-pere": "Foto: Olaf Tausch / Wikimedia Commons, CC BY-SA 3.0",
+    "muro": "Foto: Chixoy / Wikimedia Commons, CC BY-SA 3.0",
+    "es-comu": "Foto: Olaf Tausch / Wikimedia Commons, CC BY 3.0",
+    "cala-sant-vicenc": "Foto: Silar / Wikimedia Commons, CC BY-SA 4.0",
+    "formentor-strand": "Foto: Antonio De Lorenzo en Marina Venta / Wikimedia Commons, CC BY 2.5",
+    pollenca: "Foto: Kritzolina / Wikimedia Commons, CC BY-SA 4.0",
+    sineu: "Foto: Frank Vincentz / Wikimedia Commons, CC BY-SA 3.0",
+    lluc: "Foto: H. Zell / Wikimedia Commons, CC BY-SA 3.0",
+    albufera: "Foto: Olaf Tausch / Wikimedia Commons, CC BY 3.0",
+    campanet: "Foto: A. Savin / Wikimedia Commons, Free Art License",
+    alaro: "Foto: killer_queen1 / Wikimedia Commons, CC BY-SA 3.0",
+    "sa-calobra": "Foto: Isiwal / Wikimedia Commons, CC BY-SA 3.0",
+    hidropark: "Foto: Antonio De Lorenzo / Wikimedia Commons, CC BY 2.5",
+    "pine-walk": "Foto: Malopez 21 / Wikimedia Commons, CC BY-SA 4.0",
+    "sa-pobla": "Foto: Michiel1972 / Wikimedia Commons, CC BY-SA 3.0",
+    "cala-varques": "Foto: Wikimedia Commons, CC BY-SA",
+    "calo-des-moro": "Foto: Tommie Hansen / Wikimedia Commons, CC BY 2.0",
+    "cala-llombards": "Foto: Tommie Hansen / Wikimedia Commons, CC BY 2.0",
+    "mondrago": "Foto: Wikimedia Commons, CC BY-SA",
+    "es-trenc": "Foto: Wikimedia Commons, CC BY-SA 4.0",
+    "playa-muro": "Foto: Ralf Roletschek / Wikimedia Commons, CC BY-SA",
+    "soller": "Foto: Alain Gavillet / Wikimedia Commons, CC BY 2.0",
+    "porto-cristo": "Foto: Oltau / Wikimedia Commons, CC BY",
+    "coves-drac": "Foto: Rikki Mitterer / Wikimedia Commons, CC BY-SA 4.0",
+    "palma-aquarium": "Foto: Wikimedia Commons, CC BY-SA",
+    "formentor": "Foto: Isiwal / Wikimedia Commons, CC BY-SA 3.0",
+    "valldemossa": "Foto: dronepicr / Wikimedia Commons, CC BY 2.0",
+    "deia": "Foto: Wikimedia Commons, CC BY 2.0",
+    "alcudia": "Foto: Wikimedia Commons, CC BY-SA",
+    "santanyi": "Foto: Wikimedia Commons, CC BY-SA 4.0",
+    "markt": "Foto: Frank Vincentz / Wikimedia Commons, CC BY-SA 3.0"
+  };
+
+  RESTOFOTO = {
+    gavella: "https://commons.wikimedia.org/wiki/Special:FilePath/01_Paella_Valenciana_original.jpg?width=1000",
+    figueret: "https://commons.wikimedia.org/wiki/Special:FilePath/Plato_de_paella_(Comunidad_Valenciana).jpg?width=1000",
+    nu: "https://commons.wikimedia.org/wiki/Special:FilePath/Badia_d'Alc%C3%BAdia_-_Muro%2C_Spain_2022-04-17_(01).jpg?width=1000",
+    costa: "https://commons.wikimedia.org/wiki/Special:FilePath/Frit_mallorqu%C3%AD.jpg?width=1000",
+    merlet: "https://commons.wikimedia.org/wiki/Special:FilePath/Patatas_bravas.jpg?width=1000",
+    portassa: "https://commons.wikimedia.org/wiki/Special:FilePath/Pa_amb_oli.jpg?width=1000",
+    patos: "https://commons.wikimedia.org/wiki/Special:FilePath/Boardwalk_at_Es_Com%C3%BA_-_Muro%2C_Spain_2022-04-17_(01).jpg?width=1000"
+  };
+
+  RESTOSFEER = {
+    gavella: "Sfeerbeeld: vispaella \u00b7 Wikimedia Commons",
+    figueret: "Sfeerbeeld: paella \u00b7 Wikimedia Commons",
+    nu: "Sfeerbeeld: Badia d\u2019Alc\u00fadia bij Muro \u00b7 Wikimedia Commons",
+    costa: "Sfeerbeeld: frit mallorqu\u00ed \u00b7 Wikimedia Commons",
+    merlet: "Sfeerbeeld: tapas \u00b7 Wikimedia Commons",
+    portassa: "Sfeerbeeld: pa amb oli \u00b7 Wikimedia Commons",
+    patos: "Sfeerbeeld: vlonderpad in S\u2019Albufera \u00b7 Wikimedia Commons"
+  };
+
+  foto(id) { return this.FOTO[id] || ""; }
+
+  credit(id) { return this.CREDIT[id] || ""; }
+
+  restosBij(plekId) { return this.ETEN.filter((r) => this.RESTOBIJ[r.id] === plekId); }
+
+  CATLABEL = { villa: "Ons huis", baai: "Baaitje", strand: "Strand", dorp: "Dorpje", eten: "Eten", kind: "Kinderen", uitje: "Uitje" };
+
+  CHIPS = [
+    { id: "alles", label: "Alles" },
+    { id: "strand", label: "Stranden" },
+    { id: "baai", label: "Baaitjes" },
+    { id: "dorp", label: "Dorpjes" },
+    { id: "uitje", label: "Uitjes" },
+    { id: "eten", label: "Eten" },
+    { id: "kind", label: "Kinderen" }
+  ];
+
+  DAGEN = [
+    { dag: "vr", num: "7", titel: "Vrijdag 7 mei", thema: "Aankomst en de eerste duik", items: [
+      { tijd: "11:00", titel: "Op de luchthaven zijn", plek: "Düsseldorf · twee uur voor vertrek", icon: "fa-solid fa-suitcase-rolling" },
+      { tijd: "13:05", titel: "Vlucht naar Palma", plek: "Düsseldorf (DUS) · 2 uur 20", icon: "fa-solid fa-plane-departure", badge: "Geboekt", badgeType: "success" },
+      { tijd: "15:25", titel: "Landen op Palma", plek: "Palma (PMI) · zelfde tijdzone", icon: "fa-solid fa-plane-arrival" },
+      { tijd: "16:15", titel: "Huurauto ophalen", plek: "Palma Airport", icon: "fa-solid fa-car", badge: "Geboekt", badgeType: "success" },
+      { tijd: "16:45", titel: "Rijden naar de villa", plek: "Ongeveer 50 minuten · Mila slaapt", icon: "fa-solid fa-moon" },
+      { tijd: "17:40", titel: "Sleutels van de villa", plek: "Villa Ca na Saurina", icon: "fa-solid fa-key", plekId: "villa" },
+      { tijd: "18:15", titel: "Eerste duik in het zwembad", plek: "Bij het huis", icon: "fa-solid fa-person-swimming" },
+      { tijd: "18:45", titel: "Simpel eten op het terras", plek: "Onderweg boodschappen gedaan", icon: "fa-solid fa-utensils" },
+      { tijd: "19:30", titel: "Juna en Mila naar bed", plek: "Iets later, het is de eerste dag", icon: "fa-solid fa-bed" }
+    ] },
+    { dag: "za", num: "8", titel: "Zaterdag 8 mei", thema: "Ondiep water op een kwartier rijden", items: [
+      { tijd: "09:00", titel: "Rustig ontbijten", plek: "Op het terras", icon: "fa-solid fa-mug-saucer" },
+      { tijd: "10:00", titel: "Playa de Muro", plek: "Ondiep water · 15 minuten", icon: "fa-solid fa-umbrella-beach", plekId: "playa-muro" },
+      { tijd: "12:00", titel: "Terug naar de villa", plek: "Voor het slaapje van Mila", icon: "fa-solid fa-car" },
+      { tijd: "12:30", titel: "Mila slaapt · stille uren", plek: "Juna leest of zwemt zacht", icon: "fa-solid fa-moon" },
+      { tijd: "14:30", titel: "Zwembad met iedereen", plek: "Bij het huis", icon: "fa-solid fa-person-swimming" },
+      { tijd: "17:30", titel: "Vroeg eten", plek: "Bij het huis", icon: "fa-solid fa-utensils" },
+      { tijd: "19:00", titel: "Kinderen naar bed", plek: "Louis en Marjo passen op", icon: "fa-solid fa-bed" },
+      { tijd: "20:00", titel: "Tapas op het terras", plek: "Voor de vier grote mensen", icon: "fa-solid fa-wine-glass" }
+    ] },
+    { dag: "zo", num: "9", titel: "Zondag 9 mei", thema: "Grotten in de ochtend", items: [
+      { tijd: "08:45", titel: "Vertrek naar Porto Cristo", plek: "40 minuten rijden", icon: "fa-solid fa-car" },
+      { tijd: "10:00", titel: "Coves del Drac", plek: "Porto Cristo", icon: "fa-solid fa-ticket", badge: "Nog boeken", badgeType: "warning", plekId: "coves-drac" },
+      { tijd: "11:45", titel: "Lunch aan het water", plek: "Porto Cristo", icon: "fa-solid fa-utensils", plekId: "porto-cristo" },
+      { tijd: "12:45", titel: "Mila slaapt in de auto", plek: "Op de terugweg", icon: "fa-solid fa-moon" },
+      { tijd: "14:30", titel: "Zwemmen bij het huis", plek: "Bij het huis", icon: "fa-solid fa-person-swimming" },
+      { tijd: "17:30", titel: "Vroeg eten", plek: "Bij het huis", icon: "fa-solid fa-utensils" },
+      { tijd: "19:00", titel: "Kinderen naar bed", plek: "Bij het huis", icon: "fa-solid fa-bed" }
+    ] },
+    { dag: "ma", num: "10", titel: "Maandag 10 mei", thema: "Alcúdia en daarna niets moeten", items: [
+      { tijd: "09:15", titel: "Alcúdia", plek: "Oude stadsmuur · 20 minuten", icon: "fa-solid fa-store", plekId: "alcudia" },
+      { tijd: "11:30", titel: "Terug naar de villa", plek: "Onderweg brood halen", icon: "fa-solid fa-car" },
+      { tijd: "12:30", titel: "Mila slaapt · stille uren", plek: "Louis en Marjo lezen op het terras", icon: "fa-solid fa-moon" },
+      { tijd: "14:30", titel: "Zwembad en krabbenjacht", plek: "Bij het huis", icon: "fa-solid fa-person-swimming" },
+      { tijd: "16:30", titel: "Ijsje in Port d'Alcúdia", plek: "12,5 km · aan de boulevard", icon: "fa-solid fa-ice-cream" },
+      { tijd: "17:45", titel: "Eten bij het huis", plek: "Bij het huis", icon: "fa-solid fa-utensils" },
+      { tijd: "19:00", titel: "Kinderen naar bed", plek: "Bij het huis", icon: "fa-solid fa-bed" }
+    ] },
+    { dag: "di", num: "11", titel: "Dinsdag 11 mei", thema: "Dagje Tramuntana, slaapje in de auto", items: [
+      { tijd: "08:15", titel: "Vertrek naar Valldemossa", plek: "Een uur rijden", icon: "fa-solid fa-car" },
+      { tijd: "09:30", titel: "Valldemossa", plek: "Bergdorp in de Tramuntana", icon: "fa-solid fa-mountain", badge: "Idee", badgeType: "info", plekId: "valldemossa" },
+      { tijd: "11:45", titel: "Lunch met uitzicht", plek: "Deià", icon: "fa-solid fa-utensils", plekId: "deia" },
+      { tijd: "12:45", titel: "Mila slaapt in de auto", plek: "Op de terugweg", icon: "fa-solid fa-moon" },
+      { tijd: "15:00", titel: "Zwembad en bijkomen", plek: "Bij het huis", icon: "fa-solid fa-person-swimming" },
+      { tijd: "17:30", titel: "Vroeg eten", plek: "Bij het huis", icon: "fa-solid fa-utensils" },
+      { tijd: "19:00", titel: "Kinderen naar bed", plek: "Bij het huis", icon: "fa-solid fa-bed" }
+    ] },
+    { dag: "wo", num: "12", titel: "Woensdag 12 mei", thema: "Markt voor Marjo, paella voor iedereen", items: [
+      { tijd: "08:00", titel: "Vertrek naar Santanyí", plek: "Een uur rijden", icon: "fa-solid fa-car" },
+      { tijd: "09:15", titel: "Markt in Santanyí", plek: "Alleen op woensdag en zaterdag", icon: "fa-solid fa-store", plekId: "santanyi" },
+      { tijd: "11:15", titel: "Terras op de Plaça", plek: "Santanyí", icon: "fa-solid fa-mug-saucer" },
+      { tijd: "12:15", titel: "Mila slaapt in de auto", plek: "Op de terugweg", icon: "fa-solid fa-moon" },
+      { tijd: "14:30", titel: "Zwembad", plek: "Bij het huis", icon: "fa-solid fa-person-swimming" },
+      { tijd: "17:30", titel: "Paella koken met Louis en Marjo", plek: "Bij het huis", icon: "fa-solid fa-utensils" },
+      { tijd: "19:00", titel: "Kinderen naar bed", plek: "Bij het huis", icon: "fa-solid fa-bed" }
+    ] },
+    { dag: "do", num: "13", titel: "Donderdag 13 mei", thema: "Laatste strandochtend", items: [
+      { tijd: "09:30", titel: "Playa de Muro met bedjes", plek: "15 minuten · hele ochtend", icon: "fa-solid fa-umbrella-beach", plekId: "playa-muro" },
+      { tijd: "12:00", titel: "Terug naar de villa", plek: "Op tijd voor het slaapje", icon: "fa-solid fa-car" },
+      { tijd: "12:30", titel: "Mila slaapt · koffers inpakken", plek: "Stille uren", icon: "fa-solid fa-moon" },
+      { tijd: "14:30", titel: "Laatste keer zwembad", plek: "Bij het huis", icon: "fa-solid fa-person-swimming" },
+      { tijd: "17:15", titel: "Laatste avond uit eten", plek: "Platja de Muro · voeten in het zand", icon: "fa-solid fa-utensils" },
+      { tijd: "19:00", titel: "Kinderen naar bed", plek: "Bij het huis", icon: "fa-solid fa-bed" }
+    ] },
+    { dag: "vr", num: "14", titel: "Vrijdag 14 mei", thema: "Naar huis", items: [
+      { tijd: "08:30", titel: "Koffers en huis opruimen", plek: "Villa Ca na Saurina", icon: "fa-solid fa-house" },
+      { tijd: "09:45", titel: "Rijden naar Palma", plek: "Ongeveer 50 minuten", icon: "fa-solid fa-car" },
+      { tijd: "10:45", titel: "Auto inleveren", plek: "Palma Airport", icon: "fa-solid fa-car", badge: "Geboekt", badgeType: "success" },
+      { tijd: "11:15", titel: "Inchecken en lunch", plek: "Palma (PMI) · twee uur marge", icon: "fa-solid fa-utensils" },
+      { tijd: "13:15", titel: "Vlucht naar Düsseldorf", plek: "Palma (PMI) · 2 uur 20", icon: "fa-solid fa-plane-arrival", badge: "Geboekt", badgeType: "success" },
+      { tijd: "15:35", titel: "Landen in Düsseldorf", plek: "Daarna met de auto naar huis", icon: "fa-solid fa-car-side" }
+    ] }
+  ];
+
+  IDEEEN = [
+    { id: "coves-drac", titel: "Coves del Drac", cat: "Kinderen", note: "Druipsteengrotten met bootje, 40 minuten rijden", door: "jij", plekId: "coves-drac" },
+    { id: "boottocht", titel: "Boottocht langs de baaitjes", cat: "Op het water", note: "Vanuit Porto Cristo, halve dag", door: "jij", plekId: "porto-cristo" },
+    { id: "soller-tram", titel: "Tramritje naar Port de Sóller", cat: "Dorpjes", note: "Oude houten tram naar de haven", door: "jij", plekId: "soller" },
+    { id: "markt", titel: "Markt in Santanyí", cat: "Markten", note: "Woensdag en zaterdag tot ongeveer twee uur", door: "jij", plekId: "santanyi" },
+    { id: "formentor", titel: "Zonsondergang bij Cap de Formentor", cat: "Uitzicht", note: "Ver rijden, wel spectaculair", door: "jij", plekId: "formentor" },
+    { id: "aquarium", titel: "Palma Aquarium", cat: "Kinderen", note: "Binnen, dus ook leuk bij regen", door: "jij", plekId: "palma-aquarium" },
+    { id: "hidropark", titel: "Middag in Hidropark", cat: "Kinderen", note: "Glijbanen en een peuterbad, 20 minuten rijden", door: "vrouw", plekId: "hidropark" },
+    { id: "campanet", titel: "Grotten van Campanet", cat: "Kinderen", note: "Vlakbij het huis en veel rustiger dan del Drac", door: "vrouw", plekId: "campanet" },
+    { id: "capdepera-kasteel", titel: "Kasteel van Capdepera", cat: "Kinderen", note: "Binnen de muren mogen de kinderen vrij rondrennen", door: "kind1", plekId: "capdepera" },
+    { id: "albufera-fietsen", titel: "Fietsen door s'Albufera", cat: "Actief", note: "Vlonderpaden en vogels, tien minuten van de deur", door: "jij", plekId: "albufera" },
+    { id: "es-comu-wandeling", titel: "Ontbijtwandeling Es Comú", cat: "Wandelen", note: "Vlak pad door de duinen, ook met Louis en Marjo", door: "opa", plekId: "es-comu" },
+    { id: "alaro-klim", titel: "Klimmen naar Castell d'Alaró", cat: "Actief", note: "Anderhalf uur omhoog, iets voor zonder de kleintjes", door: "jij", plekId: "alaro" },
+    { id: "mondrago-wandeling", titel: "Twee stranden in Mondragó", cat: "Wandelen", note: "Strand met een kort wandelingetje ertussen", door: "vrouw", plekId: "mondrago" },
+    { id: "sant-vicenc-snorkel", titel: "Snorkelen in Cala Sant Vicenç", cat: "Op het water", note: "Helder water onder de bergen, 25 minuten rijden", door: "vrouw", plekId: "cala-sant-vicenc" },
+    { id: "varques-vroeg", titel: "Vroeg naar Cala Varques", cat: "Op het water", note: "Kwartier lopen vanaf de weg, neem water mee", door: "jij", plekId: "cala-varques" },
+    { id: "kajak-pollenca", titel: "Kajak huren in Port de Pollença", cat: "Op het water", note: "Rustige baai, er zijn ook dubbele kajaks", door: "jij", plekId: "pine-walk" },
+    { id: "formentor-pijnbomen", titel: "Strand onder de pijnbomen", cat: "Stranden", note: "Platja de Formentor houdt schaduw tot in de middag", door: "oma", plekId: "formentor-strand" },
+    { id: "es-trenc-pootje", titel: "Pootjebaden op Es Trenc", cat: "Stranden", note: "Lang ondiep strand, ga aan de kant van Ses Covetes", door: "kind2", plekId: "es-trenc" },
+    { id: "agulla-dennen", titel: "Cala Agulla en het dennenbos", cat: "Stranden", note: "Schaduw achter het strand, ruimte om te rennen", door: "kind1", plekId: "cala-agulla" },
+    { id: "mesquida-golven", titel: "Golfjes bij Cala Mesquida", cat: "Stranden", note: "Duinen en wind, fijn op een snikhete dag", door: "jij", plekId: "cala-mesquida" },
+    { id: "picafort-middag", titel: "Strandmiddag Can Picafort", cat: "Stranden", note: "Kwartiertje rijden, prima tussen de siësta door", door: "oma", plekId: "can-picafort" },
+    { id: "alcudia-platja", titel: "Ijsjes op de boulevard van Alcúdia", cat: "Stranden", note: "Heel geleidelijk aflopend water, ideaal voor Mila", door: "kind2", plekId: "platja-alcudia" },
+    { id: "llombards-baai", titel: "Halve dag Cala Llombards", cat: "Stranden", note: "Rustige baai met strandtent en trapjes", door: "vrouw", plekId: "cala-llombards" },
+    { id: "moro-vroeg", titel: "Voor negenen naar Caló des Moro", cat: "Uitzicht", note: "Het bekende blauwe baaitje, daarna staat er een rij", door: "vrouw", plekId: "calo-des-moro" },
+    { id: "sa-calobra-kloof", titel: "Kloof van Sa Calobra", cat: "Uitzicht", note: "Indrukwekkend, wel een uur haarspeldbochten", door: "jij", plekId: "sa-calobra" },
+    { id: "banyalbufar-avond", titel: "Zonsondergang in Banyalbufar", cat: "Uitzicht", note: "Landbouwterrassen die aflopen naar zee", door: "oma", plekId: "banyalbufar" },
+    { id: "deia-lunch", titel: "Lunch met uitzicht in Deià", cat: "Uitzicht", note: "Bochtige weg erheen, houd rekening met wagenziekte", door: "oma", plekId: "deia" },
+    { id: "lluc-klooster", titel: "Klooster van Lluc", cat: "Cultuur", note: "Koele berglucht en een makkelijk pad met uitzicht", door: "opa", plekId: "lluc" },
+    { id: "arta-salvador", titel: "Sant Salvador boven Artà", cat: "Cultuur", note: "Met de auto bijna bovenaan, dan scheelt het trappen", door: "opa", plekId: "arta" },
+    { id: "palma-stad", titel: "Dagje Palma met de kathedraal", cat: "Cultuur", note: "Een dag zonder strand, lunch in de Mercat de l'Olivar", door: "jij", plekId: "palma" },
+    { id: "valldemossa-coca", titel: "Coca de patata in Valldemossa", cat: "Dorpjes", note: "Ochtendje slenteren in het bergdorp", door: "oma", plekId: "valldemossa" },
+    { id: "fornalutx-koffie", titel: "Koffie op het pleintje van Fornalutx", cat: "Dorpjes", note: "Combineer met Sóller, tien minuten ertussen", door: "oma", plekId: "fornalutx" },
+    { id: "pollenca-calvari", titel: "Calvari-trap in Pollença", cat: "Dorpjes", note: "365 treden, of met de auto tot bijna bovenaan", door: "jij", plekId: "pollenca" },
+    { id: "petra-lunch", titel: "Dorpslunch in Petra", cat: "Dorpjes", note: "Binnenland zonder toeristen, half zo duur als de kust", door: "opa", plekId: "petra" },
+    { id: "sineu-markt", titel: "Dinsdagmarkt in Sineu", cat: "Markten", note: "Oudste markt van het eiland, ook met dieren", door: "oma", plekId: "sineu" },
+    { id: "alcudia-markt", titel: "Markt in de oude stad van Alcúdia", cat: "Markten", note: "Dinsdag en zondag, te combineren met Playa de Muro", door: "oma", plekId: "alcudia" },
+    { id: "sa-pobla-markt", titel: "Zondagsmarkt in Sa Pobla", cat: "Markten", note: "Ons eigen dorp, vijf minuten rijden", door: "jij", plekId: "sa-pobla" },
+    { id: "rajada-vis", titel: "Verse vis in Cala Rajada", cat: "Eten", note: "Kraampjes op de kade, 's avonds het gezelligst", door: "jij", plekId: "cala-ratjada" },
+    { id: "muro-celler", titel: "Celler in Muro", cat: "Eten", note: "Streekgerechten in een oude wijnkelder, tien minuten", door: "opa", plekId: "muro" },
+    { id: "sant-pere-avond", titel: "Avondeten in Colònia de Sant Pere", cat: "Eten", note: "Klein haventje zonder drukte, reserveren hoeft niet", door: "vrouw", plekId: "colonia-sant-pere" },
+    { id: "pine-walk-avond", titel: "Avondwandeling over de Pine Walk", cat: "Eten", note: "Terrassen onder de pijnbomen aan het water", door: "oma", plekId: "pine-walk" },
+    { id: "figuera-boten", titel: "Vissersboten in Cala Figuera", cat: "Uitje", note: "Ga tegen zessen, dan komen de boten binnen", door: "opa", plekId: "cala-figuera" },
+    { id: "tapas-avond", titel: "Tapas-avond bij de villa", cat: "Eten", note: "Boodschappen in Sa Pobla en samen koken op het terras", door: "vrouw" },
+    { id: "paella-bbq", titel: "Paella op de barbecue", cat: "Eten", note: "Pan en rijst halen in Sa Pobla, een avond klussen met opa", door: "jij" },
+    { id: "sterren", titel: "Sterren kijken bij het zwembad", cat: "Uitje", note: "Weinig licht in Crestatx, dus goed zicht", door: "kind1" },
+    { id: "filmavond", titel: "Filmavond na het zwemmen", cat: "Kinderen", note: "Voor een avond dat niemand meer naar buiten wil", door: "kind2" },
+    { id: "fietsen-huren", titel: "Fietsen huren in Sa Pobla", cat: "Actief", note: "Fietspad ligt 200 meter van het huis", door: "jij", plekId: "sa-pobla" },
+    { id: "zwemwedstrijd", titel: "Zwemwedstrijdje in het eigen zwembad", cat: "Kinderen", note: "Een middag niet rijden, gewoon thuisblijven", door: "kind1", plekId: "villa" }
+  ];
+  WEB = {
+    gavella: "https://cangavella.com",
+    figueret: "https://www.figueret.com",
+    nu: "https://numallorca.com",
+    costa: "https://cancostaalcudia.com",
+    patos: "https://www.lospatosrestaurant.com",
+    merlet: "https://merlet-restaurante-de-tapas-alcudia.negocio.site",
+    portassa: "https://www.facebook.com/pages/Sa-Portassa/171914699531571",
+    "coves-drac": "https://www.cuevasdeldrach.com",
+    "palma-aquarium": "https://www.palmaaquarium.com",
+    campanet: "https://covesdecampanet.com",
+    hidropark: "https://www.hidroparkalcudia.com",
+    lluc: "https://lluc.net",
+    soller: "https://trendesoller.com",
+    albufera: "https://www.balearsnatura.com",
+    mondrago: "https://www.balearsnatura.com",
+    palma: "https://www.visitpalma.com",
+    villa: "https://www.interhome.nl"
+  };
+
+  webUrl(id, naam) {
+    const u = this.WEB[id];
+    if (u) return u;
+    return "https://www.google.com/search?q=" + encodeURIComponent((naam || id) + " Mallorca officiële website");
+  }
+
+  webHost(id) {
+    const u = this.WEB[id];
+    if (!u) return null;
+    let h = u.split("//")[1] || u;
+    if (h.indexOf("www.") === 0) h = h.slice(4);
+    if (h.slice(-1) === "/") h = h.slice(0, -1);
+    return h;
+  }
+
+  webVal(id, naam) {
+    const host = this.webHost(id);
+    return {
+      label: host ? "Website bekijken" : "Zoek informatie online",
+      sub: host ? host + " · opent buiten de app" : "Geen eigen website · we zoeken hem voor je op",
+      open: () => { try { window.open(this.webUrl(id, naam), "_blank", "noopener"); } catch (e) {} }
+    };
+  }
+
+  PACK = {
+    documenten: [
+      { id: "paspoorten", titel: "Paspoorten", note: "Zes stuks, geldig tot na 14 mei", on: true },
+      { id: "boarding", titel: "Boarding passes", note: "Komen 24 uur voor de vlucht", on: false },
+      { id: "autovoucher", titel: "Voucher huurauto", note: "Uitprinten of in de app", on: false },
+      { id: "rijbewijs", titel: "Rijbewijzen", note: "Van beide bestuurders", on: true },
+      { id: "verzekering", titel: "Reisverzekering en EHIC", note: "Nummers in de app zetten", on: false }
+    ],
+    strand: [
+      { id: "bandjes", titel: "Zwembandjes", note: "Voor bij het zwembad", on: true },
+      { id: "snorkel", titel: "Snorkelsets", note: "Twee kindermaten", on: false },
+      { id: "strandtent", titel: "Strandtent", note: "Schaduw voor de kleintjes", on: false },
+      { id: "handdoeken", titel: "Strandhanddoeken", note: "Zes stuks", on: true },
+      { id: "waterschoenen", titel: "Waterschoenen", note: "Handig bij de rotsbaaitjes", on: false },
+      { id: "opblaas", titel: "Opblaasdier", note: "Past net in de koffer", on: false }
+    ],
+    kinderen: [
+      { id: "knuffels", titel: "Knuffels", note: "Niet vergeten, echt niet", on: true },
+      { id: "spelletjes", titel: "Reisspelletjes", note: "Voor het vliegtuig", on: true },
+      { id: "kleurboek", titel: "Kleurboek en stiften", note: "Voor de terrasjes", on: false },
+      { id: "tablet", titel: "Tablet en koptelefoons", note: "Films offline zetten", on: false },
+      { id: "schepje", titel: "Schepje en emmertje", note: "Voor Es Trenc", on: true }
+    ],
+    zon: [
+      { id: "zonnebrand", titel: "Zonnebrand factor 50", note: "Twee flessen, kinderen erbij", on: true },
+      { id: "aftersun", titel: "Aftersun", note: "Voor de eerste dagen", on: false },
+      { id: "petjes", titel: "Petjes en zonnehoedjes", note: "Zes stuks", on: true },
+      { id: "zonnebrillen", titel: "Zonnebrillen", note: "Ook de kinderbrillen", on: false },
+      { id: "muggen", titel: "Muggenspray", note: "Voor de avonden buiten", on: false },
+      { id: "apotheek", titel: "Reisapotheek", note: "Pleisters en kinderparacetamol", on: true }
+    ],
+    handig: [
+      { id: "powerbank", titel: "Powerbank", note: "Voor de lange stranddagen", on: true },
+      { id: "kabels", titel: "Oplaadkabels", note: "Eén per persoon", on: false },
+      { id: "koeltas", titel: "Koeltas", note: "Voor water en fruit", on: false },
+      { id: "boodschappentas", titel: "Boodschappentassen", note: "Twee opvouwbare", on: true },
+      { id: "waterflessen", titel: "Waterflessen", note: "Zes stuks, hervulbaar" , on: false }
+    ]
+  };
+
+  scrollRef = React.createRef();
+
+  nav(next) {
+    const el = this.scrollRef.current;
+    const y = el ? el.scrollTop : 0;
+    this.setState((s) => ({
+      hist: (s.hist || []).concat([{ screen: s.screen, tab: s.tab, plekId: s.plekId, restoId: s.restoId, y: y }])
+    }));
+    this.setState(next);
+  }
+
+  terug() {
+    const h = this.state.hist || [];
+    if (!h.length) { this.setState({ screen: this.state.tab }); return; }
+    const p = h[h.length - 1];
+    this.herstelY = p.y || 0;
+    this.setState({ hist: h.slice(0, -1), screen: p.screen, tab: p.tab, plekId: p.plekId, restoId: p.restoId });
+  }
+
+  componentDidUpdate() {
+    const s = this.screen();
+    if (s !== this.lastScreen) {
+      this.lastScreen = s;
+      const el = this.scrollRef.current;
+      if (el) el.scrollTop = this.herstelY != null ? this.herstelY : 0;
+      this.herstelY = null;
+    }
+  }
+
+  componentDidMount() {
+    this.tik = setInterval(() => this.forceUpdate(), 1000);
+    this.onMsg = (e) => {
+      const d = e.data || {};
+      if (d.type === "plek" && d.id) this.nav({ screen: "plek", plekId: d.id });
+    };
+    window.addEventListener("message", this.onMsg);
+    this.haalWeer();
+  }
+
+  haalWeer() {
+    const url = "https://api.open-meteo.com/v1/forecast?latitude=39.8037&longitude=3.0145" +
+      "&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code" +
+      "&timezone=Europe%2FMadrid&forecast_days=16";
+    fetch(url).then((r) => r.json()).then((j) => {
+      const dagen = {};
+      if (j.daily && j.daily.time) {
+        j.daily.time.forEach((d, i) => {
+          dagen[d] = { max: Math.round(j.daily.temperature_2m_max[i]), min: Math.round(j.daily.temperature_2m_min[i]), code: j.daily.weather_code[i] };
+        });
+      }
+      this.setState({
+        weerNu: j.current ? { temp: Math.round(j.current.temperature_2m), code: j.current.weather_code } : null,
+        weerDagen: dagen
+      });
+    }).catch(() => {});
+  }
+
+  componentWillUnmount() { window.removeEventListener("message", this.onMsg); if (this.tik) clearInterval(this.tik); }
+
+  post(msg) {
+    const f = this.mapRef.current;
+    if (f && f.contentWindow) f.contentWindow.postMessage(msg, "*");
+  }
+
+  screen() {
+    if (this.state.screen) return this.state.screen;
+    return this.props.startInWelkom === false ? "overzicht" : "welkom";
+  }
+
+  tijdens() { return (this.props.tripMode || "Voor de reis") === "Tijdens de reis"; }
+
+  dayIndex() {
+    if (this.state.day != null) return this.state.day;
+    return this.tijdens() ? 2 : 0;
+  }
+
+  packRows(key) {
+    return this.PACK[key].map((it, i) => ({
+      titel: it.titel,
+      note: it.note,
+      checked: this.state.packed[it.id] != null ? this.state.packed[it.id] : it.on,
+      toggle: () => this.setState((s) => ({ packed: Object.assign({}, s.packed, { [it.id]: !(s.packed[it.id] != null ? s.packed[it.id] : it.on) }) })),
+      rowStyle: i > 0 ? { borderTop: "1px solid rgba(71,80,85,0.08)" } : undefined
+    }));
+  }
+
+  packTotals() {
+    let done = 0, total = 0;
+    Object.keys(this.PACK).forEach((k) => this.PACK[k].forEach((it) => {
+      total += 1;
+      if (this.state.packed[it.id] != null ? this.state.packed[it.id] : it.on) done += 1;
+    }));
+    this.state.eigenPack.forEach((it) => {
+      total += 1;
+      if (this.state.packed[it.id]) done += 1;
+    });
+    return { done, total };
+  }
+
+  stemmenVan(idee) {
+    const per = this.state.votes[idee.id] || {};
+    const ids = this.REIZIGERS.filter((r) => per[r.id]).map((r) => r.id);
+    return { mine: !!per[this.state.ik], ids: ids };
+  }
+
+  meldingen() {
+    const gelezen = (this.state.gelezen || {})[this.state.ik] || {};
+    const uit = [];
+    this.IDEEEN.forEach((i) => {
+      const per = this.state.votes[i.id] || {};
+      this.REIZIGERS.forEach((r) => {
+        const key = r.id + ":" + i.id;
+        if (per[r.id] && r.id !== this.state.ik && !gelezen[key]) {
+          uit.push({ key: key, init: r.init, titel: r.naam + " stemde op " + i.titel, note: i.note, wanneer: "Net", naar: "ideeen" });
+        }
+      });
+    });
+    return uit;
+  }
+
+  fotoRef(url) {
+    return (el) => { if (el && url && el.getAttribute("src") !== url) el.setAttribute("src", url); };
+  }
+
+  meldingRijen(lijst) {
+    const rij = { display: "flex", gap: 12, alignItems: "flex-start", padding: "14px 16px", cursor: "pointer" };
+    return lijst.map((m, i) => ({
+      init: m.init, titel: m.titel, note: m.note, wanneer: m.wanneer,
+      open: () => this.nav({ tab: ["dagen", "kaart", "ideeen", "paklijst"].indexOf(m.naar) >= 0 ? m.naar : this.state.tab, screen: m.naar }),
+      rowStyle: i > 0 ? Object.assign({}, rij, { borderTop: "1px solid rgba(71,80,85,0.08)" }) : rij
+    }));
+  }
+
+  kopieer(id, tekst) {
+    const klaar = (ok) => this.setState({ gekopieerd: ok ? id : null, kopieFout: ok ? null : id });
+    if (!tekst) { klaar(false); return; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(tekst).then(() => klaar(true)).catch(() => klaar(false));
+      return;
+    }
+    klaar(false);
+  }
+
+  zoekResultaten() {
+    const q = (this.state.zoek || "").trim().toLowerCase();
+    if (q.length < 2) return [];
+    const raak = (s) => (s || "").toLowerCase().indexOf(q) >= 0;
+    const uit = [];
+    this.PLEKKEN.forEach((p) => {
+      const pr = this.PRAKTISCH[p.id] || {};
+      if (raak(p.naam) || raak(p.note) || raak(pr.plaats) || raak(this.CATLABEL[p.cat])) {
+        uit.push({ groep: "Plekken", icon: p.icon, titel: p.naam, note: pr.plaats || p.note, naar: { screen: "plek", plekId: p.id } });
+      }
+    });
+    this.ETEN.forEach((r) => {
+      if (raak(r.naam) || raak(r.note) || raak(r.keuken) || raak(r.plaats)) {
+        uit.push({ groep: "Eten en drinken", icon: r.icon, titel: r.naam, note: r.keuken, naar: { screen: "resto", restoId: r.id } });
+      }
+    });
+    this.IDEEEN.forEach((i) => {
+      if (raak(i.titel) || raak(i.note)) {
+        uit.push({ groep: "Ideeën", icon: "fa-solid fa-lightbulb", titel: i.titel, note: i.note, naar: { tab: "ideeen", screen: "ideeen" } });
+      }
+    });
+    this.DAGEN.forEach((d) => {
+      d.items.forEach((it) => {
+        if (raak(it.titel) || raak(it.plek)) {
+          uit.push({ groep: "In het dagprogramma", icon: it.icon, titel: it.tijd + " · " + it.titel, note: d.titel + " · " + it.plek, naar: { tab: "dagen", screen: "dagen" } });
+        }
+      });
+    });
+    Object.keys(this.PACK).forEach((g) => {
+      this.PACK[g].forEach((p) => {
+        if (raak(p.titel) || raak(p.note)) {
+          uit.push({ groep: "Paklijst", icon: "fa-solid fa-suitcase-rolling", titel: p.titel, note: p.note, naar: { tab: "paklijst", screen: "paklijst" } });
+        }
+      });
+    });
+    return uit;
+  }
+
+  naamVan(id) {
+    const r = this.REIZIGERS.filter((x) => x.id === id)[0];
+    return r ? r.naam : id;
+  }
+
+  renderVals() {
+    const screen = this.screen();
+    const tijdens = this.tijdens();
+    const dayIdx = this.dayIndex();
+    const dag = this.DAGEN[dayIdx];
+    const stijl = this.props.countdownStijl || "Groot getal";
+    const pack = this.packTotals();
+    const plek = this.PLEKKEN.filter((p) => p.id === this.state.plekId)[0] || this.PLEKKEN[0];
+    const resto = this.ETEN.filter((r) => r.id === this.state.restoId)[0] || this.ETEN[0];
+    const etenRij = (groep) => this.ETEN.filter((r) => r.groep === groep).map((r, i) => Object.assign({}, r, {
+      foto: this.RESTOFOTO[r.id] || "",
+      open: () => this.nav({ screen: "resto", restoId: r.id }),
+      rowStyle: i > 0 ? { borderTop: "1px solid rgba(71,80,85,0.08)" } : undefined
+    }));
+    const added = !!this.state.added[plek.id];
+    const vertrek = Date.parse("2027-05-07T13:05:00+02:00");
+    const overMs = Math.max(0, vertrek - Date.now());
+    const dagenTot = Math.floor(overMs / 86400000);
+    const dagDatum = "2027-05-" + ("0" + dag.num).slice(-2);
+    const dagVoorspelling = this.state.weerDagen ? this.state.weerDagen[dagDatum] : null;
+    const dagWeer = dagVoorspelling
+      ? { tekst: dagVoorspelling.max + "° / " + dagVoorspelling.min + "°, " + this.weerInfo(dagVoorspelling.code).label + " · verwachting", icon: this.weerInfo(dagVoorspelling.code).icon }
+      : { tekst: "Gemiddeld 24° overdag en 13° 's nachts in mei · echte verwachting volgt twee weken vooraf", icon: "fa-solid fa-temperature-half" };
+
+    const pillStyle = (active) => ({
+      flex: "none", width: 52, padding: "8px 0", borderRadius: 12, cursor: "pointer",
+      display: "flex", flexDirection: "column", alignItems: "center", gap: 2,
+      background: active ? "var(--ion-color-primary)" : "var(--ion-color-light)",
+      color: active ? "#fff" : "var(--text-default)",
+      transition: "background 160ms cubic-bezier(.4,0,.2,1)"
+    });
+
+    const chipStyle = (active) => ({
+      flex: "none", padding: "0 14px", height: 34, borderRadius: 999, cursor: "pointer",
+      display: "flex", alignItems: "center", fontSize: 14, fontWeight: 500,
+      background: active ? "var(--ion-color-primary)" : "var(--ion-color-light)",
+      color: active ? "#fff" : "var(--text-default)"
+    });
+
+    const badgeStyle = (b, type) => {
+      if (!b) return { display: "none" };
+      const pal = type === "success" ? { bg: "var(--ion-color-success-lighter)", fg: "var(--ion-color-success-shade)" }
+        : type === "warning" ? { bg: "var(--ion-color-warning-lighter)", fg: "var(--ion-color-warning-shade)" }
+        : { bg: "var(--ion-color-light-shade)", fg: "var(--ion-color-dark)" };
+      return { display: "inline-flex", alignItems: "center", marginTop: 6, padding: "0 10px", height: 22, borderRadius: 999, fontSize: 13, lineHeight: "22px", fontWeight: 500, background: pal.bg, color: pal.fg };
+    };
+
+    const plekkenGefilterd = this.PLEKKEN.filter((p) => p.id !== "villa" && (this.state.filter === "alles" || p.cat === this.state.filter || p.ook === this.state.filter));
+
+    const ideeCats = ["Alles"].concat(this.IDEEEN.map((i) => i.cat).filter((c, n, a) => a.indexOf(c) === n));
+    const ideeFilter = this.state.ideeFilter || "Alles";
+    const ideeen = this.IDEEEN.filter((i) => ideeFilter === "Alles" || i.cat === ideeFilter).map((i) => {
+      const v = this.stemmenVan(i);
+      const web = this.webVal(i.plekId || i.id, i.titel);
+      return {
+        titel: i.titel, cat: i.cat, note: i.note,
+        fotoRef: this.fotoRef(this.foto(i.id) || this.foto(i.plekId) || "assets/photos/cala-pines-web.png"),
+        heeftFoto: true,
+        stemLabel: v.ids.length + " van 6 stemmen",
+        stemmers: v.ids.length ? v.ids.map((id) => this.naamVan(id)).join(" · ") : "Nog niemand, jij mag beginnen",
+        doorLabel: "Voorstel van " + this.naamVan(i.door),
+        webLabel: web.label,
+        openWeb: web.open,
+        btnVariant: v.mine ? "secondary" : "primary",
+        btnLabel: v.mine ? "Gestemd" : "Stem",
+        btnIcon: v.mine ? "fa-solid fa-check" : "fa-regular fa-thumbs-up",
+        vote: () => this.setState((s) => {
+          const per = Object.assign({}, s.votes[i.id] || {});
+          if (per[s.ik]) delete per[s.ik]; else per[s.ik] = true;
+          return { votes: Object.assign({}, s.votes, { [i.id]: per }) };
+        }),
+        doen: !!this.state.doen[i.id],
+        doenLabel: this.state.doen[i.id] ? "Dit doen we" : "Doen we dit?",
+        toggleDoen: () => this.setState((s) => {
+          const aan = !s.doen[i.id];
+          const dagen = Object.assign({}, s.ideeDag);
+          if (!aan) delete dagen[i.id];
+          return { doen: Object.assign({}, s.doen, { [i.id]: aan }), ideeDag: dagen };
+        }),
+        dagLabel: this.state.ideeDag[i.id] != null
+          ? "Staat op " + this.DAGEN[this.state.ideeDag[i.id]].titel.toLowerCase()
+          : "Op welke dag zetten we het?",
+        dagKeuze: this.DAGEN.map((d, di) => ({
+          label: d.dag + " " + d.num,
+          select: () => this.setState((s) => {
+            const dagen = Object.assign({}, s.ideeDag);
+            if (dagen[i.id] === di) delete dagen[i.id]; else dagen[i.id] = di;
+            return { ideeDag: dagen };
+          }),
+          style: chipStyle(this.state.ideeDag[i.id] === di)
+        })),
+        votes: v.ids.length
+      };
+    });
+
+    const shortlist = this.IDEEEN.map((i) => ({ i, n: this.stemmenVan(i).ids.length }))
+      .sort((a, b) => b.n - a.n).slice(0, 3)
+      .map((x, idx) => ({
+        titel: x.i.titel,
+        stemLabel: x.n + " van 6 stemmen",
+        open: x.i.plekId ? () => this.nav({ screen: "plek", plekId: x.i.plekId }) : undefined,
+        rowStyle: idx > 0 ? { borderTop: "1px solid rgba(71,80,85,0.08)" } : undefined
+      }));
+
+    return {
+      isWelcome: screen === "welkom",
+      isApp: screen !== "welkom",
+      sOverzicht: screen === "overzicht",
+      sDagen: screen === "dagen",
+      sKaart: screen === "kaart",
+      sIdeeen: screen === "ideeen",
+      sPaklijst: screen === "paklijst",
+      sBoekingen: screen === "boekingen",
+      sMeldingen: screen === "meldingen",
+      sZoek: screen === "zoek",
+      sWie: screen === "wie",
+      sUitnodigen: screen === "uitnodigen",
+      sPlek: screen === "plek",
+      sHuis: screen === "huis",
+      sEten: screen === "eten",
+      sResto: screen === "resto",
+
+      naarOverzicht: () => this.nav({ screen: "overzicht", tab: "overzicht" }),
+
+      tabs: [
+        { id: "overzicht", label: "Overzicht", icon: "fa-solid fa-house" },
+        { id: "dagen", label: "Dagen", icon: "fa-solid fa-calendar-days" },
+        { id: "kaart", label: "Kaart", icon: "fa-solid fa-map-location-dot" },
+        { id: "ideeen", label: "Ideeën", icon: "fa-solid fa-lightbulb" },
+        { id: "paklijst", label: "Paklijst", icon: "fa-solid fa-suitcase-rolling" }
+      ],
+      tab: this.state.tab,
+      setTab: (id) => this.setState({ tab: id, screen: id, hist: [] }),
+      back: () => this.terug(),
+      goDagen: () => this.nav({ tab: "dagen", screen: "dagen" }),
+      goKaart: () => this.nav({ tab: "kaart", screen: "kaart" }),
+      goIdeeen: () => this.nav({ tab: "ideeen", screen: "ideeen" }),
+      goPaklijst: () => this.nav({ tab: "paklijst", screen: "paklijst" }),
+      goBoekingen: () => this.nav({ screen: "boekingen" }),
+      goHuis: () => this.nav({ screen: "huis" }),
+      goMeldingen: () => this.nav({ screen: "meldingen" }),
+      goZoek: () => this.nav({ screen: "zoek" }),
+      goWie: () => this.nav({ screen: "wie" }),
+      goUitnodigen: () => this.nav({ screen: "uitnodigen" }),
+      ikNaam: this.naamVan(this.state.ik),
+      stemTodoAantal: this.IDEEEN.filter((i) => !(this.state.votes[i.id] || {})[this.state.ik]).length,
+      stemTodoNote: (() => {
+        const n = this.IDEEEN.filter((i) => !(this.state.votes[i.id] || {})[this.state.ik]).length;
+        if (n === 0) return "Je hebt op alle ideeën gestemd";
+        return n === 1 ? "Nog één idee wacht op jouw stem" : n + " ideeën wachten nog op jouw stem";
+      })(),
+      ikInit: (this.REIZIGERS.filter((r) => r.id === this.state.ik)[0] || {}).init || "?",
+      personen: this.REIZIGERS.map((r, i) => {
+        const actief = this.state.ik === r.id;
+        return {
+          naam: r.naam, rol: r.rol, init: r.init, actief: actief,
+          kies: () => this.setState({ ik: r.id }),
+          rowStyle: {
+            display: "flex", gap: 12, alignItems: "center", padding: "14px 16px", cursor: "pointer",
+            background: actief ? "var(--ion-color-secondary)" : "transparent",
+            borderTop: i > 0 ? "1px solid rgba(71,80,85,0.08)" : undefined
+          },
+          avatarStyle: {
+            width: 44, height: 44, flex: "none", borderRadius: "50%", display: "flex", alignItems: "center",
+            justifyContent: "center", fontSize: 15, fontWeight: 700,
+            background: actief ? "var(--ion-color-primary)" : "var(--ion-color-secondary)",
+            color: actief ? "#fff" : "var(--ion-color-primary)"
+          }
+        };
+      }),
+      uitnodigingen: this.REIZIGERS
+        .filter((r) => r.id !== this.state.ik && r.id !== "kind1" && r.id !== "kind2")
+        .map((r, i) => {
+          const gestuurd = !!this.state.uitgenodigd && !!this.state.uitgenodigd[r.id];
+          return {
+            naam: r.naam, rol: r.rol, init: r.init,
+            statusLabel: gestuurd ? "Uitnodiging verstuurd" : "Nog niet uitgenodigd",
+            btnLabel: gestuurd ? "Opnieuw sturen" : "Uitnodiging sturen",
+            btnVariant: gestuurd ? "secondary" : "primary",
+            stuur: () => this.setState((s) => ({ uitgenodigd: Object.assign({}, s.uitgenodigd, { [r.id]: true }) })),
+            rowStyle: {
+              display: "flex", gap: 12, alignItems: "center", padding: "14px 16px",
+              borderTop: i > 0 ? "1px solid rgba(71,80,85,0.08)" : undefined
+            }
+          };
+        }),
+      kinderenLabel: "Juna en Mila gaan mee, maar krijgen geen eigen app. Zij stemmen mee via jullie telefoon.",
+      zoek: this.state.zoek,
+      setZoek: (e) => this.setState({ zoek: e.target.value }),
+      wisZoek: () => this.setState({ zoek: "" }),
+      zoekRijen: (() => {
+        const res = this.zoekResultaten();
+        return res.map((r, i) => ({
+          icon: r.icon, titel: r.titel, note: r.note, groep: r.groep,
+          open: () => this.nav(r.naar),
+          rowStyle: {
+            display: "flex", gap: 12, alignItems: "flex-start", padding: "14px 16px", cursor: "pointer",
+            borderTop: i > 0 ? "1px solid rgba(71,80,85,0.08)" : undefined
+          }
+        }));
+      })(),
+      zoekAantal: (() => { const n = this.zoekResultaten().length; return n === 1 ? "1 resultaat" : n + " resultaten"; })(),
+      zoekHeeftResultaten: this.zoekResultaten().length > 0,
+      zoekLeeg: (this.state.zoek || "").trim().length >= 2 && this.zoekResultaten().length === 0,
+      zoekWacht: (this.state.zoek || "").trim().length < 2,
+      markeerGelezen: () => this.setState((s) => {
+        const mijn = Object.assign({}, (s.gelezen || {})[s.ik] || {});
+        this.meldingen().forEach((m) => { mijn[m.key] = true; });
+        return { gelezen: Object.assign({}, s.gelezen, { [s.ik]: mijn }) };
+      }),
+      heeftMeldingen: this.meldingen().length > 0,
+      geenMeldingen: this.meldingen().length === 0,
+      meldingenAantal: String(this.meldingen().length),
+      meldingenNieuw: this.meldingRijen(this.meldingen()),
+      goEten: () => this.nav({ screen: "eten" }),
+      etenStrand: etenRij("strand"),
+      etenStad: etenRij("stad"),
+      etenNatuur: etenRij("natuur"),
+      etenVerder: etenRij("verder"),
+      gerechten: this.GERECHTEN,
+      backEten: () => this.terug(),
+      scrollRef: this.scrollRef,
+      restoNaam: resto.naam,
+      restoIcon: resto.icon,
+      restoKeuken: resto.keuken,
+      restoSfeer: resto.sfeer,
+      restoPlaats: resto.plaats,
+      restoMeta: resto.meta,
+      restoReserveren: resto.reserveren,
+      restoMetOns: resto.metOns,
+      restoWebLabel: this.webVal(resto.id, resto.naam).label,
+      restoWebSub: this.webVal(resto.id, resto.naam).sub,
+      restoWebOpen: this.webVal(resto.id, resto.naam).open,
+      restoFotoRef: this.fotoRef(this.RESTOFOTO[resto.id]),
+      restoHeeftFoto: !!this.RESTOFOTO[resto.id],
+      restoSfeerCredit: this.RESTOSFEER[resto.id] || "",
+      restoBijNaam: (this.PLEKKEN.filter((p) => p.id === this.RESTOBIJ[resto.id])[0] || {}).naam || "",
+      restoBijCoord: (this.PRAKTISCH[this.RESTOBIJ[resto.id]] || {}).coord || "",
+      restoKopieer: () => this.kopieer(resto.id, (this.PRAKTISCH[this.RESTOBIJ[resto.id]] || {}).coord),
+      restoGekopieerd: this.state.gekopieerd === resto.id,
+      restoKopieFout: this.state.kopieFout === resto.id,
+      restoSlotId: "mal-resto-" + resto.id,
+      restoSlot1: "mal-resto-" + resto.id + "-1",
+      restoSlot2: "mal-resto-" + resto.id + "-2",
+      restoSlot3: "mal-resto-" + resto.id + "-3",
+      restoMenu: resto.menu.map((m, i) => ({ g: m.g, n: m.n, rowStyle: { padding: "12px 16px", borderTop: i > 0 ? "1px solid rgba(71,80,85,0.08)" : undefined } })),
+      goWelkom: () => this.nav({ screen: "welkom" }),
+      huisVoorzieningen: this.VOORZIENINGEN,
+      huisFeiten: this.HUISFEITEN,
+      slaapkamers: this.SLAAPKAMERS.map((k, i) => Object.assign({}, k, { rowStyle: i > 0 ? { borderTop: "1px solid rgba(71,80,85,0.08)" } : undefined })),
+      afstanden: this.AFSTANDEN.map((a, i) => Object.assign({}, a, {
+        rowStyle: {
+          display: "flex", justifyContent: "space-between", gap: 12, padding: "10px 0",
+          borderTop: i > 0 ? "1px solid rgba(71,80,85,0.08)" : undefined
+        }
+      })),
+      huisOpKaart: () => { this.nav({ tab: "kaart", screen: "kaart" }); setTimeout(() => this.post({ type: "focus", id: "villa" }), 260); },
+
+      packInput: this.state.packInput,
+      setPackInput: (e) => this.setState({ packInput: e.target.value }),
+      addPack: () => {
+        const t = (this.state.packInput || "").trim();
+        if (!t) return;
+        const id = "eigen-" + Date.now();
+        this.setState((s) => ({
+          eigenPack: s.eigenPack.concat([{ id: id, titel: t, note: "Toegevoegd door Tijmen" }]),
+          packed: Object.assign({}, s.packed, { [id]: false }),
+          packInput: ""
+        }));
+      },
+      packEigen: this.state.eigenPack.map((it, i) => ({
+        titel: it.titel, note: it.note,
+        checked: !!this.state.packed[it.id],
+        toggle: () => this.setState((s) => ({ packed: Object.assign({}, s.packed, { [it.id]: !s.packed[it.id] }) })),
+        remove: () => this.setState((s) => ({ eigenPack: s.eigenPack.filter((x) => x.id !== it.id) })),
+        rowStyle: i > 0 ? { borderTop: "1px solid rgba(71,80,85,0.08)" } : undefined
+      })),
+      heeftEigenPack: this.state.eigenPack.length > 0,
+
+
+      dagenTot: dagenTot,
+      aftelDagen: String(dagenTot),
+      aftelUren: String(Math.floor((overMs % 86400000) / 3600000)),
+      aftelMin: String(Math.floor((overMs % 3600000) / 60000)),
+      aftelSec: String(Math.floor((overMs % 60000) / 1000)),
+      welkomChips: [
+        { icon: "fa-solid fa-person-swimming", label: "eigen zwembad" },
+        { icon: "fa-solid fa-umbrella-beach", label: "ondiepe stranden" },
+        { icon: "fa-solid fa-fire-burner", label: "paella in het zand" },
+        { icon: "fa-solid fa-ice-cream", label: "ijsjes na de siësta" },
+        { icon: "fa-solid fa-ticket", label: "druipsteengrotten" },
+        { icon: "fa-solid fa-feather", label: "vogels spotten" },
+        { icon: "fa-solid fa-train-tram", label: "tram naar de haven" },
+        { icon: "fa-solid fa-store", label: "markt in Santanyí" }
+      ],
+      tijdensReis: tijdens,
+      countdownGroot: !tijdens && stijl === "Groot getal",
+      countdownCompact: !tijdens && stijl !== "Groot getal",
+      toonWeer: this.props.toonWeer !== false,
+      nuTemp: this.state.weerNu ? this.state.weerNu.temp + "°" : "—",
+      nuIcon: this.state.weerNu ? this.weerInfo(this.state.weerNu.code).icon : "fa-solid fa-cloud-sun",
+      nuOmschrijving: this.state.weerNu
+        ? "Crestatx, " + this.weerInfo(this.state.weerNu.code).label + " · live van Open-Meteo"
+        : "Live weer wordt opgehaald",
+      vandaagLabel: dag.titel,
+      vandaagItems: dag.items.slice(0, 3).map((it) => ({ tijd: it.tijd, titel: it.titel })),
+
+      reizigers: this.REIZIGERS.map((r, i) => ({
+        naam: r.naam, rol: r.rol,
+        checked: this.state.mee[r.id] != null ? this.state.mee[r.id] : true,
+        toggle: () => this.setState((s) => ({ mee: Object.assign({}, s.mee, { [r.id]: !(s.mee[r.id] != null ? s.mee[r.id] : true) }) })),
+        rowStyle: i > 0 ? { borderTop: "1px solid rgba(71,80,85,0.08)" } : undefined
+      })),
+      reizigersMee: this.REIZIGERS.filter((r) => this.state.mee[r.id] != null ? this.state.mee[r.id] : true).map((r) => ({ init: r.init })),
+      reizigersLabel: this.REIZIGERS.filter((r) => this.state.mee[r.id] != null ? this.state.mee[r.id] : true).map((r) => r.naam).join(" · "),
+
+      wensen: this.WENSEN.map((w, i) => ({
+        titel: w.titel, note: w.note,
+        checked: this.state.wens[w.id] != null ? this.state.wens[w.id] : true,
+        toggle: () => this.setState((s) => ({ wens: Object.assign({}, s.wens, { [w.id]: !(s.wens[w.id] != null ? s.wens[w.id] : true) }) })),
+        rowStyle: i > 0 ? { borderTop: "1px solid rgba(71,80,85,0.08)" } : undefined
+      })),
+
+      dagen: this.DAGEN.map((d, i) => ({
+        dag: d.dag, num: d.num,
+        select: () => this.setState({ day: i }),
+        pillStyle: pillStyle(i === dayIdx)
+      })),
+      dagTitel: dag.titel,
+      dagThema: dag.thema,
+      dagWeer: dagWeer.tekst,
+      dagWeerIcon: dagWeer.icon,
+      dagItems: dag.items.concat(this.IDEEEN.filter((i) => this.state.ideeDag[i.id] === dayIdx).map((i) => ({
+        tijd: "—", titel: i.titel, plek: i.note, icon: "fa-solid fa-lightbulb",
+        badge: "Uit de ideeën", badgeType: "info", plekId: i.plekId
+      }))).map((it) => ({
+        tijd: it.tijd, titel: it.titel, plek: it.plek, icon: it.icon,
+        fotoRef: this.fotoRef(this.foto(it.plekId)),
+        heeftFoto: !!this.foto(it.plekId),
+        iconStyle: this.foto(it.plekId)
+          ? { display: "none" }
+          : { width: 40, height: 40, flex: "none", borderRadius: 10, background: "var(--ion-color-secondary)", color: "var(--ion-color-primary)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15 },
+        badge: it.badge || "", badgeStyle: badgeStyle(it.badge, it.badgeType),
+        chevStyle: it.plekId ? { color: "var(--ion-color-primary)", fontSize: 15, alignSelf: "center", flex: "none" } : { display: "none" },
+        cardStyle: {
+          display: "flex", gap: 12, alignItems: "flex-start", background: "var(--surface-card)",
+          borderRadius: 12, padding: "14px 14px 14px 12px", cursor: it.plekId ? "pointer" : "default"
+        },
+        open: it.plekId ? () => this.nav({ screen: "plek", plekId: it.plekId }) : undefined
+      })),
+
+      chips: this.CHIPS.map((c) => ({
+        label: c.label,
+        chipStyle: chipStyle(c.id === this.state.filter),
+        select: () => { this.setState({ filter: c.id }); this.post({ type: "filter", filter: c.id }); }
+      })),
+      mapRef: this.mapRef,
+      plekkenTitel: plekkenGefilterd.length + " plekken op de lijst",
+      plekkenLijst: plekkenGefilterd.map((p, i) => ({
+        naam: p.naam, note: (this.state.filter === "eten" && p.etenNote) ? p.etenNote : p.note, icon: p.icon,
+        foto: this.foto(p.id),
+        rijtijd: "Ongeveer " + p.min + " minuten rijden",
+        open: () => this.nav({ screen: "plek", plekId: p.id }),
+        rowStyle: i > 0 ? { borderTop: "1px solid rgba(71,80,85,0.08)" } : undefined
+      })),
+
+      ideeen: ideeen,
+      ideeChips: ideeCats.map((c) => ({
+        label: c,
+        chipStyle: chipStyle(c === ideeFilter),
+        select: () => this.setState({ ideeFilter: c })
+      })),
+      ideeAantal: this.IDEEEN.length + " ideeën in de app",
+      shortlist: shortlist,
+
+      packDocumenten: this.packRows("documenten"),
+      packStrand: this.packRows("strand"),
+      packKinderen: this.packRows("kinderen"),
+      packZon: this.packRows("zon"),
+      packHandig: this.packRows("handig"),
+      packLabel: pack.done + " van " + pack.total + " ingepakt",
+      packPct: Math.round((pack.done / pack.total) * 100) + "%",
+      packValue: pack.done / pack.total,
+
+      plekNaam: plek.naam,
+      plekNote: plek.note,
+      plekCat: this.CATLABEL[plek.cat],
+      plekIcon: plek.icon,
+      plekFotoRef: this.fotoRef(this.foto(plek.id)),
+      plekHeeftFoto: !!this.foto(plek.id),
+      plekGeenFoto: !this.foto(plek.id) && plek.id !== "villa",
+      plekCredit: this.credit(plek.id),
+      plekHeeftCredit: !!this.credit(plek.id),
+      plekIsVilla: plek.id === "villa",
+      plekPlaats: (this.PRAKTISCH[plek.id] || {}).plaats || "Mallorca",
+      plekCoord: (this.PRAKTISCH[plek.id] || {}).coord || "",
+      plekOpen: (this.PRAKTISCH[plek.id] || {}).open || "",
+      plekKopieer: () => this.kopieer(plek.id, (this.PRAKTISCH[plek.id] || {}).coord),
+      plekGekopieerd: this.state.gekopieerd === plek.id,
+      plekKopieFout: this.state.kopieFout === plek.id,
+      plekRijtijd: plek.min === 0 ? "Je bent er al" : "Ongeveer " + plek.min + " minuten rijden",
+      plekGoedVoor: plek.goedVoor,
+      plekParkeren: plek.parkeren,
+      plekTip: plek.tip,
+      plekHeeftRestos: this.restosBij(plek.id).length > 0,
+      plekRestos: this.restosBij(plek.id).map((r, i) => ({
+        naam: r.naam, note: r.note, meta: r.meta, icon: r.icon,
+        open: () => this.nav({ screen: "resto", restoId: r.id }),
+        rowStyle: i > 0 ? { borderTop: "1px solid rgba(71,80,85,0.08)" } : undefined
+      })),
+      plekWebLabel: this.webVal(plek.id, plek.naam).label,
+      plekWebSub: this.webVal(plek.id, plek.naam).sub,
+      plekWebOpen: this.webVal(plek.id, plek.naam).open,
+      addLabel: added ? "Staat in het dagprogramma" : "Zet in dagprogramma",
+      addVariant: added ? "secondary" : "primary",
+      addIcon: added ? "fa-solid fa-check" : "fa-solid fa-plus",
+      addToProgramma: () => this.setState((s) => ({ added: Object.assign({}, s.added, { [plek.id]: !s.added[plek.id] }) })),
+      showOnMap: () => {
+        this.nav({ screen: "kaart", tab: "kaart" });
+        setTimeout(() => this.post({ type: "focus", id: plek.id }), 500);
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

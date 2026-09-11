@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mallorca — kaart</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+<style>
+  html, body, #map { margin: 0; height: 100%; background: #EEF8FA; }
+  .leaflet-container { font-family: Inter, system-ui, sans-serif; }
+  .leaflet-popup-content-wrapper { border-radius: 12px; }
+  .leaflet-popup-content { margin: 12px 14px; font-size: 13px; line-height: 18px; color: #475055; }
+  .pk-name { font-weight: 600; color: #2B3033; display: block; margin-bottom: 2px; }
+  .pk-meta { color: #70797D; }
+  .leaflet-control-attribution { font-size: 9px; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+const PLEKKEN = [
+  { id: "villa", name: "Villa Ca na Saurina", cat: "villa", lat: 39.8037, lng: 3.0145, note: "Ons huis met zwembad" },
+  { id: "cala-varques", name: "Cala Varques", cat: "baai", lat: 39.4816, lng: 3.2966, note: "15 min lopen vanaf de weg" },
+  { id: "cala-llombards", name: "Cala Llombards", cat: "baai", lat: 39.3378, lng: 3.1349, note: "Rustig, met strandtent" },
+  { id: "calo-des-moro", name: "Caló des Moro", cat: "baai", lat: 39.3336, lng: 3.1300, note: "Vroeg gaan, wordt druk" },
+  { id: "es-trenc", name: "Es Trenc", cat: "strand", lat: 39.3540, lng: 2.9847, note: "Lang zandstrand, ondiep" },
+  { id: "mondrago", name: "Cala Mondragó", cat: "strand", lat: 39.3499, lng: 3.1861, note: "Natuurpark, kindvriendelijk" },
+  { id: "playa-muro", name: "Playa de Muro", cat: "strand", lat: 39.8085, lng: 3.1180, note: "Heel ondiep water", ook: "eten", etenNote: "Strandtenten langs het strand, ook voor een lunch" },
+  { id: "valldemossa", name: "Valldemossa", cat: "dorp", lat: 39.7096, lng: 2.6226, note: "Bergdorp in de Tramuntana" },
+  { id: "deia", name: "Deià", cat: "dorp", lat: 39.7486, lng: 2.6486, note: "Uitzicht over de kust", ook: "eten", etenNote: "Lunch aan de rotsen bij Cala Deià" },
+  { id: "santanyi", name: "Santanyí", cat: "dorp", lat: 39.3556, lng: 3.1289, note: "Markt op wo & za" },
+  { id: "soller", name: "Sóller", cat: "dorp", lat: 39.7667, lng: 2.7167, note: "Tram naar de haven" },
+  { id: "alcudia", name: "Alcúdia", cat: "dorp", lat: 39.8536, lng: 3.1210, note: "Oude stadsmuur" },
+  { id: "porto-cristo", name: "Porto Cristo", cat: "eten", lat: 39.5386, lng: 3.3305, note: "Haventje, tapas aan het water" },
+  { id: "palma", name: "Palma", cat: "eten", lat: 39.5696, lng: 2.6502, note: "Kathedraal en stadsterrasjes" },
+  { id: "coves-drac", name: "Coves del Drac", cat: "kind", lat: 39.5352, lng: 3.3312, note: "Druipsteengrotten met bootje" },
+  { id: "palma-aquarium", name: "Palma Aquarium", cat: "kind", lat: 39.5325, lng: 2.7357, note: "Binnen, ook bij regen" },
+  { id: "cala-sant-vicenc", name: "Cala Sant Vicenç", cat: "baai", lat: 39.9200, lng: 3.0553, note: "Vier baaitjes, helder water", ook: "eten", etenNote: "Terrassen aan de baai met zicht op het water" },
+  { id: "formentor-strand", name: "Platja de Formentor", cat: "strand", lat: 39.9247, lng: 3.1327, note: "Schaduw van pijnbomen" },
+  { id: "pollenca", name: "Pollença", cat: "dorp", lat: 39.8767, lng: 3.0164, note: "Calvari-trap, markt op zondag" },
+  { id: "sineu", name: "Sineu", cat: "dorp", lat: 39.6425, lng: 3.0106, note: "Oudste markt, dinsdag", ook: "eten", etenNote: "Marktdorp met oude cellers rond het plein" },
+  { id: "lluc", name: "Santuari de Lluc", cat: "dorp", lat: 39.8231, lng: 2.8853, note: "Klooster in de bergen" },
+  { id: "formentor", name: "Cap de Formentor", cat: "uitje", lat: 39.9583, lng: 3.2130, note: "Kliffen en vuurtoren" },
+  { id: "albufera", name: "Parc de s'Albufera", cat: "uitje", lat: 39.7906, lng: 3.1064, note: "Vogels en vlonderpaden" },
+  { id: "campanet", name: "Coves de Campanet", cat: "uitje", lat: 39.8092, lng: 2.9497, note: "Rustige grotten, dichtbij" },
+  { id: "alaro", name: "Castell d'Alaró", cat: "uitje", lat: 39.7290, lng: 2.7930, note: "Burchtruïne, stevige klim" },
+  { id: "sa-calobra", name: "Sa Calobra", cat: "uitje", lat: 39.8497, lng: 2.8003, note: "Kloof naar de zee" },
+  { id: "hidropark", name: "Hidropark Alcúdia", cat: "kind", lat: 39.8447, lng: 3.1157, note: "Waterglijbanen" },
+  { id: "pine-walk", name: "Pine Walk, Port de Pollença", cat: "eten", lat: 39.9075, lng: 3.0844, note: "Terrassen aan het water" },
+  { id: "sa-pobla", name: "Sa Pobla", cat: "eten", lat: 39.7686, lng: 3.0231, note: "Ons dorp, tapas en boodschappen" },
+  { id: "arta", name: "Artà", cat: "dorp", lat: 39.6944, lng: 3.3497, note: "Bergheiligdom Sant Salvador" },
+  { id: "fornalutx", name: "Fornalutx", cat: "dorp", lat: 39.7828, lng: 2.7333, note: "Natuurstenen straatjes" },
+  { id: "capdepera", name: "Capdepera", cat: "dorp", lat: 39.7025, lng: 3.4344, note: "Middeleeuws kasteel" },
+  { id: "petra", name: "Petra", cat: "dorp", lat: 39.6136, lng: 3.1017, note: "Rustig binnenlanddorp", ook: "eten", etenNote: "Dorpscellers, Mallorcaans eten voor dorpsprijzen" },
+  { id: "banyalbufar", name: "Banyalbufar", cat: "dorp", lat: 39.6864, lng: 2.5136, note: "Terrassen aan zee" },
+  { id: "cala-agulla", name: "Cala Agulla", cat: "strand", lat: 39.7175, lng: 3.4433, note: "Zand met dennenbos" },
+  { id: "cala-mesquida", name: "Cala Mesquida", cat: "strand", lat: 39.7442, lng: 3.4353, note: "Duinen en golven" },
+  { id: "platja-alcudia", name: "Platja d'Alcúdia", cat: "strand", lat: 39.8320, lng: 3.1108, note: "Lang en ondiep" },
+  { id: "can-picafort", name: "Can Picafort", cat: "strand", lat: 39.7647, lng: 3.1553, note: "Familiestrand dichtbij" },
+  { id: "cala-figuera", name: "Cala Figuera", cat: "baai", lat: 39.3269, lng: 3.1633, note: "Vissershaven" },
+  { id: "cala-ratjada", name: "Cala Rajada", cat: "eten", lat: 39.7136, lng: 3.4633, note: "Visrestaurants aan de kade" },
+  { id: "colonia-sant-pere", name: "Colònia de Sant Pere", cat: "eten", lat: 39.7444, lng: 3.2794, note: "Rustig haventje" },
+  { id: "muro", name: "Muro", cat: "eten", lat: 39.7364, lng: 3.0553, note: "Cellers op het dorpsplein" },
+  { id: "es-comu", name: "Es Comú de Muro", cat: "uitje", lat: 39.7961, lng: 3.1085, note: "Vlonderpad door de duinen" },
+  { id: "inca", name: "Inca", cat: "eten", lat: 39.7211, lng: 2.9111, note: "Cellers in de oude binnenstad" },
+  { id: "es-barcares", name: "Es Barcarès", cat: "eten", lat: 39.8422, lng: 3.1544, note: "Haventje met één terras" },
+  { id: "port-alcudia", name: "Port d'Alcúdia", cat: "eten", lat: 39.8353, lng: 3.1332, note: "Boulevard langs de marina" },
+  { id: "port-soller", name: "Port de Sóller", cat: "eten", lat: 39.7961, lng: 2.6939, note: "Visrestaurants rond de baai" },
+  { id: "portixol", name: "Portixol, Palma", cat: "eten", lat: 39.5583, lng: 2.6683, note: "Ontbijten aan het water" },
+  { id: "santa-catalina", name: "Santa Catalina, Palma", cat: "eten", lat: 39.5744, lng: 2.6403, note: "Markthal met eetkraampjes" },
+  { id: "manacor", name: "Manacor", cat: "eten", lat: 39.5697, lng: 3.2089, note: "Tapasbars in het centrum" },
+  { id: "binissalem", name: "Binissalem", cat: "dorp", lat: 39.6853, lng: 2.8419, note: "Wijndorp met bodega's" },
+  { id: "campanet-dorp", name: "Campanet", cat: "dorp", lat: 39.7669, lng: 2.9714, note: "Stil dorpsplein, heel dichtbij" },
+  { id: "caimari", name: "Caimari", cat: "dorp", lat: 39.7883, lng: 2.8975, note: "Aan de voet van de bergweg naar Lluc" },
+  { id: "santa-maria", name: "Santa Maria del Camí", cat: "dorp", lat: 39.6486, lng: 2.77, note: "Zondagsmarkt in de straten" },
+  { id: "esporles", name: "Esporles", cat: "dorp", lat: 39.6717, lng: 2.5789, note: "Dorp met een beek door de hoofdstraat" },
+  { id: "es-colomer", name: "Mirador Es Colomer", cat: "uitje", lat: 39.9256, lng: 3.0983, note: "Mirador boven de kliffen" },
+  { id: "talaia-alcudia", name: "Talaia d'Alcúdia", cat: "uitje", lat: 39.8697, lng: 3.1789, note: "Wandeling over de kaap" },
+  { id: "ses-paisses", name: "Ses Païsses", cat: "uitje", lat: 39.6892, lng: 3.3486, note: "Prehistorische stenen bij Artà" },
+  { id: "cuber", name: "Cúber en Gorg Blau", cat: "uitje", lat: 39.7897, lng: 2.7936, note: "Stuwmeren in de Tramuntana" },
+  { id: "rafa-nadal", name: "Rafa Nadal Museum", cat: "uitje", lat: 39.5772, lng: 3.2261, note: "Sportmuseum bij de tennisacademie" }
+];
+
+const map = L.map("map", { zoomControl: false, attributionControl: true });
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: "© OpenStreetMap contributors",
+  maxZoom: 18
+}).addTo(map);
+map.fitBounds([[39.24, 2.32], [39.99, 3.47]], { padding: [12, 12] });
+
+const villa = PLEKKEN[0];
+function km(p) {
+  const R = 6371, dLat = (p.lat - villa.lat) * Math.PI / 180, dLng = (p.lng - villa.lng) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(villa.lat * Math.PI / 180) * Math.cos(p.lat * Math.PI / 180) * Math.sin(dLng / 2) ** 2;
+  return Math.round(2 * R * Math.asin(Math.sqrt(a)));
+}
+
+let huidigFilter = "alles";
+function kleur(p) {
+  if (p.cat === "villa") return "#166E7B";
+  if (huidigFilter === "eten" && p.ook === "eten") return "#EF8100";
+  if (p.cat === "uitje") return "#4C0087";
+  if (p.cat === "eten") return "#EF8100";
+  return "#21ACC0";
+}
+function popupTekst(p) {
+  const note = (huidigFilter === "eten" && p.etenNote) ? p.etenNote : p.note;
+  return '<span class="pk-name">' + p.name + "</span>" +
+    '<span class="pk-meta">' + note + (p.cat === "villa" ? "" : " · " + km(p) + " km hemelsbreed") + "</span>";
+}
+
+const layers = {};
+PLEKKEN.forEach(p => {
+  const isVilla = p.cat === "villa";
+  const m = L.circleMarker([p.lat, p.lng], {
+    radius: isVilla ? 9 : 7,
+    color: "#FFFFFF",
+    weight: 2,
+    fillColor: kleur(p),
+    fillOpacity: 1
+  }).addTo(map);
+  m.bindPopup(popupTekst(p), { closeButton: false, offset: [0, -2] });
+  m.on("click", () => {
+    parent.postMessage({ type: "plek", id: p.id }, "*");
+  });
+  layers[p.id] = m;
+});
+
+function applyFilter(filter) {
+  huidigFilter = filter || "alles";
+  PLEKKEN.forEach(p => {
+    layers[p.id].setStyle({ fillColor: kleur(p) });
+    layers[p.id].setPopupContent(popupTekst(p));
+    const show = !filter || filter === "alles" || p.cat === filter || p.ook === filter || p.cat === "villa";
+    const on = map.hasLayer(layers[p.id]);
+    if (show && !on) layers[p.id].addTo(map);
+    if (!show && on) map.removeLayer(layers[p.id]);
+  });
+}
+
+function focus(id) {
+  const p = PLEKKEN.find(x => x.id === id);
+  if (!p) return;
+  map.flyTo([p.lat, p.lng], 12, { duration: 0.6 });
+  layers[p.id].openPopup();
+}
+
+window.addEventListener("message", e => {
+  const d = e.data || {};
+  if (d.type === "filter") applyFilter(d.filter);
+  if (d.type === "focus") focus(d.id);
+  if (d.type === "reset") map.fitBounds([[39.24, 2.32], [39.99, 3.47]], { padding: [12, 12] });
+});
+</script>
+</body>
+</html>

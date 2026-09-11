@@ -1,0 +1,9 @@
+{
+  "name": "mallorca-2027-app",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "python3 -m http.server 4173",
+    "start:phone": "python3 -m http.server 4173 --bind 0.0.0.0"
+  }
+}

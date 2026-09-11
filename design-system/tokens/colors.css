@@ -1,0 +1,109 @@
+/* ============================================================
+   Spreekuur — Color tokens
+   Source of truth: ds-native theme `spreekuur-core/_variables.scss`
+   + Figma Variables (primary-turquoise scale).
+   Spreekuur runs on Ionic, so the canonical names use the
+   --ion-color-* family. Brand-friendly aliases are added below.
+   ============================================================ */
+
+:root {
+  /* --- Primary (UI) — petrol teal. Buttons, links, active states --- */
+  --ion-color-primary: #166e7b;
+  --ion-color-primary-rgb: 22, 110, 123;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-shade: #13616c;
+  --ion-color-primary-tint: #2d7d88;
+
+  /* --- Brand turquoise — the logo color (brighter). Illustration accents --- */
+  --brand-turquoise: #21acc0;
+  --brand-turquoise-shade: #1d97a9;
+  --brand-turquoise-tint: #37b4c6;
+  --brand-turquoise-deep: #2b4a51; /* speech-bubble dark */
+  --brand-blush: #d98890;          /* speech-bubble salmon */
+
+  /* --- Secondary — soft cyan surface --- */
+  --ion-color-secondary: #eef8fa;
+  --ion-color-secondary-contrast: #475055;
+  --ion-color-secondary-shade: #d1dadc;
+  --ion-color-secondary-tint: #f0f9fb;
+
+  /* --- Tertiary — pale cyan fill --- */
+  --ion-color-tertiary: #d8faff;
+  --ion-color-tertiary-contrast: #475055;
+  --ion-color-tertiary-shade: #bedce0;
+  --ion-color-tertiary-darker: #b4f5fe;
+
+  /* --- Success --- */
+  --ion-color-success: #02c539;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-shade: #02ad32;
+  --ion-color-success-tint: #1bcb4d;
+  --ion-color-success-lighter: #e1ffea;
+
+  /* --- Warning --- */
+  --ion-color-warning: #ef8100;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-shade: #d27200;
+  --ion-color-warning-tint: #f18e1a;
+  --ion-color-warning-lighter: #fff1e0;
+
+  /* --- Danger --- */
+  --ion-color-danger: #e10036;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-shade: #c60030;
+  --ion-color-danger-tint: #e41a4a;
+  --ion-color-danger-lighter: #ffe7ec;
+
+  /* --- Neutrals --- */
+  --ion-color-dark: #475055;   /* primary text */
+  --ion-color-dark-shade: #3e464b;
+  --ion-color-dark-tint: #596266;
+  --ion-color-medium: #70797d; /* secondary text */
+  --ion-color-medium-shade: #636a6e;
+  --ion-color-medium-tint: #7e868a;
+  --ion-color-light: #f9f9f9;  /* app background */
+  --ion-color-light-shade: #dbdbdb;
+  --ion-color-light-tint: #fafafa;
+  --ion-color-white: #ffffff;
+  --ion-color-white-shade: #e0e0e0;
+
+  /* --- Special-purpose --- */
+  --ion-color-accent: #4c0087; /* purple — special flows */
+  --ion-color-accent-shade: #430077;
+  --ion-color-accent-tint: #5e1a93;
+  --ion-color-digid: #e27000;  /* DigiD login orange */
+  --ion-color-digid-shade: #c76300;
+  --ion-color-digid-tint: #e57e1a;
+
+  /* --- Lines & misc --- */
+  --color-border: #b3b3b3;
+  --color-border-hover: #404040;
+  --color-divider: #c8c7cc;
+  --color-placeholder: #919698;
+  --color-checkbox-border: rgba(0, 0, 0, 0.6);
+
+  /* ============================================================
+     SEMANTIC ALIASES — prefer these in product code
+     ============================================================ */
+  --color-primary: var(--ion-color-primary);
+  --color-primary-hover: var(--ion-color-primary-tint);
+  --color-primary-press: var(--ion-color-primary-shade);
+
+  --text-default: var(--ion-color-dark);
+  --text-secondary: var(--ion-color-medium);
+  --text-on-primary: #ffffff;
+  --text-placeholder: var(--color-placeholder);
+  --text-link: var(--ion-color-primary);
+
+  --surface-app: var(--ion-color-light);   /* page background */
+  --surface-card: #ffffff;                  /* cards, rows, modals */
+  --surface-subtle: var(--ion-color-secondary);  /* soft cyan zones */
+  --surface-accent: var(--ion-color-tertiary);    /* pale cyan highlight */
+
+  --status-success: var(--ion-color-success);
+  --status-success-bg: var(--ion-color-success-lighter);
+  --status-warning: var(--ion-color-warning);
+  --status-warning-bg: var(--ion-color-warning-lighter);
+  --status-danger: var(--ion-color-danger);
+  --status-danger-bg: var(--ion-color-danger-lighter);
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Mallorca 2027",
+  "short_name": "Mallorca 2027",
+  "description": "De familie-reisapp voor Mallorca, 7 t/m 14 mei 2027.",
+  "lang": "nl-NL",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#EEF8FA",
+  "theme_color": "#166E7B",
+  "icons": [
+    {
+      "src": "design/assets/photos/cala-aerial.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+/* ============================================================
+   Spreekuur — Base / reset layer
+   Sensible document defaults so specimens and kits inherit the
+   brand without each one re-declaring the basics.
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-line);
+  font-weight: var(--weight-regular);
+  color: var(--text-default);
+  background: var(--surface-app);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+small {
+  font-size: var(--text-small-size);
+  line-height: var(--text-small-line);
+}
+
+strong {
+  font-weight: var(--weight-semibold);
+}
+
+/* Utility text roles ---------------------------------------- */
+.su-text-secondary {
+  color: var(--text-secondary);
+}
+.su-text-body {
+  font: var(--weight-regular) var(--text-body-size) / var(--text-body-line) var(--font-body);
+}
+.su-text-label {
+  font: var(--weight-semibold) var(--text-label-size) / var(--text-label-line) var(--font-body);
+}
+.su-text-small {
+  font: var(--weight-regular) var(--text-small-size) / var(--text-small-line) var(--font-body);
+  color: var(--text-secondary);
+}
