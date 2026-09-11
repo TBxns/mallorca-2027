@@ -1,8 +1,9 @@
-const CACHE_NAME = 'mallorca-2027-v5';
+const CACHE_NAME = 'mallorca-2027-v6';
 const APP_SHELL = [
   './',
   './index.html',
   './manifest.webmanifest',
+  './apple-touch-icon.png',
   './supabase/public-config.js',
   './design/assets/icons/mallorca-2027.png',
   './design/assets/icons/mallorca-2027-180.png',
