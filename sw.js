@@ -1,9 +1,11 @@
-const CACHE_NAME = 'mallorca-2027-v2';
+const CACHE_NAME = 'mallorca-2027-v3';
 const APP_SHELL = [
   './',
   './index.html',
   './manifest.webmanifest',
   './supabase/public-config.js',
+  './design/assets/icons/mallorca-2027.png',
+  './design/assets/icons/mallorca-2027-180.png',
   './design/Mallorca-2027-app-standalone.html',
   './design/assets/photos/cala-aerial.png',
   './design/assets/photos/cala-pines-web.png',

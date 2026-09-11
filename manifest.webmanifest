@@ -11,8 +11,14 @@
   "theme_color": "#166E7B",
   "icons": [
     {
-      "src": "design/assets/photos/cala-aerial.png",
-      "sizes": "any",
+      "src": "design/assets/icons/mallorca-2027-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "design/assets/icons/mallorca-2027.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
