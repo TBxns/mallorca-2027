@@ -54,9 +54,29 @@
         return JSON.stringify(sharedState(state));
       }
 
+      function mergeSharedState(local, remote) {
+        const merged = Object.assign({}, local);
+        sharedStateKeys.forEach((key) => {
+          if (remote[key] === undefined) return;
+          if (key === 'eigenPack') {
+            const items = new Map((local[key] || []).map((item) => [item.id, item]));
+            (remote[key] || []).forEach((item) => items.set(item.id, item));
+            merged[key] = Array.from(items.values());
+            return;
+          }
+          if (remote[key] && typeof remote[key] === 'object' && !Array.isArray(remote[key])) {
+            merged[key] = Object.assign({}, local[key] || {}, remote[key]);
+            return;
+          }
+          merged[key] = remote[key];
+        });
+        return merged;
+      }
+
       function applyRemoteState(state) {
         const current = readFrameState();
-        const merged = Object.assign({}, current, state, { ik: current.ik || 'jij' });
+        const merged = Object.assign(mergeSharedState(current, state), { ik: current.ik || 'jij' });
+        if (stateSignature(current) === stateSignature(merged)) return;
         applyingRemoteState = true;
         appFrame.contentWindow.localStorage.setItem('mallorca2027', JSON.stringify(merged));
         appFrame.contentWindow.location.reload();
@@ -85,6 +105,8 @@
         if (!stored.error && stored.data && stored.data.state) {
           applyRemoteState(stored.data.state);
         }
+
+        lastUploadedState = stateSignature(readFrameState());
 
         client.channel('mallorca-trip-state')
           .on('postgres_changes', {
