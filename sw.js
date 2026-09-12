@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mallorca-2027-v8';
+const CACHE_NAME = 'mallorca-2027-v9';
 const APP_SHELL = [
   './',
   './index.html',
