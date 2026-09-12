@@ -37,6 +37,7 @@
       let lastUploadedState = '';
       let lastRemoteState = '';
       let restoreScreenLabel = null;
+      let lastScreenLabel = null;
 
       function readFrameState() {
         try {
@@ -103,6 +104,16 @@
         const control = controls.find((element) => element.textContent.trim() === target);
         if (control) control.click();
         restoreScreenLabel = null;
+      }
+
+      function keepNewScreensAtTop() {
+        if (!appFrame.contentDocument) return;
+        const screen = appFrame.contentDocument.querySelector('[data-screen-label]');
+        const label = screen && screen.getAttribute('data-screen-label');
+        if (!label || label === lastScreenLabel) return;
+        lastScreenLabel = label;
+        const scrollable = appFrame.contentDocument.querySelector('[style*="overflow:auto"]');
+        if (scrollable) scrollable.scrollTop = 0;
       }
 
       async function connectSharedState() {
@@ -176,6 +187,7 @@
 
       appFrame.addEventListener('load', connectSharedState, { once: true });
       appFrame.addEventListener('load', () => window.setTimeout(restoreVisibleTab, 800));
+      window.setInterval(keepNewScreensAtTop, 120);
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
       }
