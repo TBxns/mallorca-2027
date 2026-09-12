@@ -112,8 +112,25 @@
         const label = screen && screen.getAttribute('data-screen-label');
         if (!label || label === lastScreenLabel) return;
         lastScreenLabel = label;
-        const scrollable = appFrame.contentDocument.querySelector('[style*="overflow:auto"]');
+        const scrollables = Array.from(appFrame.contentDocument.querySelectorAll('*')).filter((element) => {
+          const style = appFrame.contentWindow.getComputedStyle(element);
+          return (style.overflowY === 'auto' || style.overflowY === 'scroll') &&
+            element.scrollHeight > element.clientHeight;
+        });
+        const scrollable = scrollables.sort((a, b) => b.scrollHeight - a.scrollHeight)[0];
         if (scrollable) scrollable.scrollTop = 0;
+      }
+
+      function resetFrameScrollSoon() {
+        [0, 80, 220, 500].forEach((delay) => window.setTimeout(() => {
+          if (!appFrame.contentDocument) return;
+          const scrollables = Array.from(appFrame.contentDocument.querySelectorAll('*')).filter((element) => {
+            const style = appFrame.contentWindow.getComputedStyle(element);
+            return (style.overflowY === 'auto' || style.overflowY === 'scroll') &&
+              element.scrollHeight > element.clientHeight;
+          });
+          scrollables.forEach((element) => { element.scrollTop = 0; });
+        }, delay));
       }
 
       async function connectSharedState() {
@@ -186,7 +203,11 @@
       }
 
       appFrame.addEventListener('load', connectSharedState, { once: true });
-      appFrame.addEventListener('load', () => window.setTimeout(restoreVisibleTab, 800));
+      appFrame.addEventListener('load', () => {
+        window.setTimeout(restoreVisibleTab, 800);
+        resetFrameScrollSoon();
+        appFrame.contentDocument.addEventListener('click', resetFrameScrollSoon, true);
+      });
       window.setInterval(keepNewScreensAtTop, 120);
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
